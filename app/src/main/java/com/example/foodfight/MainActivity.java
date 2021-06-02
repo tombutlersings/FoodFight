@@ -14,12 +14,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     // This is another comment
-
-
-
-
-
 }
 
 /*This is a test*/
+
+
+/* Tom's second comment */
 // Cody can edit this
