@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    // This is my contribution
+
     // This is another comment
 }
 
@@ -20,3 +20,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 /* Tom's second comment */
+// Cody can edit this
