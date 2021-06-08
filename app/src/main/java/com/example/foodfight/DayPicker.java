@@ -1,5 +1,9 @@
 package com.example.foodfight;
 
+/* This activity is used to select a day from the built-in Android
+ * calendar tool.
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;

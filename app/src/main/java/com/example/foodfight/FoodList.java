@@ -1,5 +1,10 @@
 package com.example.foodfight;
 
+/* This activity is where the embedded food list can be edited.  Adding new items
+ * to the list navigates to the MenuEditor activity
+ *
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;

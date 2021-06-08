@@ -1,5 +1,10 @@
 package com.example.foodfight;
 
+/* This activity is a fixed screen showing some information
+ * about the team and the app.  It doesn't do anything.
+ */
+
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;

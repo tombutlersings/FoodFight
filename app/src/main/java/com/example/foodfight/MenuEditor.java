@@ -1,5 +1,8 @@
 package com.example.foodfight;
 
+/* This activity uses the USDA API to retrieve data on selected foods
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
