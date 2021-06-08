@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodFight">
+        <activity android:name=".AppAbout"></activity>
+        <activity android:name=".Trend" />
+        <activity android:name=".DayPicker" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".MenuEditor" />
+        <activity android:name=".FoodList" />
+        <activity android:name=".Meals" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
