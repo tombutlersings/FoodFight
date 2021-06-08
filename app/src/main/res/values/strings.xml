@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">FoodFight</string>
+    <string name="app_about_0">CS 246, Spring 2021, Team 18 Project</string>
+    <string name="app_about_1">The Team</string>
+    <string name="app_about_2">The App</string>
+    <string name="app_about_3">Tom Butler<br/>
+        Kemish Lloyd<br/>
+        Caleb Nwokocha<br/>
+        Cody Overholt<br/>
+        Kaleb Pulley<br/>
+        Phillip Proctor
+    </string>
+    <string name="app_about_4">An easy to use app that keeps track of
+        calories consumed.</string>
 </resources>
