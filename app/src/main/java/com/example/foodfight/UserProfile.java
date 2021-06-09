@@ -5,5 +5,25 @@ package com.example.foodfight;
  * the AppAbout activity.
  */
 
-public class UserProfile {
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+public class UserProfile extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_profile);
+    }
+
+
+    // Called with the user taps the About button
+    public void btnAppAbout (View view) {
+        Intent intent = new Intent(this, AppAbout.class);
+        startActivity(intent);
+    }
+
 }
