@@ -6,15 +6,6 @@ package com.example.foodfight;
  * where a different day can be selected.
  */
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-public class Meals extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meals);
-    }
+public enum Meals {
+    Breakfast,Morning_Snack,Lunch,Afternoon_Snack,Dinner,Evening_Snack
 }
