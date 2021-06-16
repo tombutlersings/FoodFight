@@ -4,5 +4,4 @@ public class Api {
     String apiAddressOne;
     String apiAddressTwo;
     String apiAddressThree;
-
 }

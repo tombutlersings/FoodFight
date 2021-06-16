@@ -6,4 +6,157 @@
     android:layout_height="match_parent"
     tools:context=".Meals">
 
+    <TextView
+        android:id="@+id/showDate"
+        android:layout_width="294dp"
+        android:layout_height="39dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="63dp" />
+
+    <Button
+        android:id="@+id/addBreakfastButton"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="17dp"
+        android:text="Breakfast"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/addSnackButton0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addLunchButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="Lunch"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/addSnackButton1"
+        app:layout_constraintStart_toStartOf="@+id/addSnackButton0" />
+
+    <Button
+        android:id="@+id/addSnackButton1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="Snack"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/addDinnerButton"
+        app:layout_constraintStart_toStartOf="@+id/addLunchButton" />
+
+    <Button
+        android:id="@+id/addDinnerButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="Dinner"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/addSnackButton2"
+        app:layout_constraintStart_toStartOf="@+id/addSnackButton1" />
+
+    <Button
+        android:id="@+id/addSnackButton2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Snack"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/addDinnerButton"
+        tools:layout_editor_absoluteY="453dp" />
+
+    <Button
+        android:id="@+id/addSnackButton0"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="Snack"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/addLunchButton"
+        app:layout_constraintStart_toStartOf="@+id/addBreakfastButton" />
+
+    <TextView
+        android:id="@+id/showBreakfastCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="17dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/showSnack0Calories"
+        tools:layout_editor_absoluteX="314dp" />
+
+    <TextView
+        android:id="@+id/showSnack0Calories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="17dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/showLunchCalories"
+        app:layout_constraintEnd_toEndOf="@+id/showBreakfastCalories" />
+
+    <TextView
+        android:id="@+id/showSnack2Calories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/showDinnerCalories"
+        tools:layout_editor_absoluteY="453dp" />
+
+    <TextView
+        android:id="@+id/showDinnerCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="17dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/showSnack2Calories"
+        app:layout_constraintEnd_toEndOf="@+id/showSnack1Calories" />
+
+    <TextView
+        android:id="@+id/showSnack1Calories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="17dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/showDinnerCalories"
+        app:layout_constraintEnd_toEndOf="@+id/showLunchCalories" />
+
+    <TextView
+        android:id="@+id/showLunchCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="17dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/showSnack1Calories"
+        app:layout_constraintEnd_toEndOf="@+id/showSnack0Calories" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="17dp"
+        android:text="Total:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toBottomOf="@+id/addSnackButton2"
+        tools:layout_editor_absoluteX="142dp" />
+
+    <TextView
+        android:id="@+id/showTotalCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="17dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/showSnack2Calories"
+        app:layout_constraintTop_toBottomOf="@+id/showSnack2Calories" />
+
+    <Button
+        android:id="@+id/setDayButton"
+        android:layout_width="200dp"
+        android:layout_height="45"
+        android:text="Select Another Day"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="614dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
