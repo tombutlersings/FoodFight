@@ -6,4 +6,5 @@ public class Meal {
     int totalCalories; // math total for calories in the food lists of the meals
 
 
+
 }

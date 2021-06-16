@@ -12,22 +12,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class UserProfile extends AppCompatActivity {
 
-    int height;
-    int weight;
-    int age;
-    int weekGoal;
-    int dayGoal;
-    int bmi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        //get values to display
+        Profile profile = new ProfileHandler().getProfile();
+        //set display values
+        TextView height = findViewById(R.id.numHeight);
+        height.setText(profile.height);
+
+
     }
 
 
@@ -36,5 +39,7 @@ public class UserProfile extends AppCompatActivity {
         Intent intent = new Intent(this, AppAbout.class);
         startActivity(intent);
     }
+
+
 
 }
