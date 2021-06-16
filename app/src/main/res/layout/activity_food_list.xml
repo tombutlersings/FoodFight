@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".FoodList">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="131dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
