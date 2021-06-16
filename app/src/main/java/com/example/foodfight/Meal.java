@@ -5,4 +5,5 @@ public class Meal {
     //Meal name; After rename changes.
     int totalCalories; // math total for calories in the food lists of the meals
 
+
 }
