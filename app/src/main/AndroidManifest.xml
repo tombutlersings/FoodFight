@@ -14,7 +14,7 @@
         <activity android:name=".Trend" android:parentActivityName=".MainActivity"> </activity>
         <activity android:name=".DayPicker" android:parentActivityName=".MealsEnum"> </activity>
         <activity android:name=".UserProfile" android:parentActivityName=".MainActivity"> </activity>
-        <activity android:name=".MenuEditor" android:parentActivityName=".FoodList"> </activity>
+        <activity android:name=".acMenuEditor" android:parentActivityName=".FoodList"> </activity>
         <activity android:name=".FoodList" android:parentActivityName=".MealsEnum"> </activity>
         <activity android:name=".MealsEnum" android:parentActivityName=".MainActivity"> </activity>
 

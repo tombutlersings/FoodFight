@@ -3,11 +3,11 @@ package com.example.foodfight;
 /* This activity uses the USDA API to retrieve data on selected foods
  */
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class MenuEditor extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class acMenuEditor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
