@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DayPicker extends AppCompatActivity {
+public class acDayPicker extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

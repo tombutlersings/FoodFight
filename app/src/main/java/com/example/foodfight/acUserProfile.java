@@ -1,22 +1,18 @@
 package com.example.foodfight;
 
-/* This activity collects the user's specifics for BMI calculation and
- * calorie goal settings.  A button at the bottom navigates to
- * the AppAbout activity.
- */
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class UserProfile extends AppCompatActivity {
+/** Collects user's specifics for BMI calculation and
+ *  calorie goal settings.  A button at the bottom navigates to
+ *  the AppAbout activity.  When the user data is saved, the food database
+ *  will be initialized if it isn't already.
+ *
+ *  Driver: P Proctor
+ */
+public class acUserProfile extends AppCompatActivity {
 
 
     @Override
@@ -33,13 +29,14 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
-
-    // Called with the user taps the About button
+    // Called when the user taps the About button
     public void btnAppAbout (View view) {
-        Intent intent = new Intent(this, AppAbout.class);
+        Intent intent = new Intent(this, acAppAbout.class);
         startActivity(intent);
     }
 
 
+
+    // Update
 
 }

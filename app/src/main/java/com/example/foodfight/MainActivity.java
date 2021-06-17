@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Called when user taps the User Profile button
     public void btnProfile(View view) {
-        Intent intent = new Intent(this, UserProfile.class);
+        Intent intent = new Intent(this, acUserProfile.class);
         startActivity(intent);
 
     }

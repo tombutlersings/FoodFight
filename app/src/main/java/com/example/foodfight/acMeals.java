@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * selected meal enumerations there.
  */
 
-public class Meals extends AppCompatActivity {
+public class acMeals extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
