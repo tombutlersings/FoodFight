@@ -156,7 +156,7 @@
     <Button
         android:id="@+id/setDayButton"
         android:layout_width="200dp"
-        android:layout_height="45"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
         android:text="Select Another Day"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
