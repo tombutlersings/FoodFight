@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class ProfileHandler {
-    static Gson gson = new Gson();
+    Gson gson = new Gson();
     //static Pro profile;
 
-    public static Profile getProfile() {
+    public Profile getProfile() {
         String data = "";
         try {
             File myObj = new File("profile.json");
@@ -29,7 +29,7 @@ public class ProfileHandler {
         return gson.fromJson(data, Profile.class);
     }
 
-    public static void setProfile(Profile profile) {
+    public void setProfile(Profile profile) {
 
         String save = gson.toJson(profile, Profile.class);
         //The next line calculates the bmi

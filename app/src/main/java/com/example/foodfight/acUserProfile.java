@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 /** Collects user's specifics for BMI calculation and
  *  calorie goal settings.  A button at the bottom navigates to
@@ -21,10 +22,12 @@ public class acUserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
         //get values to display
-        //Profile profile = new ProfileHandler().getProfile();
+        Profile profile = new ProfileHandler().getProfile();
         //set display values
-        //TextView height = findViewById(R.id.numHeight);
-        //height.setText(profile.height);
+        TextView height = findViewById(R.id.numHeight);
+        String testNum = "";
+
+        height.setText(testNum);
 
 
     }
