@@ -12,11 +12,11 @@
         android:theme="@style/Theme.FoodFight">
         <activity android:name=".AppAbout" android:parentActivityName=".UserProfile"> </activity>
         <activity android:name=".Trend" android:parentActivityName=".MainActivity"> </activity>
-        <activity android:name=".DayPicker" android:parentActivityName=".Meals"> </activity>
+        <activity android:name=".DayPicker" android:parentActivityName=".MealsEnum"> </activity>
         <activity android:name=".UserProfile" android:parentActivityName=".MainActivity"> </activity>
         <activity android:name=".MenuEditor" android:parentActivityName=".FoodList"> </activity>
-        <activity android:name=".FoodList" android:parentActivityName=".Meals"> </activity>
-        <activity android:name=".Meals" android:parentActivityName=".MainActivity"> </activity>
+        <activity android:name=".FoodList" android:parentActivityName=".MealsEnum"> </activity>
+        <activity android:name=".MealsEnum" android:parentActivityName=".MainActivity"> </activity>
 
         <activity android:name=".MainActivity">
             <intent-filter>

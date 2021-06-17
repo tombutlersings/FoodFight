@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Date {
     // TODO datetime object or hashmap for each day of the year
-    ArrayList<Meals> MealList; // each date will start with a full meal object list. Each meal will start empty
+    ArrayList<MealsEnum> MealList; // each date will start with a full meal object list. Each meal will start empty
 
     Date(){
 

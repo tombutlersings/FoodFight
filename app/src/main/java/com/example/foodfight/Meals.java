@@ -1,9 +1,11 @@
 package com.example.foodfight;
 
-/* This activity is where the user will select one of six meal times and
- * add food items to update the calorie count for that meal.
- * An button at the bottom of the screen navigates to the DayPicker activity
- * where a different day can be selected.
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+/**
+ * TODO: rename this to MealsList???? -TB 9Jun21
  */
 
 /* FILE NAME CHANGE.
@@ -13,6 +15,12 @@ package com.example.foodfight;
  * selected meal enumerations there.
  */
 
-public enum Meals {
-    Breakfast,Morning_Snack,Lunch,Afternoon_Snack,Dinner,Evening_Snack
+public class Meals extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_meals);
+
+    }
 }
