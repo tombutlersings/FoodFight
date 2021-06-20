@@ -1,11 +1,12 @@
 package com.example.foodfight;
 
 public class Goals {
-    private double GoalDaily;
-    private double GoalWeekly;
+    private static double GoalDaily;
+    private static double GoalWeekly;
 
-    public double getDaily() { return GoalDaily; }
-    public void setDaily(double goalDaily) { GoalDaily = goalDaily; }
-    public double getWeekly() { return GoalWeekly; }
-    public void setWeekly(double goalWeekly) { GoalWeekly = goalWeekly; }
+
+    public static double getDaily() { return GoalDaily; }
+    public static void setDaily(double goalDaily) { GoalDaily = goalDaily; }
+    public static double getWeekly() { return GoalWeekly; }
+    public static void setWeekly(double goalWeekly) { GoalWeekly = goalWeekly; }
 }
