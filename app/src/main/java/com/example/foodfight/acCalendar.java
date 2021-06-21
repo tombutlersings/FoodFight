@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
-public class Calendar extends AppCompatActivity {
+public class acCalendar extends AppCompatActivity {
 
     // Create CalendarView and TextView objects, calender and date_view.
     CalendarView calender;
