@@ -6,18 +6,18 @@
     android:layout_height="match_parent">
 
     <CalendarView
-        android:id="@+id/calendar_view"
+        android:id="@+id/calendar"
         android:layout_width="369dp"
         android:layout_height="368dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619" />
+        app:layout_constraintVertical_bias="0.641" />
 
     <TextView
-        android:id="@+id/date_view"
+        android:id="@+id/date"
         android:layout_width="166dp"
         android:layout_height="33dp"
         android:layout_marginTop="145dp"
