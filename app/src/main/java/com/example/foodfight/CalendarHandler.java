@@ -6,7 +6,19 @@ package com.example.foodfight;
 */
 public class CalendarHandler {
 
-    public CalendarHandler(){
-        //code goes here
+    private acCalendar calendar;
+
+    public String date = calendar.date;
+
+    public int getCalendarDay() {
+        return calendar.calendarDay;
+    }
+
+    public int getCalendarMonth() {
+        return calendar.calendarMonth;
+    }
+
+    public int getCalendarYear() {
+        return calendar.calendarYear;
     }
 }
