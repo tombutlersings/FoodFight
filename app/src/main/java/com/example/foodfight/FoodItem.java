@@ -6,10 +6,11 @@ package com.example.foodfight;
  */
 
 public class FoodItem {
-    String name;
-    int Id;
-    int calories;
-    String servingSize;
+    private String name;
+    private int Id;
+    private int calories;
+    private String servingSize;
+
     public FoodItem(String name, int Id, int calories, String servingSize) {
         this.name = name;
         this.Id = Id;

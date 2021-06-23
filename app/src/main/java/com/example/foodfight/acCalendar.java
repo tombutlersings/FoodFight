@@ -2,16 +2,21 @@ package com.example.foodfight;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+
+import android.content.Intent;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.os.Bundle;
 
 public class acCalendar extends AppCompatActivity {
-    // Create CalendarView and TextView objects, calender and date_view.
-    private CalendarView calender_view;
-    private TextView date_view;
+    public static final String DATE_MESSAGE = "com.example.foodfight.MESSAGE";
 
-    public String date;
+    // Create CalendarView and TextView objects, calender and date_view.
+    private CalendarView calenderView;
+    private TextView calendarDateView;
+
+    public String calendarDate = null;
     public int calendarDay;
     public int calendarMonth;
     public int calendarYear;
@@ -22,11 +27,11 @@ public class acCalendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         // Define view objects as their view ID.
-        calender_view = (CalendarView)findViewById(R.id.calendar);
-        date_view = (TextView) findViewById(R.id.date);
+        calenderView = (CalendarView)findViewById(R.id.calendar);
+        calendarDateView = (TextView) findViewById(R.id.calendar_date);
 
         // Add Listener in calendar
-        calender_view.setOnDateChangeListener(
+        calenderView.setOnDateChangeListener(
                 new CalendarView.OnDateChangeListener() {
 
                     @Override
@@ -47,12 +52,18 @@ public class acCalendar extends AppCompatActivity {
                         // format in String type Variable
                         // Add 1 in month because month
                         // index is start with 0
-                        date = dayOfMonth + "-"
-                                + (month + 1) + "-" + year;
+                        calendarDate = (month + 1) + "-"
+                                + dayOfMonth + "-" + year;
 
                         // set this date in TextView for Display
-                        date_view.setText(date);
+                        calendarDateView.setText(calendarDate);
                     }
                 });
+    }
+
+    public void btnDone(View view) {
+        Intent intent = new Intent(this, acMeals.class);
+        intent.putExtra(DATE_MESSAGE, calendarDate);
+        startActivity(intent);
     }
 }

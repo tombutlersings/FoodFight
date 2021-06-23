@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodFight">
-        <activity android:name=".acCalendar"></activity>
+        <activity android:name=".acMeals"></activity>
+        <activity android:name=".acCalendar" />
         <activity
             android:name=".acAppAbout"
             android:parentActivityName=".acUserProfile" />
@@ -30,9 +31,6 @@
         <activity
             android:name=".acFoodList"
             android:parentActivityName=".acMeals" />
-        <activity
-            android:name=".acMeals"
-            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

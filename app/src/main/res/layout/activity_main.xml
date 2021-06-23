@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="32dp"
+        android:onClick="btnMeal"
         android:text="Meals"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,7 +43,7 @@
         android:id="@+id/test_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="testCalendar"
+        android:onClick="btnTestCalendar"
         android:text="Test Calendar"
         app:layout_constraintBottom_toTopOf="@+id/imageButton3"
         app:layout_constraintEnd_toEndOf="parent"

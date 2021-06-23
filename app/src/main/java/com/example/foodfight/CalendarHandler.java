@@ -1,4 +1,10 @@
 package com.example.foodfight;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 /**
 * Tom 8Jun21:
 * This is to handle calling up date objects to the
@@ -6,19 +12,28 @@ package com.example.foodfight;
 */
 public class CalendarHandler {
 
-    private acCalendar calendar;
-
-    public String date = calendar.date;
+    private acCalendar calendarActivity = new acCalendar();
 
     public int getCalendarDay() {
-        return calendar.calendarDay;
+        return calendarActivity.calendarDay;
     }
 
     public int getCalendarMonth() {
-        return calendar.calendarMonth;
+        return calendarActivity.calendarMonth;
     }
 
     public int getCalendarYear() {
-        return calendar.calendarYear;
+        return calendarActivity.calendarYear;
+    }
+
+    public String getCalendarDate() {
+        return calendarActivity.calendarDate;
+    }
+
+    public String getSystemDate() {
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+        return formattedDate;
     }
 }
