@@ -1,6 +1,8 @@
 package com.example.foodfight;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,4 +25,14 @@ public class acMeals extends AppCompatActivity {
         setContentView(R.layout.activity_meals);
 
     }
+
+    public void getAnotherDay(View view) {
+        Intent intent = new Intent(this, acCalendar.class);
+        startActivity(intent);
+    }
+
+
+
+
+
 }

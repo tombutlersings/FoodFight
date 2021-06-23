@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void testCalendar(View view) {
-        Intent intent = new Intent(this, acCalendar.class);
-        startActivity(intent);
-    }
+//    public void testCalendar(View view) {
+//        Intent intent = new Intent(this, acCalendar.class);
+//        startActivity(intent);
+//    }
 
 }
