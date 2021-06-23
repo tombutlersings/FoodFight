@@ -11,6 +11,9 @@ public class FoodItem {
     private int calories;
     private String servingSize;
 
+    // Suggestion 2:
+    // If the suggestion 1 is implemented, this construction won't
+    // need a calories parameter.
     public FoodItem(String name, int Id, int calories, String servingSize) {
         this.name = name;
         this.Id = Id;
@@ -34,6 +37,8 @@ public class FoodItem {
         Id = id;
     }
 
+    // Suggestion 1:
+    // This method should get calories data of food from FoodLibrary.json
     public int getCalories() {
         return calories;
     }
