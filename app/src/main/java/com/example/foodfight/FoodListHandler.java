@@ -13,11 +13,11 @@ public class FoodListHandler {
     // Constructor for storing a food item
     // (object of the FoodItem class) in
     // foodItems array.
-    public FoodListHandler(FoodItem foodItem1,
-                           FoodItem foodItem2)
+    public FoodListHandler(FoodItem item1,
+                           FoodItem item2)
     {
-        foodItems.add(foodItem1);
-        foodItems.add(foodItem2);
+        foodItems.add(item1);
+        foodItems.add(item2);
     }
 
     // Find the total calories of all food.

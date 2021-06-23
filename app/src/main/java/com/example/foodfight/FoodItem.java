@@ -50,3 +50,4 @@ public class FoodItem {
         this.servingSize = servingSize;
     }
 }
+

@@ -30,9 +30,4 @@ public class acMeals extends AppCompatActivity {
         Intent intent = new Intent(this, acCalendar.class);
         startActivity(intent);
     }
-
-
-
-
-
 }

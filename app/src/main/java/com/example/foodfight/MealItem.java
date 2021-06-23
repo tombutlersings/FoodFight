@@ -13,3 +13,4 @@ public class MealItem {
 
     public int getTotalCalories() {return totalCalories;}
 }
+
