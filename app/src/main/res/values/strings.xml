@@ -18,6 +18,14 @@ Phillip Proctor"
     <string name="profile_label05">CALORIE GOALS</string>
     <string name="profile_label06">Daily</string>
     <string name="profile_label07">Weekly</string>
+    <string name="profile_label08">Name</string>
     <string name="profile_button01">Update</string>
+    <string name="meals_button01">Breakfast</string>
+    <string name="meals_button02">Snack 1</string>
+    <string name="meals_button03">Lunch</string>
+    <string name="meals_button04">Snack 2</string>
+    <string name="meals_button05">Dinner</string>
+    <string name="meals_button06">Snack 3</string>
+    <string name="meals_button07">Select Another Day</string>
 
 </resources>

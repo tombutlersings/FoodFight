@@ -50,7 +50,7 @@ public class acUserProfile extends AppCompatActivity {
         int dailyGoal = sp.getInt("dailyGoal", 2000);
         Log.d("string", "found" + height + " " + weight + " " + age + " " + weeklyGoal + " " + dailyGoal);
         //load values
-        EditText nameView = findViewById(R.id.editTextTextPersonName);
+        EditText nameView = findViewById(R.id.etPersonName);
         nameView.setText(name);
         EditText heightView = findViewById(R.id.numHeight);
         heightView.setText(height + "");
@@ -77,7 +77,7 @@ public class acUserProfile extends AppCompatActivity {
         EditText age = findViewById(R.id.numAge);
         EditText dailyGoal = findViewById(R.id.numDayGoal);
         EditText weeklyGoal = findViewById(R.id.numWeekGoal);
-        EditText name = findViewById(R.id.editTextTextPersonName);
+        EditText name = findViewById(R.id.etPersonName);
 
         Log.d("string", "saved" + height.getText().toString());
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
