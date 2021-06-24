@@ -58,8 +58,10 @@ public class acUserProfile extends AppCompatActivity {
         weightView.setText(weight + "");
         EditText ageView = findViewById(R.id.numAge);
         ageView.setText(age + "");
+
+        // BMI = (weight * 0.4536) / (height / 39.7) ** 2
         EditText BMIView = findViewById(R.id.numBMI);
-        BMIView.setText((weight / (height * height)) + "");
+        BMIView.setText((weight * 0.4536 / Math.pow(height / 39.7, 2)) + "");
         EditText dailyGoalView = findViewById(R.id.numDayGoal);
         dailyGoalView.setText(dailyGoal + "");
         EditText weeklyGoalView = findViewById(R.id.numWeekGoal);

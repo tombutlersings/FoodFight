@@ -23,8 +23,14 @@ public class MainActivity extends AppCompatActivity {
     public void btnProfile(View view) {
         Intent intent = new Intent(this, acUserProfile.class);
         startActivity(intent);
-
     }
+
+    // Called when user taps the User Profile button
+    public void btnMeales(View view) {
+        Intent intent = new Intent(this, acMeals.class);
+        startActivity(intent);
+    }
+
 
 //    public void testCalendar(View view) {
 //        Intent intent = new Intent(this, acCalendar.class);

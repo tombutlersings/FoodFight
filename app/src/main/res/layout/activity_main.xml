@@ -25,29 +25,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/button01"
         app:srcCompat="@android:drawable/ic_dialog_dialer" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="32dp"
-        android:onClick="btnMeal"
-        android:text="Meals"
+        android:text="@string/main_button01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/test_calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btnTestCalendar"
-        android:text="Test Calendar"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="304dp"
+        android:layout_height="142dp"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="90dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="189dp"
+        android:layout_height="191dp"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="287dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
