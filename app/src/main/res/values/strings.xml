@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">FoodFight</string>
+    <string name="main_button01">MEALS</string>
+    <string name="main_label01">Daily Goal</string>
+    <string name="main_label02">Weekly Goal</string>
     <string name="app_about_0">CS 246, Spring 2021, Team 18 Project</string>
     <string name="app_about_1">The Team</string>
     <string name="app_about_2">The App</string>
