@@ -68,6 +68,7 @@
         android:clickable="false"
         android:text="@string/profile_label03"
         android:textAlignment="center"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/numAge" />
@@ -81,6 +82,7 @@
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
+        android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/numWeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/numWeight" />
