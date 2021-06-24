@@ -18,7 +18,7 @@ public class Date {
     private static MealsEnum EveningSnack = MealsEnum.Evening_Snack;
 
     // Do we need constructor?
-    Date(){
+    public Date(){
 
     }
 
@@ -29,26 +29,16 @@ public class Date {
         FoodItem oil = new FoodItem("oil", 3, 35, "2 cups");
         FoodItem salt = new FoodItem("salt", 4, 45, "1 spoon");
 
-        // FoodListHandler objects.
-        // Use the FoodListHandler class to make a food list (array) for each meal.
-        // Inside the handler, there is an array that stored all foods in the it
-        // constructor argument.
-        FoodListHandler breakfastFoodList = new FoodListHandler(sugar, flour);
-        FoodListHandler lunchFoodList = new FoodListHandler(oil, salt);
-        FoodListHandler dinnerFoodList = new FoodListHandler(flour, oil);
-        FoodListHandler afternoonSnackFoodList = new FoodListHandler(sugar, oil);
-        FoodListHandler eveningSnackFoodList = new FoodListHandler(flour, salt);
+        // Use the above foodItem objects to make MealItem objects.
+        // For the three parameters, use a MealsEnum as the first argument, and
+        // two FoodItem objects as the second and third argument.
+        MealItem breakfast = new MealItem(Breakfast, sugar, flour);
+        MealItem lunch = new MealItem(Lunch, oil, salt);
+        MealItem dinner = new MealItem(Dinner, flour, oil);
+        MealItem afternoonSnack = new MealItem(AfternoonSnack, sugar, oil);
+        MealItem eveningSnack = new MealItem(EveningSnack, flour, salt);
 
-        // Use the above foodListHandler objects to make MealItem objects.
-        // For the two parameters, use a MealsEnum for the first argument, and
-        // total calories in foodListHandler(s) for the second argument.
-        MealItem breakfast = new MealItem(Breakfast, breakfastFoodList.getTotalCalories());
-        MealItem lunch = new MealItem(Lunch, lunchFoodList.getTotalCalories());
-        MealItem dinner = new MealItem(Dinner, breakfastFoodList.getTotalCalories());
-        MealItem afternoonSnack = new MealItem(AfternoonSnack, afternoonSnackFoodList.getTotalCalories());
-        MealItem eveningSnack = new MealItem(EveningSnack, eveningSnackFoodList.getTotalCalories());
-
-        // Add the above MealItem objects to the mealList array.
+        // Add the above MealItem objects to the date mealList.
         mealList.add(breakfast);
         mealList.add(lunch);
         mealList.add(dinner);

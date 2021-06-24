@@ -16,4 +16,7 @@ public class acFoodList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
     }
+    //create date obj
+    //date have meals inside
+    //get toal calories
 }

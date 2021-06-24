@@ -8,28 +8,5 @@ import java.util.ArrayList;
  */
 
 public class FoodListHandler {
-    private ArrayList<FoodItem> foodItems = new ArrayList<>();
 
-    // Constructor for storing a food item
-    // (object of the FoodItem class) in
-    // foodItems array.
-    public FoodListHandler(FoodItem item1,
-                           FoodItem item2)
-    {
-        foodItems.add(item1);
-        foodItems.add(item2);
-    }
-
-    // Find the total calories of all food.
-    public int getTotalCalories() {
-        int totalCalories = 0;
-
-        // Loop through foodItems array and
-        // get the sum of calories of all food.
-        for (FoodItem food : foodItems) {
-            totalCalories += food.getCalories();
-        }
-
-        return totalCalories;
-    }
 }
