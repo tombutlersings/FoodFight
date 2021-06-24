@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /** Collects user's specifics for BMI calculation and
  *  calorie goal settings.  A button at the bottom navigates to
@@ -18,12 +19,15 @@ import android.widget.EditText;
  *  Driver: P Proctor
  */
 public class acUserProfile extends AppCompatActivity {
+    double bmi = 0.0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+
 
         //load values
         getValues();
@@ -59,9 +63,9 @@ public class acUserProfile extends AppCompatActivity {
         EditText ageView = findViewById(R.id.numAge);
         ageView.setText(age + "");
 
-        // BMI = (weight * 0.4536) / (height / 39.7) ** 2
-        EditText BMIView = findViewById(R.id.numBMI);
-        BMIView.setText((weight * 0.4536 / Math.pow(height / 39.7, 2)) + "");
+        bmi = Math.round((weight * 45.36) / Math.pow(height / 39.7, 2))/100;
+        TextView BMIView = findViewById(R.id.numBMI);
+        BMIView.setText(bmi + "");
         EditText dailyGoalView = findViewById(R.id.numDayGoal);
         dailyGoalView.setText(dailyGoal + "");
         EditText weeklyGoalView = findViewById(R.id.numWeekGoal);
