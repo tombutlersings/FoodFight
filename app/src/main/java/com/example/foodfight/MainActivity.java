@@ -7,7 +7,9 @@ package com.example.foodfight;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,6 +19,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Pull SharedPreferences and check "name" for default value
+        // If default then auto-nav to asUserProfile
+        SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        String name = sp.getString("name","Your Name");
+        if (name == "Your name") {
+            Intent intent = new Intent(this, acUserProfile.class);
+            startActivity(intent);
+        }
+
     }
 
     // Called when user taps the User Profile button
@@ -26,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Called when user taps the User Profile button
-    public void btnMeales(View view) {
+    public void btnMeals(View view) {
         Intent intent = new Intent(this, acMeals.class);
         startActivity(intent);
     }

@@ -69,10 +69,9 @@ public class acUserProfile extends AppCompatActivity {
         TextView BMIView = findViewById(R.id.numBMI);
         BMIView.setText(numBMI);
 
-
         //set goals
-//        Goals.setDaily(dailyGoal);
-//        Goals.setWeekly(weeklyGoal);
+        Goals.setDaily(Double.parseDouble(dailyGoal));
+        Goals.setWeekly(Double.parseDouble(weeklyGoal));
 
     }
     // Update
