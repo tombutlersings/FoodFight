@@ -27,7 +27,7 @@
             android:name=".acMeals"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".acMenuEditor"
+            android:name=".acAddFood"
             android:parentActivityName=".acFoodList" />
         <activity
             android:name=".acTrend"

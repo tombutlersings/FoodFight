@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class acMenuEditor extends AppCompatActivity {
+public class acAddFood extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
