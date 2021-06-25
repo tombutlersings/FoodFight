@@ -9,6 +9,10 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.os.Bundle;
 
+/* Caleb 8Jun21:
+ * GET SYSTEM DATE
+ * getSystemDate() returns current android system date.
+ */
 public class acCalendar extends AppCompatActivity {
     public static final String DATE_MESSAGE = "com.example.foodfight.MESSAGE";
 
