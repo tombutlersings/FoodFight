@@ -6,13 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".acMeals">
 
-    <TextView
-        android:id="@+id/showDate"
-        android:layout_width="294dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="63dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+    <Button
+        android:id="@+id/btnSnack1"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="421dp"
+        android:text="@string/meals_button02"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/showMorningSnackCalories"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,154 +28,207 @@
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="487dp"
         android:text="@string/meals_button01"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnSnack1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/showBreakfastCalories"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showDate" />
-
-    <Button
-        android:id="@+id/btnLunch"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/meals_button03"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnSnack2"
-        app:layout_constraintStart_toStartOf="@+id/btnSnack1" />
-
-    <Button
-        android:id="@+id/btnSnack2"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/meals_button04"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnDinner"
-        app:layout_constraintStart_toStartOf="@+id/btnLunch" />
-
-    <Button
-        android:id="@+id/btnDinner"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/meals_button05"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnSnack3"
-        app:layout_constraintStart_toStartOf="@+id/btnSnack2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSnack3"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="412dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="161dp"
         android:text="@string/meals_button06"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="@+id/btnDinner"
-        tools:layout_editor_absoluteY="453dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/showAfternoonSnackCalories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnSnack1"
+        android:id="@+id/btnDinner"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/meals_button02"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="226dp"
+        android:text="@string/meals_button05"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnLunch"
-        app:layout_constraintStart_toStartOf="@+id/btnBreakfast" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/showDinnerCalories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/showBreakfastCalories"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="487dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showMorningSnackCalories"
-        app:layout_constraintTop_toBottomOf="@+id/showDate"
-        tools:layout_editor_absoluteX="314dp" />
-
-    <TextView
-        android:id="@+id/showMorningSnackCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showLunchCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showBreakfastCalories" />
-
-    <TextView
-        android:id="@+id/showAfternoonSnackCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/showDinnerCalories"
-        tools:layout_editor_absoluteY="453dp" />
-
-    <TextView
-        android:id="@+id/showDinnerCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showAfternoonSnackCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showEveningSnackCalories" />
-
-    <TextView
-        android:id="@+id/showEveningSnackCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showDinnerCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showLunchCalories" />
-
-    <TextView
-        android:id="@+id/showLunchCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showEveningSnackCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showMorningSnackCalories" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="17dp"
-        android:text="Total:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintTop_toBottomOf="@+id/btnSnack3"
-        tools:layout_editor_absoluteX="142dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/showTotalCalories"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="479dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="85dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/showAfternoonSnackCalories"
-        app:layout_constraintTop_toBottomOf="@+id/showAfternoonSnackCalories" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/showAfternoonSnackCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="412dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="161dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/showDinnerCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="226dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/showMorningSnackCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="422dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/showEveningSnackCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="282dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="291dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSnack2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="282dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="291dp"
+        android:text="@string/meals_button04"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/showEveningSnackCalories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLunch"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="217dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="356dp"
+        android:text="@string/meals_button03"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/showLunchCalories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/showDate"
+        android:layout_width="294dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="572dp"
+        android:text="date"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="479dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="84dp"
+        android:text="Total:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/showTotalCalories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/showLunchCalories"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="217dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="357dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSetDay"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="557dp"
+        android:layout_marginBottom="16dp"
         android:onClick="getAnotherDay"
         android:text="@string/meals_button07"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
