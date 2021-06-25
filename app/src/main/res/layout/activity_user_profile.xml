@@ -94,7 +94,7 @@
         android:layout_marginTop="48dp"
         android:rotationX="51"
         android:text="@string/profile_label05"
-        android:textColor="@android:color/primary_text_dark"
+        android:textColor="?android:attr/textColorTertiary"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
