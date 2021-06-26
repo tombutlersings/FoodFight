@@ -61,13 +61,14 @@ public class acUserProfile extends AppCompatActivity {
         TextView BMIView = findViewById(R.id.numBMI);
         BMIView.setText(numBMI);
 
-        int weeklyGoal = Integer.parseInt(dailyGoal) * 7;
+        int weekGoal = Integer.parseInt(dailyGoal) * 7;
+        String weeklyGoal = String.valueOf(weekGoal);
         TextView weeklyGoalView = findViewById(R.id.numWeekGoal);
         weeklyGoalView.setText(weeklyGoal);
 
         //set goals
         Goals.setDaily(Integer.parseInt(dailyGoal));
-        Goals.setWeekly(weeklyGoal);
+        Goals.setWeekly(weekGoal);
 
     }
     // Update User Profile and push to SharedPreferences
