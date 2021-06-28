@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkg_grad01"
     tools:context=".acAppAbout">
 
     <TextView
@@ -13,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/app_name"
-        android:textColor="@android:color/secondary_text_light_nodisable"
+        android:textColor="@android:color/holo_orange_light"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/app_about_0"
-        android:textColor="?android:attr/textColorSecondaryNoDisable"
+        android:textColor="@color/holo_orange_dark"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -39,6 +40,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:text="@string/app_about_3"
+        android:textColor="@color/holo_orange_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +53,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
         android:text="@string/app_about_1"
+        android:textColor="@color/holo_orange_dark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +66,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
         android:text="@string/app_about_2"
+        android:textColor="@color/holo_orange_dark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +80,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:text="@string/app_about_4"
+        android:textColor="@color/holo_orange_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

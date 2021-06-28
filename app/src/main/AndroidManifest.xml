@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodFight">
-        <activity android:name=".acFoodItem"></activity>
+        <activity
+            android:name=".acFoodItem" />
         <activity
             android:name=".acAppAbout"
             android:parentActivityName=".acUserProfile" />

@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         // Pull SharedPreferences and check "name" for default value
         // If default then auto-nav to asUserProfile
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
-        String name = sp.getString("name","Your Name");
-        if (name.equals("Your name")) {
+        String name = sp.getString("name","Your name");
+        if (name.equalsIgnoreCase("Your name")) {
             Intent intent = new Intent(this, acUserProfile.class);
             startActivity(intent);
         }
