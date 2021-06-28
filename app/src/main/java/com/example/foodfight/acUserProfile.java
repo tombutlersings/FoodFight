@@ -37,7 +37,7 @@ public class acUserProfile extends AppCompatActivity {
     public void getValues(){
         //get values to display
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
-        String name = sp.getString("name","Your Name");
+        String name = sp.getString("name","Your name");
         String height = sp.getString("height","60");
         String weight = sp.getString("weight","120");
         String dailyGoal = sp.getString("dailyGoal", "2000");
