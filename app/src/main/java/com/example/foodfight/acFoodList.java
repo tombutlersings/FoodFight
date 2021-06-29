@@ -20,10 +20,11 @@ public class acFoodList extends AppCompatActivity {
     //date have meals inside
     //get toal calories
 
-    //TODO: METHOD EditMeal
+    //TODO: Drop down menu for the meal
+    // TODO: Display the date, items of food + quantities + total Calories  in the meal
     // TODO: METHOD AddFood
     // TODO: Show mealList for the selected Date
-    // TODO: Open acCalendar
-    // TODO: Buttons Connected to Each Meal Type
+    // TODO: Button to
+    // TODO: Button to add food
 
 }
