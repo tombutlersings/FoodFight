@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/searchFood" />
 
     <ScrollView
-        android:id="@+id/displaySearch"
+        android:id="@+id/SearchResults"
         android:layout_width="409dp"
         android:layout_height="394dp"
         app:layout_constraintBottom_toTopOf="@+id/addCustomButton"
