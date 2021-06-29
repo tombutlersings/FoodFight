@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">FoodFight</string>
+
+    <string name="app_hdr_AddFood">Add Food</string>
+    <string name="app_hdr_AppAbout">About the App</string>
+    <string name="app_hdr_Calendar">Pick a Date</string>
+    <string name="app_hdr_FoodItem">---needs title---</string>
+    <string name="app_hdr_FoodList">---needs title---</string>
+    <string name="app_hdr_Meals">---needs title---</string>
+    <string name="app_hdr_Trend">Calorie Trends</string>
+    <string name="app_hdr_UserProfile">User Profile</string>
+
     <string name="main_button01">MEALS</string>
     <string name="main_label01">Daily Goal</string>
     <string name="main_label02">Weekly Goal</string>
+
     <string name="app_about_0">CS 246, Spring 2021, Team 18 Project</string>
     <string name="app_about_1">The Team</string>
     <string name="app_about_2">The App</string>
@@ -13,7 +24,9 @@ Cody Overholt
 Kaleb Pulley
 Phillip Proctor"
     </string>
-    <string name="app_about_4">An easy to use calorie tracking app that will allow you to keep track of your calorie intake each day.</string>
+    <string name="app_about_4">An easy to use calorie tracking app that will allow you to track
+        and trend your daily calorie intake. Set goals to help achieve your desired weight.</string>
+
     <string name="profile_label01">Height (in)</string>
     <string name="profile_label02">Weight (lbs)</string>
     <string name="profile_label03">Age</string>
@@ -23,6 +36,7 @@ Phillip Proctor"
     <string name="profile_label07">Weekly</string>
     <string name="profile_label08">Name</string>
     <string name="profile_button01">Update</string>
+
     <string name="meals_button01">Breakfast</string>
     <string name="meals_button02">Snack 1</string>
     <string name="meals_button03">Lunch</string>

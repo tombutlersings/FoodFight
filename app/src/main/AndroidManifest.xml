@@ -15,28 +15,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodFight">
         <activity
-            android:name=".acFoodItem" />
+            android:name=".acAddFood"
+            android:label="@string/app_hdr_AddFood"
+            android:parentActivityName=".acFoodList" />
         <activity
             android:name=".acAppAbout"
+            android:label="@string/app_hdr_AppAbout"
             android:parentActivityName=".acUserProfile" />
         <activity
             android:name=".acCalendar"
+            android:label="@string/app_hdr_Calendar"
             android:parentActivityName=".acMeals" />
         <activity
+            android:name=".acFoodItem"
+            android:label="@string/app_hdr_FoodItem"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".acFoodList"
+            android:label="@string/app_hdr_FoodList"
             android:parentActivityName=".acMeals" />
         <activity
             android:name=".acMeals"
+            android:label="@string/app_hdr_Meals"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".acAddFood"
-            android:parentActivityName=".acFoodList" />
-        <activity
             android:name=".acTrend"
+            android:label="@string/app_hdr_Trend"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".acUserProfile"
+            android:label="@string/app_hdr_UserProfile"
             android:parentActivityName=".MainActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
