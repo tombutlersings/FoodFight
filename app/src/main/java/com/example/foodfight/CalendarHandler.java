@@ -48,7 +48,6 @@ public class CalendarHandler {
     public String getSystemDate() {
         Date date = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-        String formattedDate = df.format(date);
-        return formattedDate;
+        return df.format(date);
     }
 }
