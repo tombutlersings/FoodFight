@@ -16,35 +16,35 @@
         android:theme="@style/Theme.FoodFight">
         <activity
             android:name=".acAddFood"
-            android:label="@string/app_hdr_AddFood"
+            android:label="@string/add_food_header"
             android:parentActivityName=".acFoodList" />
         <activity
             android:name=".acAppAbout"
-            android:label="@string/app_hdr_AppAbout"
+            android:label="@string/app_about_header"
             android:parentActivityName=".acUserProfile" />
         <activity
             android:name=".acCalendar"
-            android:label="@string/app_hdr_Calendar"
+            android:label="@string/calendar_header"
             android:parentActivityName=".acMeals" />
         <activity
             android:name=".acFoodItem"
-            android:label="@string/app_hdr_FoodItem"
+            android:label="@string/food_item_header"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".acFoodList"
-            android:label="@string/app_hdr_FoodList"
+            android:label="@string/food_list_header"
             android:parentActivityName=".acMeals" />
         <activity
             android:name=".acMeals"
-            android:label="@string/app_hdr_Meals"
+            android:label="@string/meals_header"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".acTrend"
-            android:label="@string/app_hdr_Trend"
+            android:label="@string/trend_header"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".acUserProfile"
-            android:label="@string/app_hdr_UserProfile"
+            android:label="@string/profile_header"
             android:parentActivityName=".MainActivity" />
 
         <activity android:name=".MainActivity">

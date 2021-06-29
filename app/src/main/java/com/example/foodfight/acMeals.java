@@ -5,22 +5,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
-import android.view.View;
+
 import android.widget.TextView;
-import android.os.Bundle;
 
 /**
- * TODO: rename this to MealsList???? -TB 9Jun21
+ * TODO:
+ *
  */
 
 public final class acMeals extends AppCompatActivity {
     CalendarHandler calendarHandler = new CalendarHandler();
     private TextView dateView;
-    private String dateMessage = "Today is ";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -30,24 +27,63 @@ public final class acMeals extends AppCompatActivity {
 
         // Set dateView to the system date if the user
         // have not selected a date on the calendar.
-        dateMessage += calendarHandler.getSystemDate();
-        dateView = (TextView) findViewById(R.id.showDate);
-        dateView.setText(dateMessage);
+        dateView = findViewById(R.id.tvDate);
+        String msg = "Calories for " + calendarHandler.getSystemDate();
+        dateView.setText(msg);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String result = "Calories for " + data.getStringExtra("result");
+                dateView.setText(result);
+            }
+        }
+    }
+
+    // Called when user taps the Breakfast button
+    public void btnBreakfast(View view) {
+        Intent intent = new Intent(this, acFoodList.class);
+        startActivity(intent);
+    }
+
+    // Called when user taps the Snack 1 button
+    public void btnSnack1(View view) {
+        Intent intent = new Intent(this, acFoodList.class);
+        startActivity(intent);
+    }
+
+    // Called when user taps the Lunch button
+    public void btnLunch(View view) {
+        Intent intent = new Intent(this, acFoodList.class);
+        startActivity(intent);
+    }
+
+    // Called when user taps the Snack 2 button
+    public void btnSnack2(View view) {
+        Intent intent = new Intent(this, acFoodList.class);
+        startActivity(intent);
+    }
+
+    // Called when user taps the Dinner button
+    public void btnDinner(View view) {
+        Intent intent = new Intent(this, acFoodList.class);
+        startActivity(intent);
+    }
+
+    // Called when user taps the Snack 3 button
+    public void btnSnack3(View view) {
+        Intent intent = new Intent(this, acFoodList.class);
+        startActivity(intent);
     }
 
     public void getAnotherDay(View view) {
         Intent intent = new Intent(this, acCalendar.class);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                String result = data.getStringExtra("result");
-                dateView.setText("Today is " + result);
-            }
-        }
-    }
+
 }
