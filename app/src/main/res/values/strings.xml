@@ -6,6 +6,10 @@
 
 
     <string name="add_food_header">Add Food</string>
+    <string name="food_search_hint">Enter Food Name Here</string>
+    <string name="food_search_btn">Search</string>
+    <string name="food_search_add_custom_food">Add Custom Food</string>
+    <string name="food_search_results_title">Food Search Results: </string>
 
 
     <string name="app_about_header">About the App</string>

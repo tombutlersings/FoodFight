@@ -4,6 +4,7 @@ package com.example.foodfight;
  */
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,10 @@ public class acAddFood extends AppCompatActivity {
     }
 
     // TODO: METHOD search for food
+    public void foodSearch(View view){
+
+    }
+
     // Todo: 2 threads (one for DB and one for Api)
         //top five results from DB
         //next five results from api
