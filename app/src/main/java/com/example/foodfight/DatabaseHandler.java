@@ -1,5 +1,5 @@
 package com.example.foodfight;
-/*
+
 
 import java.sql.*;
 import android.content.ContentValues;
@@ -19,18 +19,33 @@ import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
+    public static final String DATABASE_NAME = "foods.db";
+    public static final String TABLE_NAME =  "food_library";
+    public static final String COL_1 =  "ID";
+    public static final String COL_2 =  "name";
+    public static final String COL_3 =  "manufacturer";
+    public static final String COL_4 =  "calories";
+    public static final String COL_5 =  "hh_serving_size";
+    public static final String COL_6 =  "hh_serving_unit";
+    public static final String COL_7 =  "serving_size";
+    public static final String COL_8 =  "serving_unit";
+    public static final String COL_9 =  "upc";
+    public static final String COL_10 =  "calories";
 
-    public DatabaseHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+
+    public DatabaseHandler(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, 1);
+        //when this constructure this database will be created
+
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER)");
     }
 
-    public DatabaseHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version, @Nullable DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
-    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    @RequiresApi(api = Build.VERSION_CODES.P)
-    public DatabaseHandler(@Nullable Context context, @Nullable String name, int version, @NonNull SQLiteDatabase.OpenParams openParams) {
-        super(context, name, version, openParams);
     }
 
     public void GetMeal(){
@@ -79,4 +94,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
     }
-}*/
+}
