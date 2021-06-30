@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //TODO: dbNameHere = new DatabaseHandler(this);
+
 
         // Pull SharedPreferences and check "name" for default value
         // If default then auto-nav to asUserProfile
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         if (name.equalsIgnoreCase("Your name")) {
             Intent intent = new Intent(this, acUserProfile.class);
             startActivity(intent);
-            //TODO: dbNameHere = new DatabaseHandler(this);
+
         }
     }
 
