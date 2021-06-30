@@ -5,9 +5,9 @@ package com.example.foodfight;
  * TODO: This list is within the Meal, correct? - Tom 8-jun-21
  */
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class acFoodList extends AppCompatActivity {
 
@@ -16,4 +16,15 @@ public class acFoodList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
     }
+    //create date obj
+    //date have meals inside
+    //get toal calories
+
+    //TODO: Drop down menu for the meal
+    // TODO: Display the date, items of food + quantities + total Calories  in the meal
+    // TODO: METHOD AddFood
+    // TODO: Show mealList for the selected Date
+    // TODO: Button to
+    // TODO: Button to add food
+
 }

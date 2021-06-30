@@ -7,163 +7,191 @@
     tools:context=".acMeals">
 
     <TextView
-        android:id="@+id/showDate"
-        android:layout_width="294dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="63dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/tvBreakfast"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textIsSelectable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnBreakfast"
+        app:layout_constraintStart_toEndOf="@+id/btnSnack1" />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textIsSelectable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/labelTotal"
+        app:layout_constraintStart_toEndOf="@+id/labelTotal" />
+
+    <TextView
+        android:id="@+id/tvSnack3"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textIsSelectable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSnack3"
+        app:layout_constraintStart_toEndOf="@+id/btnSnack3" />
+
+    <TextView
+        android:id="@+id/tvDinner"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textIsSelectable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnDinner"
+        app:layout_constraintStart_toEndOf="@+id/btnSnack3" />
+
+    <TextView
+        android:id="@+id/tvSnack1"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textIsSelectable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSnack1"
+        app:layout_constraintStart_toEndOf="@+id/btnSnack1" />
+
+    <TextView
+        android:id="@+id/tvSnack2"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textIsSelectable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSnack2"
+        app:layout_constraintStart_toEndOf="@+id/btnSnack2" />
+
+    <Button
+        android:id="@+id/btnSnack2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:onClick="btnSnack2"
+        android:text="@string/meals_button04"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/btnLunch"
+        app:layout_constraintTop_toBottomOf="@+id/btnLunch" />
+
+    <Button
+        android:id="@+id/btnSnack3"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:onClick="btnSnack3"
+        android:text="@string/meals_button06"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/btnDinner"
+        app:layout_constraintTop_toBottomOf="@+id/btnDinner" />
+
+    <Button
+        android:id="@+id/btnDinner"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:onClick="btnDinner"
+        android:text="@string/meals_button05"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/btnSnack2"
+        app:layout_constraintTop_toBottomOf="@+id/btnSnack2" />
+
+    <Button
+        android:id="@+id/btnSnack1"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:onClick="btnSnack1"
+        android:text="@string/meals_button02"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/btnBreakfast"
+        app:layout_constraintTop_toBottomOf="@+id/btnBreakfast" />
 
     <Button
         android:id="@+id/btnBreakfast"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="150dp"
         android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="24dp"
+        android:onClick="btnBreakfast"
         android:text="@string/meals_button01"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnSnack1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showDate" />
+        app:layout_constraintStart_toStartOf="@+id/tvDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
     <Button
         android:id="@+id/btnLunch"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:onClick="btnLunch"
         android:text="@string/meals_button03"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnSnack2"
-        app:layout_constraintStart_toStartOf="@+id/btnSnack1" />
+        app:layout_constraintStart_toStartOf="@+id/btnSnack1"
+        app:layout_constraintTop_toBottomOf="@+id/btnSnack1" />
 
-    <Button
-        android:id="@+id/btnSnack2"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/meals_button04"
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="294dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/meals_label01"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnDinner"
-        app:layout_constraintStart_toStartOf="@+id/btnLunch" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnDinner"
-        style="@style/Widget.AppCompat.Button.Colored"
+    <TextView
+        android:id="@+id/labelTotal"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/meals_button05"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnSnack3"
-        app:layout_constraintStart_toStartOf="@+id/btnSnack2" />
-
-    <Button
-        android:id="@+id/btnSnack3"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/meals_button06"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="@+id/btnDinner"
-        tools:layout_editor_absoluteY="453dp" />
-
-    <Button
-        android:id="@+id/btnSnack1"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/meals_button02"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/btnLunch"
-        app:layout_constraintStart_toStartOf="@+id/btnBreakfast" />
-
-    <TextView
-        android:id="@+id/showBreakfastCalories"
-        android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showMorningSnackCalories"
-        app:layout_constraintTop_toBottomOf="@+id/showDate"
-        tools:layout_editor_absoluteX="314dp" />
-
-    <TextView
-        android:id="@+id/showMorningSnackCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showLunchCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showBreakfastCalories" />
-
-    <TextView
-        android:id="@+id/showAfternoonSnackCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/showDinnerCalories"
-        tools:layout_editor_absoluteY="453dp" />
-
-    <TextView
-        android:id="@+id/showDinnerCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showAfternoonSnackCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showEveningSnackCalories" />
-
-    <TextView
-        android:id="@+id/showEveningSnackCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showDinnerCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showLunchCalories" />
-
-    <TextView
-        android:id="@+id/showLunchCalories"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/showEveningSnackCalories"
-        app:layout_constraintEnd_toEndOf="@+id/showMorningSnackCalories" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="17dp"
-        android:text="Total:"
+        android:layout_marginTop="32dp"
+        android:text="@string/meals_label02"
+        android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintTop_toBottomOf="@+id/btnSnack3"
-        tools:layout_editor_absoluteX="142dp" />
+        app:layout_constraintStart_toStartOf="@+id/btnSnack3"
+        app:layout_constraintTop_toBottomOf="@+id/btnSnack3" />
 
     <TextView
-        android:id="@+id/showTotalCalories"
+        android:id="@+id/tvLunch"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginTop="17dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/showAfternoonSnackCalories"
-        app:layout_constraintTop_toBottomOf="@+id/showAfternoonSnackCalories" />
+        android:layout_marginStart="64dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textIsSelectable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnLunch"
+        app:layout_constraintStart_toEndOf="@+id/btnSnack2" />
 
     <Button
-        android:id="@+id/btnSetDay"
+        android:id="@+id/btnGetAnotherDay"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="32dp"
         android:onClick="getAnotherDay"
         android:text="@string/meals_button07"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"

@@ -19,19 +19,13 @@ import android.widget.TextView;
  *  Driver: P Proctor
  */
 public class acUserProfile extends AppCompatActivity {
-    double bmi = 0.0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
-
-
         //load values
         getValues();
-
     }
 
     // Called when the user taps the About button
@@ -40,60 +34,59 @@ public class acUserProfile extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-    //get values
     public void getValues(){
         //get values to display
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
-        String name = sp.getString("name","Your Name");
-        int height = sp.getInt("height",1);
-        int weight = sp.getInt("weight",1);
-        int age = sp.getInt("age",1);
-        int weeklyGoal = sp.getInt("weeklyGoal", 14000);
-        int dailyGoal = sp.getInt("dailyGoal", 2000);
-        Log.d("string", "found" + height + " " + weight + " " + age + " " + weeklyGoal + " " + dailyGoal);
+        String name = sp.getString("name","Your name");
+        String height = sp.getString("height","60");
+        String weight = sp.getString("weight","120");
+        String dailyGoal = sp.getString("dailyGoal", "2000");
+
+        Log.d("string", "found" + height + " " + weight + " " +  dailyGoal);
+
         //load values
         EditText nameView = findViewById(R.id.etPersonName);
         nameView.setText(name);
         EditText heightView = findViewById(R.id.numHeight);
-        heightView.setText(height + "");
+        heightView.setText(height);
         EditText weightView = findViewById(R.id.numWeight);
-        weightView.setText(weight + "");
-        EditText ageView = findViewById(R.id.numAge);
-        ageView.setText(age + "");
-
-        bmi = Math.round((weight * 45.36) / Math.pow(height / 39.7, 2))/100;
-        TextView BMIView = findViewById(R.id.numBMI);
-        BMIView.setText(bmi + "");
+        weightView.setText(weight);
         EditText dailyGoalView = findViewById(R.id.numDayGoal);
-        dailyGoalView.setText(dailyGoal + "");
-        EditText weeklyGoalView = findViewById(R.id.numWeekGoal);
-        weeklyGoalView.setText(weeklyGoal + "");
+        dailyGoalView.setText(dailyGoal);
+
+        double wt = Double.parseDouble(weight);
+        double ht = Double.parseDouble(height);
+        double bmi = Math.round((wt * 45.36) / Math.pow(ht / 39.7, 2)) /100.0;
+        String numBMI = String.valueOf(bmi);
+        TextView BMIView = findViewById(R.id.numBMI);
+        BMIView.setText(numBMI);
+
+        int weekGoal = Integer.parseInt(dailyGoal) * 7;
+        String weeklyGoal = String.valueOf(weekGoal);
+        TextView weeklyGoalView = findViewById(R.id.numWeekGoal);
+        weeklyGoalView.setText(weeklyGoal);
+
         //set goals
-        Goals.setDaily(dailyGoal);
-        Goals.setWeekly(weeklyGoal);
+        Goals.setDaily(Integer.parseInt(dailyGoal));
+        Goals.setWeekly(weekGoal);
 
     }
-    // Update
+    // Update User Profile and push to SharedPreferences
     public void btnUpdate(View view){
         //get and parse info
+        EditText name = findViewById(R.id.etPersonName);
         EditText height = findViewById(R.id.numHeight);
         EditText weight = findViewById(R.id.numWeight);
-        EditText age = findViewById(R.id.numAge);
         EditText dailyGoal = findViewById(R.id.numDayGoal);
-        EditText weeklyGoal = findViewById(R.id.numWeekGoal);
-        EditText name = findViewById(R.id.etPersonName);
 
         Log.d("string", "saved" + height.getText().toString());
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
+
         editor.putString("name", (name.getText().toString()));
-        editor.putInt("height", Integer.valueOf(height.getText().toString()));
-        editor.putInt("weight", Integer.valueOf(weight.getText().toString()));
-        editor.putInt("age", Integer.valueOf(age.getText().toString()));
-        editor.putInt("dailyGoal", Integer.valueOf(dailyGoal.getText().toString()));
-        editor.putInt("weeklyGoal", Integer.valueOf(weeklyGoal.getText().toString()));
+        editor.putString("height", (height.getText().toString()));
+        editor.putString("weight", (weight.getText().toString()));
+        editor.putString("dailyGoal", (dailyGoal.getText().toString()));
         editor.commit();
         getValues();
     }

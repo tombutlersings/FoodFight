@@ -7,9 +7,15 @@ package com.example.foodfight;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +23,49 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Pull SharedPreferences and check "name" for default value
+        // If default then auto-nav to asUserProfile
+        SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        String name = sp.getString("name","Your name");
+        if (name.equalsIgnoreCase("Your name")) {
+            Intent intent = new Intent(this, acUserProfile.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("[FoodFight]","Main Activity resumes");
+        SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        String name = sp.getString("name","Your name");
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        String msg;
+        if (hour < 6) {
+            msg = "Wow, "+name+", you're up early!";
+        } else if (hour <12) {
+            msg = "Good morning, "+name+".";
+        } else if (hour < 18) {
+            msg = "Good afternoon, "+name+".";
+        } else {
+            msg = "Good evening, "+name+".";
+        }
+        TextView greeting = findViewById(R.id.textGreeting);
+        greeting.setText(msg);
+
+    }
+
+    // Called when user taps the Meals button
+    public void btnMeals(View view) {
+        Intent intent = new Intent(this, acMeals.class);
+        startActivity(intent);
+    }
+
+    // Called when user taps the User Profile button
+    public void btnTrend(View view) {
+        Intent intent = new Intent(this, acTrend.class);
+        startActivity(intent);
     }
 
     // Called when user taps the User Profile button
@@ -25,16 +74,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Called when user taps the User Profile button
-    public void btnMeales(View view) {
-        Intent intent = new Intent(this, acMeals.class);
-        startActivity(intent);
-    }
 
 
-//    public void testCalendar(View view) {
-//        Intent intent = new Intent(this, acCalendar.class);
-//        startActivity(intent);
-//    }
 
 }

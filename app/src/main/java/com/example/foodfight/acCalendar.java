@@ -9,9 +9,11 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.os.Bundle;
 
+/* Caleb 8Jun21:
+ * GET SYSTEM DATE
+ * getSystemDate() returns current android system date.
+ */
 public class acCalendar extends AppCompatActivity {
-    public static final String DATE_MESSAGE = "com.example.foodfight.MESSAGE";
-
     // Create CalendarView and TextView objects, calender and date_view.
     private CalendarView calenderView;
     private TextView calendarDateView;
@@ -59,12 +61,12 @@ public class acCalendar extends AppCompatActivity {
                         calendarDateView.setText(calendarDate);
                     }
                 });
-
     }
 
     public void btnDone(View view) {
-        Intent intent = new Intent(this, acMeals.class);
-        intent.putExtra(DATE_MESSAGE, calendarDate);
-        startActivity(intent);
+        Intent resultIntent = new Intent(this, acMeals.class);
+        resultIntent.putExtra("result", calendarDate);
+        setResult(RESULT_OK, resultIntent);
+        this.finish();
     }
 }

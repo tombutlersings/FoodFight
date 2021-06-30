@@ -1,5 +1,5 @@
 package com.example.foodfight;
-
+/*
 
 import java.sql.*;
 import android.content.ContentValues;
@@ -79,4 +79,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
     }
-}
+}*/
