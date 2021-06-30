@@ -10,4 +10,8 @@ public class ApiHandler {
         //code goes here
 
     }
+    public void apiThreadCreator(){
+        // manage the creation of threads and calls at the same time
+        // possible extension of runnable
+    }
 }
