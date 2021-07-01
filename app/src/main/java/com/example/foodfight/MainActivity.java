@@ -5,8 +5,6 @@ package com.example.foodfight;
  * the Meals, Trend and UserProfile activities
  */
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,14 +13,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+    // TODO: DatabaseHandler dbNameHere;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //TODO: dbNameHere = new DatabaseHandler(this);
+
 
         // Pull SharedPreferences and check "name" for default value
         // If default then auto-nav to asUserProfile
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         if (name.equalsIgnoreCase("Your name")) {
             Intent intent = new Intent(this, acUserProfile.class);
             startActivity(intent);
+
         }
     }
 
