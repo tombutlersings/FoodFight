@@ -19,34 +19,55 @@ import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "foods.db";
-    public static final String TABLE_NAME =  "food_library";
-    public static final String COL_1 =  "ID";
-    public static final String COL_2 =  "name";
-    public static final String COL_3 =  "manufacturer";
-    public static final String COL_4 =  "calories";
-    public static final String COL_5 =  "hh_serving_size";
-    public static final String COL_6 =  "hh_serving_unit";
-    public static final String COL_7 =  "serving_size";
-    public static final String COL_8 =  "serving_unit";
-    public static final String COL_9 =  "upc";
-    public static final String COL_10 =  "calories";
+    public static final String DATABASE_NAME = "MealFood.db";
+
+//name for the Food Table
+    public static final String FOOD_TABLE_NAME =  "food";
+//Column names
+    public static final String FOOD_ID_NAME =  "foodID";
+    public static final String FOOD_CALORIES_NAME =  "calories";
+    public static final String FOOD_METRIC_SERVING =  "serving_size_m";
+    public static final String FOOD_METRIC_SERVING_UNIT =  "serving_size_m_unit";
+    public static final String FOOD_HOUSEHOLD_SERVING =  "serving_size_hh";
+    public static final String FOOD_HOUSEHOLD_UNIT =  "serving_size_hh_unit";
+    public static final String FOOD_NAME =  "name";
+
+
+//names for the meal table
+    public static final String MEAL_TABLE_NAME = "meal";
+//Column names
+    public static final String MEAL_ID_NAME =  "mealID";
+    public static final String MEAL_DATE_NAME =  "date";
+    public static final String PROFILE_NAME =  "profile";
+    public static final String MEAL_NAME = "meal";
+
+//Linking table
+    public static final String LINKING_TABLE = "meal_food";
+//Linking Table Column Names
+    public static final String SERVINGS_NAME = "servings";
+    public static final String MEAL_FOOD_ID = "id";
+
+
+
 
 
     public DatabaseHandler(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-        //when this constructure this database will be created
+        //when this construct this database will be created
 
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER)");
+
+         //code for the database tables
+        db.execSQL("CREATE TABLE " + MEAL_TABLE_NAME + " (" + MEAL_DATE_NAME +" TEXT, " + MEAL_NAME +" TEXT, "+ PROFILE_NAME + " INTEGER," + MEAL_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+
+        db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (" + FOOD_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + FOOD_NAME + " TEXT," + FOOD_CALORIES_NAME +" INTEGER," + FOOD_HOUSEHOLD_SERVING +" FLOAT," + FOOD_HOUSEHOLD_UNIT + " TEXT," + FOOD_METRIC_SERVING + " FLOAT," + FOOD_METRIC_SERVING_UNIT +" TEXT,[SourceDB] TEXT,[picture_link] TEXT)");
+
+        db.execSQL("CREATE TABLE " + LINKING_TABLE + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + SERVINGS_NAME +" FLOAT NOT NULL, FOREIGN KEY(" + MEAL_ID_NAME + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID_NAME + ") ON DELETE CASCADE,FOREIGN KEY(" + FOOD_ID_NAME + ") REFERENCES " + FOOD_TABLE_NAME +"(" + FOOD_ID_NAME + ") ON DELETE CASCADE)");
+
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
 
     public void GetMeal(){
         //gets information for a meal
@@ -68,28 +89,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // adds a new meal and connects foods to them
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        //adds tables to database
-
-        /* code for the database tables
-        CREATE TABLE [meal] ([Date] TEXT,[Meal] INTEGER,[Profile] INTEGER,[meal_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,FOREIGN KEY([meal_id]) REFERENCES [food_meal]([meal_id]) ON DELETE CASCADE)
-
-        CREATE TABLE [food] ([food_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,[Name] TEXT,[Calories] INTEGER,[Serving_hh] FLOAT,[Serving_hh_units] TEXT,[serving_m] FLOAT,[serving_m_unit] TEXT,[SourceDB] TEXT,[picture_link] TEXT,FOREIGN KEY([food_id]) REFERENCES [food_meal]([food_id]) ON DELETE CASCADE)
-
-        CREATE TABLE [meal_food] ([food_meal] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,[servings_hh] FLOAT NOT NULL,[meal_id] INTEGER NOT NULL,[food_id] INTEGER NOT NULL)
-         */
-
-    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        //Dumps everything and creates a new database
-        db.execSQL("DROP TABLE IF EXISTS meal" );
-        db.execSQL("DROP TABLE IF EXISTS food" );
-        db.execSQL("DROP TABLE IF EXISTS meal_food" );
-
+        //pass for now
+        //Creates copies of tables
+        //inserts data into new tables
         onCreate(db);
 
 
