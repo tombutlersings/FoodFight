@@ -17,6 +17,10 @@ import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* TODO: hardcode 2-3 foods, all meals for one date June 30
+ */
+
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "MealFood.db";
@@ -53,19 +57,44 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-        //when this construct this database will be created
-
+        //when this construct is run this database will be created
+        //SQLiteDatabase db = this.getWritableDatabase(); // line just for troubleshooting
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
          //code for the database tables
-        db.execSQL("CREATE TABLE " + MEAL_TABLE_NAME + " (" + MEAL_DATE_NAME +" TEXT, " + MEAL_NAME +" TEXT, "+ PROFILE_NAME + " INTEGER," + MEAL_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+        db.execSQL("CREATE TABLE " + MEAL_TABLE_NAME
+                + " (" + MEAL_DATE_NAME +" TEXT, "
+                + MEAL_NAME +" TEXT, "
+                + PROFILE_NAME + " INTEGER,"
+                + MEAL_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
 
-        db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (" + FOOD_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + FOOD_NAME + " TEXT," + FOOD_CALORIES_NAME +" INTEGER," + FOOD_HOUSEHOLD_SERVING +" FLOAT," + FOOD_HOUSEHOLD_UNIT + " TEXT," + FOOD_METRIC_SERVING + " FLOAT," + FOOD_METRIC_SERVING_UNIT +" TEXT,[SourceDB] TEXT,[picture_link] TEXT)");
+        db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (" + FOOD_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+                + FOOD_NAME + " TEXT,"
+                + FOOD_CALORIES_NAME +" INTEGER,"
+                + FOOD_HOUSEHOLD_SERVING +" FLOAT,"
+                + FOOD_HOUSEHOLD_UNIT + " TEXT,"
+                + FOOD_METRIC_SERVING + " FLOAT,"
+                + FOOD_METRIC_SERVING_UNIT +" TEXT,"
+                + "[SourceDB] TEXT,"
+                + "[picture_link] TEXT)");
 
-        db.execSQL("CREATE TABLE " + LINKING_TABLE + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + SERVINGS_NAME +" FLOAT NOT NULL, FOREIGN KEY(" + MEAL_ID_NAME + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID_NAME + ") ON DELETE CASCADE,FOREIGN KEY(" + FOOD_ID_NAME + ") REFERENCES " + FOOD_TABLE_NAME +"(" + FOOD_ID_NAME + ") ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE " + LINKING_TABLE
+                + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+                + SERVINGS_NAME + " FLOAT NOT NULL,"
+                + " FOREIGN KEY(" + MEAL_ID_NAME + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID_NAME + ") ON DELETE CASCADE,"
+                + " FOREIGN KEY(" + FOOD_ID_NAME + ") REFERENCES " + FOOD_TABLE_NAME + "(" + FOOD_ID_NAME + ") ON DELETE CASCADE)");
 
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //pass for now
+        //Creates copies of tables
+        //inserts data into new tables
+        onCreate(db);
     }
 
 
@@ -90,13 +119,5 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //pass for now
-        //Creates copies of tables
-        //inserts data into new tables
-        onCreate(db);
 
-
-    }
 }
