@@ -1,21 +1,11 @@
 package com.example.foodfight;
 
 
-import java.sql.*;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
 * TODO: hardcode 2-3 foods, all meals for one date June 30
@@ -35,6 +25,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String FOOD_HOUSEHOLD_SERVING =  "serving_size_hh";
     public static final String FOOD_HOUSEHOLD_UNIT =  "serving_size_hh_unit";
     public static final String FOOD_NAME =  "name";
+    public static final String FOOD_MANUFACTURER =  "manufacturer";
+
 
 
 //names for the meal table
@@ -78,8 +70,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + FOOD_HOUSEHOLD_UNIT + " TEXT,"
                 + FOOD_METRIC_SERVING + " FLOAT,"
                 + FOOD_METRIC_SERVING_UNIT +" TEXT,"
-                + "[SourceDB] TEXT,"
-                + "[picture_link] TEXT)");
+                + FOOD_MANUFACTURER + " TEXT,"
+                + " [picture_link] TEXT)");
 
         db.execSQL("CREATE TABLE " + LINKING_TABLE
                 + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
