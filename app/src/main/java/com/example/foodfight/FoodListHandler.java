@@ -12,17 +12,17 @@ public class FoodListHandler {
     public FoodListHandler(){
 
     }
-    public static Object getFood(){te
+    //public static Object getFood(){
         //TODO: Sends query to the database for food data etc
         //
-        Object foodObject = "This will be the food Object in the future.";
-        return foodObject;
-    }
-    public static Object setFood(){
+        //Object foodObject = "This will be the food Object in the future.";
+        //return foodObject;
+    //}
+    //public static Object setFood(){
         //TODO: Passes food data to the acFoodList activity
         //
-        Object foodObject = "This will be the food Object in the future.";
-        return foodObject;
-    }
+        //Object foodObject = "This will be the food Object in the future.";
+        //return foodObject;
+    //}
 
 }
