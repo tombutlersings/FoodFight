@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/barDaily"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textGreeting" />
 
     <ProgressBar
-        android:id="@+id/progressBar3"
+        android:id="@+id/barWeekly"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label01" />
+        app:layout_constraintTop_toBottomOf="@+id/barDaily" />
 
     <TextView
         android:id="@+id/textGreeting"
@@ -98,10 +98,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/main_label01"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/barDaily"
+        app:layout_constraintTop_toBottomOf="@+id/barDaily" />
 
     <TextView
         android:id="@+id/label02"
@@ -109,9 +109,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/main_label02"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar3" />
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/barWeekly"
+        app:layout_constraintTop_toBottomOf="@+id/barWeekly" />
+
+    <TextView
+        android:id="@+id/tvDaily"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/barDaily"
+        app:layout_constraintTop_toBottomOf="@+id/barDaily" />
+
+    <TextView
+        android:id="@+id/tvWeekly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/meals_label03"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/barWeekly"
+        app:layout_constraintTop_toBottomOf="@+id/barWeekly" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

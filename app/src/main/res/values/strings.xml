@@ -33,11 +33,12 @@ Phillip Proctor"
     <string name="food_item_header">---needs title---</string>
 
 
-    <string name="food_list_header">---needs title---</string>
+    <string name="food_list_header">Meal content</string>
+    <string name="food_list_label01"></string>
 
 
     <string name="meals_header">What are we eating today?</string>
-    <string name="meals_label01">Calories for </string>
+    <string name="meals_label01">Calories for mm-dd-yyyy</string>
     <string name="meals_label02">Total:</string>
     <string name="meals_label03">Calories</string>
     <string name="meals_button01">Breakfast</string>
@@ -62,6 +63,7 @@ Phillip Proctor"
     <string name="profile_label06">Daily</string>
     <string name="profile_label07">Weekly</string>
     <string name="profile_label08">Name</string>
+    <string name="profile_label09">CALORIE PROGRESS</string>
     <string name="profile_button01">Update</string>
 
 </resources>

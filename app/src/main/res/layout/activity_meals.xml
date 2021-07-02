@@ -10,73 +10,67 @@
         android:id="@+id/tvBreakfast"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnBreakfast"
-        app:layout_constraintStart_toEndOf="@+id/btnSnack1" />
+        app:layout_constraintEnd_toEndOf="@+id/tvDate" />
 
     <TextView
         android:id="@+id/tvTotal"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/labelTotal"
-        app:layout_constraintStart_toEndOf="@+id/labelTotal" />
+        app:layout_constraintEnd_toEndOf="@+id/tvSnack3" />
 
     <TextView
         android:id="@+id/tvSnack3"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnSnack3"
-        app:layout_constraintStart_toEndOf="@+id/btnSnack3" />
+        app:layout_constraintEnd_toEndOf="@+id/tvDinner" />
 
     <TextView
         android:id="@+id/tvDinner"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnDinner"
-        app:layout_constraintStart_toEndOf="@+id/btnSnack3" />
+        app:layout_constraintEnd_toEndOf="@+id/tvSnack2" />
 
     <TextView
         android:id="@+id/tvSnack1"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnSnack1"
-        app:layout_constraintStart_toEndOf="@+id/btnSnack1" />
+        app:layout_constraintEnd_toEndOf="@+id/tvBreakfast" />
 
     <TextView
         android:id="@+id/tvSnack2"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnSnack2"
-        app:layout_constraintStart_toEndOf="@+id/btnSnack2" />
+        app:layout_constraintEnd_toEndOf="@+id/tvLunch" />
 
     <Button
         android:id="@+id/btnSnack2"
@@ -152,7 +146,7 @@
 
     <TextView
         android:id="@+id/tvDate"
-        android:layout_width="294dp"
+        android:layout_width="270dp"
         android:layout_height="39dp"
         android:layout_marginTop="32dp"
         android:text="@string/meals_label01"
@@ -178,13 +172,12 @@
         android:id="@+id/tvLunch"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnLunch"
-        app:layout_constraintStart_toEndOf="@+id/btnSnack2" />
+        app:layout_constraintEnd_toEndOf="@+id/tvSnack1" />
 
     <Button
         android:id="@+id/btnGetAnotherDay"
