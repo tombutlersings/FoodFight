@@ -57,6 +57,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
          //code for the database tables
+
         db.execSQL("CREATE TABLE " + MEAL_TABLE_NAME
                 + " (" + MEAL_DATE_NAME +" TEXT, "
                 + MEAL_NAME +" TEXT, "
@@ -91,22 +92,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
     public void GetMeal(){
+        SQLiteDatabase db = this.getReadableDatabase();
         //gets information for a meal
     }
 
     public void DailyCalories(){
+        // Handled Elsewhere, will delete if no longer needed
         //gets the calories for a day
     }
 
-    public void AddFood(){
+    public void AddFood(FoodItem fooditem){
+        SQLiteDatabase db = this.getReadableDatabase();
         //adds a food to the database
+        //db.execSQL("INSERT INTO " + FOOD_TABLE_NAME + " (" + ")");
     }
 
-    public void GetFood(){
+    public void SearchFood(String foodname){
+        SQLiteDatabase db = this.getReadableDatabase();
         //gets a list of foods from the database
+
     }
 
     public void AddMeal(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        //need date, meal, food,
         // adds a new meal and connects foods to them
     }
 

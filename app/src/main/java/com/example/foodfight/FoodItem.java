@@ -9,7 +9,7 @@ public class FoodItem {
     private String name;
     private int Id;
     private int calories;
-    private String servingSize;
+    private String servingSizeMetric;
 
     // Suggestion 2:
     // If the suggestion 1 is implemented, this construction won't
@@ -18,7 +18,7 @@ public class FoodItem {
         this.name = name;
         this.Id = Id;
         this.calories = calories;
-        this.servingSize = servingSize;
+        this.servingSizeMetric = servingSize;
     }
 
     public String getName() {
@@ -48,11 +48,11 @@ public class FoodItem {
     }
 
     public String getServingSize() {
-        return servingSize;
+        return servingSizeMetric;
     }
 
     public void setServingSize(String servingSize) {
-        this.servingSize = servingSize;
+        this.servingSizeMetric = servingSize;
     }
 }
 
