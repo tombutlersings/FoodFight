@@ -16,6 +16,7 @@ public class ApiThread implements Runnable{
         //whatever you need to do on the thread goes in hear
         //TODO: Api Call Itself
 
+
         //this is to prevent errors if the thread gets interrupted.
         final Activity refActivity = activity.get();
         if ( refActivity != null) {
