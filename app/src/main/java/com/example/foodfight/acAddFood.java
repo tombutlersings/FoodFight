@@ -3,12 +3,15 @@ package com.example.foodfight;
 /* This activity uses the USDA API to retrieve data on selected foods
  */
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
 
 public class acAddFood extends AppCompatActivity {
 
@@ -22,17 +25,30 @@ public class acAddFood extends AppCompatActivity {
         searchFood = (EditText) findViewById(R.id.searchFood);
         searchButton = (Button) findViewById(R.id.searchButton);
     }
-
+    private Activity currentActivity = null;
+    public Activity getCurrentActivity(){
+        return currentActivity;
+    }
+    public void setCurrentActivity(Activity currentActivity){
+        this.currentActivity = currentActivity;
+    }
     // TODO: METHOD search for food
     public void foodSearch(){
         searchButton.setOnClickListener(
                 new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+                        String foodSearch = searchFood.getText().toString();
+                        try {
+                            new Thread (new ApiHandler(acAddFood.this, foodSearch));
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                         //  DB Call for the food (searchFood.getText().toString());
                         //  Api Call for the food (searchFood.getText().toString());
-                        String foodSearch = searchFood.getText().toString();
-                        ApiHandler apiHandler = new ApiHandler(acAddFood.this, foodSearch);
+
                     }
                 }
         );

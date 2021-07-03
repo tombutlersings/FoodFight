@@ -16,9 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ApiHandler {
+public class ApiHandler implements Runnable {
     Activity activityName;
     String foodSearch;
+    Activity activity;
+
 
     public static Map<String, Object> jsonToMap(String str) {
         Map<String, Object> map = (Map) (new Gson()).fromJson(str, (new TypeToken<HashMap<String, Object>>() {
@@ -26,10 +28,16 @@ public class ApiHandler {
         return map;
     }
 
-    public ApiHandler(Activity activityName, String foodSearch){
+    public ApiHandler(Activity activityName, String foodSearch) throws IOException {
         //code goes here
+
         this.activityName = activityName;
         this.foodSearch = foodSearch;
+
+        ArrayList<List> foodSearchResults = NutriSearch(foodSearch);
+        //TODO: Figure out how to get foodSearchResults into a different thread and return the results to the acAddFood Search Results TextView
+//        Thread thread = new Thread();
+//        thread.start();
 
     }
     public ArrayList<List> NutriSearch(String foodSearch) throws IOException {
@@ -55,33 +63,54 @@ public class ApiHandler {
             apiListOfResults.add(apiSearchResults);
         }
         return apiListOfResults;
+
     }
 
 
 
-    public void apiThreadCreator(){
-        //
-        // manage the creation of threads and calls at the same time
-        // possible extension of runnable
+//    public void apiThreadCreator(){
+//        //
+//        // manage the creation of threads and calls at the same time
+//        // possible extension of runnable
+//
+//
+//        /**
+//        This code should work to get the activity that you are calling this from to pass into the ApiHandler.
+//
+//        private Activity currentActivity = null;
+//         public Activity getCurrentActivity(){
+//         return currentActivity;
+//         }
+//         public void setCurrentActivity(Activity currentActivity){
+//         this.currentActivity = currentActivity;
+//         }
+//         */
+//        ApiThread newThread = new ApiThread(activityName);
+//        new Thread(newThread).start();
+//
+//
+//
+//
+//    }
+
+    @Override
+    public void run() {
+        final Activity refActivity = activity;
+        if ( refActivity != null) {
+            refActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    refActivity.runOnUiThread(new Runnable() {
+                        public void run() {
+                            //everything we want to change in the user interface goes here
+                            // TODO: send apiListOfResults to the screen
 
 
-        /**
-        This code should work to get the activity that you are calling this from to pass into the ApiHandler.
-
-        private Activity currentActivity = null;
-        public Activity getCurrentActivity(){
-              return currentActivity;
+                        }
+                    });
+                }
+            });
         }
-        public void setCurrentActivity(Activity currentActivity){
-              this.currentActivity = currentActivity;
-        }
-         */
-        ApiThread newThread = new ApiThread(activityName);
-        new Thread(newThread).start();
-
-
-
-
     }
 
 }
