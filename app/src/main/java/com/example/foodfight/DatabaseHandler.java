@@ -19,7 +19,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String FOOD_TABLE_NAME =  "food";
 //Column names
     public static final String FOOD_ID_NAME =  "foodID";
-    public static final String FOOD_CALORIES_NAME =  "calories";
+    public static final String FOOD_CALORIES =  "calories";
     public static final String FOOD_METRIC_SERVING =  "serving_size_m";
     public static final String FOOD_METRIC_SERVING_UNIT =  "serving_size_m_unit";
     public static final String FOOD_HOUSEHOLD_SERVING =  "serving_size_hh";
@@ -66,12 +66,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (" + FOOD_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + FOOD_NAME + " TEXT,"
-                + FOOD_CALORIES_NAME +" INTEGER,"
+                + FOOD_CALORIES +" INTEGER,"
                 + FOOD_HOUSEHOLD_SERVING +" FLOAT,"
                 + FOOD_HOUSEHOLD_UNIT + " TEXT,"
                 + FOOD_METRIC_SERVING + " FLOAT,"
                 + FOOD_METRIC_SERVING_UNIT +" TEXT,"
                 + FOOD_MANUFACTURER + " TEXT,"
+                + "[SourceDB] TEXT,"
                 + " [picture_link] TEXT)");
 
         db.execSQL("CREATE TABLE " + LINKING_TABLE
@@ -103,6 +104,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void AddFood(FoodItem fooditem){
         SQLiteDatabase db = this.getReadableDatabase();
+
         //adds a food to the database
         //db.execSQL("INSERT INTO " + FOOD_TABLE_NAME + " (" + ")");
     }
