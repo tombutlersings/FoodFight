@@ -22,27 +22,27 @@ public class Date {
         this.date = date;
     }
 
-//    private static void setDate(){
+    private static void setDate(){
         // Create foods items.
-//        FoodItem sugar = new FoodItem("sugar", 1, 40, "2 spoons");
-//        FoodItem flour = new FoodItem("flour", 2, 62, "10 cups");
-//        FoodItem oil = new FoodItem("oil", 3, 35, "2 cups");
-//        FoodItem salt = new FoodItem("salt", 4, 45, "1 spoon");
+        FoodItem sugar = new FoodItem("sugar", 1, 40);
+        FoodItem flour = new FoodItem("flour", 2, 62);
+        FoodItem oil = new FoodItem("oil", 3, 35);
+        FoodItem salt = new FoodItem("salt", 4, 45);
 
         // Store foods of the date in meal Items.
-//        MealItem breakfast = new MealItem(Breakfast, sugar, flour);
-//        MealItem lunch = new MealItem(Lunch, oil, salt);
-//        MealItem dinner = new MealItem(Dinner, flour, oil);
-//        MealItem afternoonSnack = new MealItem(AfternoonSnack, sugar, oil);
-//        MealItem eveningSnack = new MealItem(EveningSnack, flour, salt);
+        MealItem breakfast = new MealItem(Breakfast, sugar, flour);
+        MealItem lunch = new MealItem(Lunch, oil, salt);
+        MealItem dinner = new MealItem(Dinner, flour, oil);
+        MealItem afternoonSnack = new MealItem(AfternoonSnack, sugar, oil);
+        MealItem eveningSnack = new MealItem(EveningSnack, flour, salt);
 
         // Store meals of the date in a meal list.
-//        mealList.add(breakfast);
-//        mealList.add(lunch);
-//        mealList.add(dinner);
-//        mealList.add(afternoonSnack);
-//        mealList.add(eveningSnack);
-//    }
+        mealList.add(breakfast);
+        mealList.add(lunch);
+        mealList.add(dinner);
+        mealList.add(afternoonSnack);
+        mealList.add(eveningSnack);
+    }
 
     public static ArrayList<MealItem> getDate() {
         return mealList;
