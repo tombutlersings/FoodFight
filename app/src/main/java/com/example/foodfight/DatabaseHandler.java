@@ -1,6 +1,6 @@
 package com.example.foodfight;
 
-
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -76,7 +76,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + FOOD_METRIC_SERVING + " FLOAT,"
                 + FOOD_METRIC_SERVING_UNIT +" TEXT,"
                 + FOOD_MANUFACTURER + " TEXT,"
-                + "[SourceDB] TEXT,"
+                + " [SourceDB] TEXT,"
                 + " [picture_link] TEXT)");
 
         db.execSQL("CREATE TABLE " + LINKING_TABLE
@@ -95,11 +95,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
-    public void GetMeal(String date, String mealDescription){
+    //Gets a Meal and all foods added to it
+    public void GetMeal(String date, String mealName){
         SQLiteDatabase db = this.getReadableDatabase();
         //gets information for a meal
         db.execSQL("");
+        /*
+        this query gets the information from a meal
+        SELECT meal.date, meal_food.servings, servings * calories as total_calories, food.name. food.id
+            FROM meal
+	            LEFT JOIN meal_food ON meal.mealID = meal_food.mealID
+                LEFT JOIN food ON meal_food.foodID = food.foodID
+        WHERE meal.date = date AND mealName = mealName
+         */
     }
 
     public void DailyCalories(){
@@ -107,12 +115,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //gets the calories for a day
     }
 
-    public void AddFood(FoodItem fooditem){
+    //adds a food to the database using a FoodItem object
+    public void AddFood(FoodItem food){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        //adds a food to the database
-        //db.execSQL("INSERT INTO " + FOOD_TABLE_NAME + " (" + ")");
+        //gets the column names and assigns the values to them
+        ContentValues values = new ContentValues();
+        values.put(FOOD_NAME, food.getName()); // Food Name
+        values.put(FOOD_CALORIES, food.getCalories()); // Food calories
+        values.put(FOOD_HOUSEHOLD_SERVING, food.getHHServingSize());
+
+        //Getters and setters needed for the following in the FoodItem class
+        //values.put(FOOD_HOUSEHOLD_UNIT, food.get());
+        //values.put(FOOD_METRIC_SERVING, food.getHHServingSize());
+        //values.put(FOOD_METRIC_SERVING_UNIT, food.getHHServingSize());
+        //values.put(FOOD_MANUFACTURER, food.get);
+        //values.put("SourceDB", food.get);
+
+
+        // Inserting Row
+        db.insert(FOOD_TABLE_NAME, null, values);
+        //2nd argument is String containing nullColumnHack
+        db.close(); // Closing database connection
     }
+
 
     public List<FoodItem> SearchFood(String foodname){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -142,11 +168,38 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void AddMeal(Integer mealID, Integer foodID, String date){
+    //Gets information on one food
+    //public FoodItem GetFoodInfo(Integer foodID){}
+
+    //Adds foods to a meal
+    public void AddToMeal(Integer mealID, Integer foodID, Integer servings){
         SQLiteDatabase db = this.getReadableDatabase();
-        //need date, meal, food,
-        // adds a new meal and connects foods to them
+
+        ContentValues values = new ContentValues();
+        values.put(MEAL_ID_NAME, mealID);
+        values.put(FOOD_ID_NAME, foodID);
+        values.put(SERVINGS_NAME, servings);
+        db.insert(LINKING_TABLE, null, values);
+
+        //2nd argument is String containing nullColumnHack
+        db.close(); // Closing database connection
     }
+
+    //Creates a meal that food can be added to
+    public void CreateMeal(String date, String mealName, Integer profile){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(MEAL_DATE_NAME, date);
+        values.put(MEAL_NAME, mealName);
+        values.put(PROFILE_NAME, profile);
+        db.insert(MEAL_TABLE_NAME, null, values);
+
+        //2nd argument is String containing nullColumnHack
+        db.close(); // Closing database connection
+    }
+
+
 
 
 
