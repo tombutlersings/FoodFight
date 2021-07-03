@@ -19,6 +19,7 @@ public class FoodItem {
     // Suggestion 2:
     // If the suggestion 1 is implemented, this construction won't
     // need a calories parameter.
+
     public FoodItem(String name, int Id, int calories, float serving_size_m, float serving_size_hh, String serving_size_hh_unit, String serving_size_m_unit, String manufacturer, String sourceDB) {
         this.FOOD_NAME = name;
         this.Id = Id;

@@ -2,10 +2,14 @@ package com.example.foodfight;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * TODO: hardcode 2-3 foods, all meals for one date June 30
@@ -35,7 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String MEAL_ID_NAME =  "mealID";
     public static final String MEAL_DATE_NAME =  "date";
     public static final String PROFILE_NAME =  "profile";
-    public static final String MEAL_NAME = "meal";
+    public static final String MEAL_NAME = "mealName";
 
 //Linking table
     public static final String LINKING_TABLE = "meal_food";
@@ -92,9 +96,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public void GetMeal(){
+    public void GetMeal(String date, String mealDescription){
         SQLiteDatabase db = this.getReadableDatabase();
         //gets information for a meal
+        db.execSQL("");
     }
 
     public void DailyCalories(){
@@ -109,13 +114,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //db.execSQL("INSERT INTO " + FOOD_TABLE_NAME + " (" + ")");
     }
 
-    public void SearchFood(String foodname){
+    public List<FoodItem> SearchFood(String foodname){
         SQLiteDatabase db = this.getReadableDatabase();
         //gets a list of foods from the database
 
+        //Initializes the list of FoodItems that will be returned
+        List<FoodItem> foodList = new ArrayList<FoodItem>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + FOOD_TABLE_NAME + "WHERE " + FOOD_NAME + " LIKE %" + foodname + "%";
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                FoodItem food = new FoodItem(null,0,0);
+                food.setId(Integer.parseInt(cursor.getString(0)));
+                food.setName(cursor.getString(1));
+                food.setCalories(Integer.parseInt(cursor.getString(2)));
+                // Adding contact to list
+                foodList.add(food);
+            } while (cursor.moveToNext());
+        }
+
+        // return food list
+        return foodList;
+
     }
 
-    public void AddMeal(){
+    public void AddMeal(Integer mealID, Integer foodID, String date){
         SQLiteDatabase db = this.getReadableDatabase();
         //need date, meal, food,
         // adds a new meal and connects foods to them
