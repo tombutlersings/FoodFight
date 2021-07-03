@@ -15,12 +15,12 @@ public class ApiHandler {
 
     }
     public void apiThreadCreator(){
-        // TODO: Tom Needs Help with Creating the Threading
+        //
         // manage the creation of threads and calls at the same time
         // possible extension of runnable
 
 
-        /*
+        /**
         This code should work to get the activity that you are calling this from to pass into the ApiHandler.
 
         private Activity currentActivity = null;

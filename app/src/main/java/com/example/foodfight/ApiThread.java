@@ -1,7 +1,6 @@
 package com.example.foodfight;
 
 import android.app.Activity;
-import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
@@ -15,7 +14,7 @@ public class ApiThread implements Runnable{
 
     public void run() {
         //whatever you need to do on the thread goes in hear
-
+        //TODO: Api Call Itself
 
         //this is to prevent errors if the thread gets interrupted.
         final Activity refActivity = activity.get();
