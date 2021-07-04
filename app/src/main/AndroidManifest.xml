@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.foodfight">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,40 +18,59 @@
         <activity
             android:name=".acAddFood"
             android:label="@string/add_food_header"
-            android:parentActivityName=".acFoodList" />
+            android:parentActivityName=".acFoodList"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".acAppAbout"
             android:label="@string/app_about_header"
-            android:parentActivityName=".acUserProfile" />
+            android:parentActivityName=".acUserProfile"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".acCalendar"
             android:label="@string/calendar_header"
-            android:parentActivityName=".acMeals" />
+            android:parentActivityName=".acMeals"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".acFoodItem"
             android:label="@string/food_item_header"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".acFoodList"
             android:label="@string/food_list_header"
-            android:parentActivityName=".acMeals" />
+            android:parentActivityName=".acMeals"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".acMeals"
             android:label="@string/meals_header"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".acTrend"
             android:label="@string/trend_header"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".acUserProfile"
             android:label="@string/profile_header"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

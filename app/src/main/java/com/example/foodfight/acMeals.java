@@ -15,7 +15,7 @@ import android.widget.TextView;
  *
  */
 
-public final class acMeals extends AppCompatActivity {
+public class acMeals extends AppCompatActivity {
     CalendarHandler calendarHandler = new CalendarHandler();
     private TextView dateView;
 
