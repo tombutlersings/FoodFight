@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchFood" />
 
-    <ScrollView
+    <TextView
         android:id="@+id/SearchResults"
         android:layout_width="405dp"
         android:layout_height="446dp"
@@ -43,11 +43,8 @@
         app:layout_constraintTop_toBottomOf="@+id/searchFood"
         app:layout_constraintVertical_bias="0.662">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+
+    </TextView>
 
     <Button
         android:id="@+id/addCustomButton"

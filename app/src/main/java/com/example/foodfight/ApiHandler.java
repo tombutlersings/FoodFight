@@ -5,6 +5,9 @@ package com.example.foodfight;
 // This class may also handle calls to the dictionary?
 
 import android.app.Activity;
+import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
@@ -93,6 +96,8 @@ public class ApiHandler implements Runnable {
 //
 //    }
 
+
+
     @Override
     public void run() {
         final Activity refActivity = activity;
@@ -104,6 +109,15 @@ public class ApiHandler implements Runnable {
                         public void run() {
                             //everything we want to change in the user interface goes here
                             // TODO: send apiListOfResults to the screen
+                            try {
+                                ArrayList<List> foodlist = NutriSearch(foodSearch);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            TextView results = refActivity.findViewById(R.id.foodSearch);
+                            results.setText("search complete");
+
+
 
 
                         }
