@@ -22,7 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 //name for the Food Table
     public static final String FOOD_TABLE_NAME =  "food";
 //Column names
-    public static final String FOOD_ID_NAME =  "foodID";
+    public static final String FOOD_ID =  "foodID";
     public static final String FOOD_CALORIES =  "calories";
     public static final String FOOD_METRIC_SERVING =  "serving_size_m";
     public static final String FOOD_METRIC_SERVING_UNIT =  "serving_size_m_unit";
@@ -36,8 +36,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 //names for the meal table
     public static final String MEAL_TABLE_NAME = "meal";
 //Column names
-    public static final String MEAL_ID_NAME =  "mealID";
-    public static final String MEAL_DATE_NAME =  "date";
+    public static final String MEAL_ID =  "mealID";
+    public static final String MEAL_DATE =  "date";
     public static final String PROFILE_NAME =  "profile";
     public static final String MEAL_NAME = "mealName";
 
@@ -57,18 +57,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //SQLiteDatabase db = this.getWritableDatabase(); // line just for troubleshooting
     }
 
+
+    //This is done for now
     @Override
     public void onCreate(SQLiteDatabase db) {
 
          //code for the database tables
 
         db.execSQL("CREATE TABLE " + MEAL_TABLE_NAME
-                + " (" + MEAL_DATE_NAME +" TEXT, "
+                + " (" + MEAL_DATE +" TEXT, "
                 + MEAL_NAME +" TEXT, "
                 + PROFILE_NAME + " INTEGER,"
-                + MEAL_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+                + MEAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
 
-        db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (" + FOOD_ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+        db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (" + FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + FOOD_NAME + " TEXT,"
                 + FOOD_CALORIES +" INTEGER,"
                 + FOOD_HOUSEHOLD_SERVING +" FLOAT,"
@@ -82,11 +84,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + LINKING_TABLE
                 + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + SERVINGS_NAME + " FLOAT NOT NULL,"
-                + " FOREIGN KEY(" + MEAL_ID_NAME + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID_NAME + ") ON DELETE CASCADE,"
-                + " FOREIGN KEY(" + FOOD_ID_NAME + ") REFERENCES " + FOOD_TABLE_NAME + "(" + FOOD_ID_NAME + ") ON DELETE CASCADE)");
+                + " FOREIGN KEY(" + MEAL_ID + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID + ") ON DELETE CASCADE,"
+                + " FOREIGN KEY(" + FOOD_ID + ") REFERENCES " + FOOD_TABLE_NAME + "(" + FOOD_ID + ") ON DELETE CASCADE)");
 
     }
 
+
+    //not sure what to do here, but may revisit later if need be
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //pass for now
@@ -95,6 +99,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    /*** TODO get the meal query into its appropriate object */
     //Gets a Meal and all foods added to it
     public void GetMeal(String date, String mealName){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -115,6 +121,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //gets the calories for a day
     }
 
+
     //adds a food to the database using a FoodItem object
     public void AddFood(FoodItem food){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -123,14 +130,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FOOD_NAME, food.getName()); // Food Name
         values.put(FOOD_CALORIES, food.getCalories()); // Food calories
-        values.put(FOOD_HOUSEHOLD_SERVING, food.getHHServingSize());
-
-        //Getters and setters needed for the following in the FoodItem class
-        //values.put(FOOD_HOUSEHOLD_UNIT, food.get());
-        //values.put(FOOD_METRIC_SERVING, food.getHHServingSize());
-        //values.put(FOOD_METRIC_SERVING_UNIT, food.getHHServingSize());
-        //values.put(FOOD_MANUFACTURER, food.get);
-        //values.put("SourceDB", food.get);
+        values.put(FOOD_HOUSEHOLD_SERVING, food.getFoodHouseholdServing());
+        values.put(FOOD_HOUSEHOLD_UNIT, food.getFoodHouseholdUnit());
+        values.put(FOOD_METRIC_SERVING, food.getServingSize());
+        values.put(FOOD_METRIC_SERVING_UNIT, food.getFoodMetricServingUnit());
+        values.put(FOOD_MANUFACTURER, food.getFoodManufacturer());
+        values.put("SourceDB", food.getSourceDB());
 
 
         // Inserting Row
@@ -176,8 +181,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(MEAL_ID_NAME, mealID);
-        values.put(FOOD_ID_NAME, foodID);
+        values.put(MEAL_ID, mealID);
+        values.put(FOOD_ID, foodID);
         values.put(SERVINGS_NAME, servings);
         db.insert(LINKING_TABLE, null, values);
 
@@ -190,7 +195,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(MEAL_DATE_NAME, date);
+        values.put(MEAL_DATE, date);
         values.put(MEAL_NAME, mealName);
         values.put(PROFILE_NAME, profile);
         db.insert(MEAL_TABLE_NAME, null, values);
