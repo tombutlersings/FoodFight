@@ -88,10 +88,24 @@ public class FoodItem {
 
     public void setServingSize(float servingSizeMetric) { this.FOOD_METRIC_SERVING = servingSizeMetric; }
 
-    public float getHHServingSize() {
-        return FOOD_HOUSEHOLD_SERVING;
-    }
+    public static String getFoodMetricServingUnit() { return FOOD_METRIC_SERVING_UNIT; }
 
-    public void setHHServingSize(float hhservingSize) { this.FOOD_HOUSEHOLD_SERVING = hhservingSize; }
+    public static void setFoodMetricServingUnit(String foodMetricServingUnit) { FOOD_METRIC_SERVING_UNIT = foodMetricServingUnit; }
+
+    public static float getFoodHouseholdServing() { return FOOD_HOUSEHOLD_SERVING; }
+
+    public static void setFoodHouseholdServing(float foodHouseholdServing) { FOOD_HOUSEHOLD_SERVING = foodHouseholdServing; }
+
+    public static String getFoodHouseholdUnit() { return FOOD_HOUSEHOLD_UNIT; }
+
+    public static void setFoodHouseholdUnit(String foodHouseholdUnit) { FOOD_HOUSEHOLD_UNIT = foodHouseholdUnit; }
+
+    public static String getFoodManufacturer() { return FOOD_MANUFACTURER; }
+
+    public static void setFoodManufacturer(String foodManufacturer) { FOOD_MANUFACTURER = foodManufacturer; }
+
+    public static String getSourceDB() { return SourceDB; }
+
+    public static void setSourceDB(String sourceDB) { SourceDB = sourceDB; }
 }
 
