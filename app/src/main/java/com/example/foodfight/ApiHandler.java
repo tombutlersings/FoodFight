@@ -5,8 +5,8 @@ package com.example.foodfight;
 // This class may also handle calls to the dictionary?
 
 import android.app.Activity;
-import android.widget.EditText;
-import android.widget.ScrollView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -23,7 +23,7 @@ public class ApiHandler implements Runnable {
     Activity activityName;
     String foodSearch;
     Activity activity;
-
+    ArrayList<List> foodSearchResults;
 
     public static Map<String, Object> jsonToMap(String str) {
         Map<String, Object> map = (Map) (new Gson()).fromJson(str, (new TypeToken<HashMap<String, Object>>() {
@@ -31,16 +31,20 @@ public class ApiHandler implements Runnable {
         return map;
     }
 
+    /**  STEP 2 - uses the foodsearch to get results
+     * sets the results list to global foodSearchResults
+     * Then run() uses it to open a responding thread
+     */
     public ApiHandler(Activity activityName, String foodSearch) throws IOException {
         //code goes here
-
         this.activityName = activityName;
         this.foodSearch = foodSearch;
 
-        ArrayList<List> foodSearchResults = NutriSearch(foodSearch);
+        ArrayList<List> foodSearchResultsInternal = NutriSearch(foodSearch);
         //TODO: Figure out how to get foodSearchResults into a different thread and return the results to the acAddFood Search Results TextView
-//        Thread thread = new Thread();
-//        thread.start();
+        //        Thread thread = new Thread();
+        //        thread.start();
+        foodSearchResults = foodSearchResultsInternal;
 
     }
     public ArrayList<List> NutriSearch(String foodSearch) throws IOException {
@@ -66,8 +70,50 @@ public class ApiHandler implements Runnable {
             apiListOfResults.add(apiSearchResults);
         }
         return apiListOfResults;
-
     }
+
+    @Override
+    public void run() {
+        final Activity refActivity = activity;
+        if ( refActivity != null) {
+            refActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    refActivity.runOnUiThread(new Runnable() {
+                        public void run() {
+                            //everything we want to change in the user interface goes here
+                            // TODO: send apiListOfResults to the screen
+                            try {
+                                ArrayList<List> foodlist = NutriSearch(foodSearch);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            /**
+                             * STEP 3 - The responding thread passes back the results to the acAddFood screen
+                             * Populates the list view with
+                             */
+                            // Changing the status area to show 'completed search'
+                            TextView searchStatus = refActivity.findViewById(R.id.searchStatus);
+                            searchStatus.setText("Search complete!");
+
+                            // todo: IMPORTANT
+                            // POPULATING THE SEARCH RESULTS
+                            ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, foodSearchResults);
+                            ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
+                            listView.setAdapter(itemsAdapter);
+
+
+
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+}
+
 
 
 
@@ -96,35 +142,3 @@ public class ApiHandler implements Runnable {
 //
 //    }
 
-
-
-    @Override
-    public void run() {
-        final Activity refActivity = activity;
-        if ( refActivity != null) {
-            refActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    refActivity.runOnUiThread(new Runnable() {
-                        public void run() {
-                            //everything we want to change in the user interface goes here
-                            // TODO: send apiListOfResults to the screen
-                            try {
-                                ArrayList<List> foodlist = NutriSearch(foodSearch);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            TextView results = refActivity.findViewById(R.id.foodSearch);
-                            results.setText("search complete");
-
-
-
-
-                        }
-                    });
-                }
-            });
-        }
-    }
-
-}

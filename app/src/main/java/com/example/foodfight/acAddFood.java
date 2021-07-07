@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,7 @@ public class acAddFood extends AppCompatActivity {
 
     EditText searchFood;
     Button searchButton;
+    ListView searchResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,9 @@ public class acAddFood extends AppCompatActivity {
         setContentView(R.layout.activity_add_food);
         searchFood = (EditText) findViewById(R.id.searchFood);
         searchButton = (Button) findViewById(R.id.searchButton);
+        searchResults = (ListView) findViewById(R.id.searchResults);
+
+
     }
     private Activity currentActivity = null;
     public Activity getCurrentActivity(){
@@ -40,6 +45,10 @@ public class acAddFood extends AppCompatActivity {
                     public void onClick(View v){
                         String foodSearch = searchFood.getText().toString();
                         try {
+                            /**
+                             * STEP 1
+                             * This makes a new thread, calls the ApiHandler.java , and send the activity and foodsearch
+                             */
                             new Thread (new ApiHandler(acAddFood.this, foodSearch));
 
                         } catch (IOException e) {
