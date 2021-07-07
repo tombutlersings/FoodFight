@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/app_about_0"
         android:textColor="@color/holo_orange_dark"
         android:textSize="20sp"
@@ -66,7 +66,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:text="@string/app_about_2"
-        android:textColor="@color/holo_orange_dark"
+        android:textColor="@color/Chocolate"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,9 +80,22 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:text="@string/app_about_4"
-        android:textColor="@color/holo_orange_light"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageView
+        android:id="@+id/imgAttribute01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:scaleX="1"
+        android:scaleY="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/nutrionixapi_small" />
 </androidx.constraintlayout.widget.ConstraintLayout>
