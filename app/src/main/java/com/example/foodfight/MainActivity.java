@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     // Called when user taps the Meals button
     public void btnMeals(View view) {
         Intent intent = new Intent(this, acMeals.class);
+        Log.i("FF_Main","Launching acMeals");
         startActivity(intent);
     }
 
