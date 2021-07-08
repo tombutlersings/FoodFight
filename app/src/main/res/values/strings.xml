@@ -34,7 +34,9 @@ Phillip Proctor"
 
 
     <string name="food_list_header">Meal content</string>
-    <string name="food_list_label01"></string>
+    <string name="food_list_label01">Selected Meal</string>
+    <string name="food_list_label02">Total Meal Calories:</string>
+    <string name="food_list_button01">Add Food</string>
 
 
     <string name="meals_header">What are we eating today?</string>
