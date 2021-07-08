@@ -63,15 +63,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-         //code for the database tables
+//        db = this.getReadableDatabase();
+        //db = this.getReadableDatabase();
 
-        db.execSQL("CREATE TABLE " + MEAL_TABLE_NAME
+        //code for the database tables
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + MEAL_TABLE_NAME
                 + " (" + MEAL_DATE +" TEXT, "
                 + MEAL_NAME +" TEXT, "
                 + PROFILE_NAME + " INTEGER,"
                 + MEAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
 
-        db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (" + FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + FOOD_TABLE_NAME + " (" + FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + FOOD_NAME + " TEXT,"
                 + FOOD_CALORIES +" INTEGER,"
                 + FOOD_HOUSEHOLD_SERVING +" FLOAT,"
@@ -82,11 +85,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + " [SourceDB] TEXT,"
                 + " [picture_link] TEXT)");
 
-        db.execSQL("CREATE TABLE " + LINKING_TABLE
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + LINKING_TABLE
                 + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-                + SERVINGS_NAME + " FLOAT NOT NULL,"
-                + " FOREIGN KEY(" + MEAL_ID + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID + ") ON DELETE CASCADE,"
-                + " FOREIGN KEY(" + FOOD_ID + ") REFERENCES " + FOOD_TABLE_NAME + "(" + FOOD_ID + ") ON DELETE CASCADE)");
+                + SERVINGS_NAME + " FLOAT NOT NULL," + MEAL_ID + " INTEGER, " + FOOD_ID + " INTEGER)");
+//                + " FOREIGN KEY(" + MEAL_ID + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID + ") ON DELETE CASCADE,"
+//                + " FOREIGN KEY(" + FOOD_ID + ") REFERENCES " + FOOD_TABLE_NAME + "(" + FOOD_ID + ") ON DELETE CASCADE)");
 
     }
 
@@ -204,6 +207,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //2nd argument is String containing nullColumnHack
         db.close(); // Closing database connection
     }
+
+    public void fillTable(String name, String calories, String manufacturer) {
+        SQLiteDatabase db = this.getWritableDatabase(); // line just for troubleshooting
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(FOOD_NAME, name);
+        contentValues.put(FOOD_CALORIES, calories);
+        contentValues.put(FOOD_MANUFACTURER, manufacturer);
+        long result = db.insert(FOOD_TABLE_NAME, null,contentValues);
+        db.close();
+
+    }
+
 //    public boolean VerifyExistance(){
 //        // query to the database food table will go
 //        if ( SELECT COUNT(*) * FROM FOOD_TABLE){

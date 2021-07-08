@@ -8,6 +8,7 @@ package com.example.foodfight;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,15 +23,16 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     // TODO: DatabaseHandler dbNameHere;
+    SQLiteDatabase dbFood;
     DatabaseHandler db;
-
-
+    ApiHandler foodSearcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //TODO: dbNameHere = new DatabaseHandler(this);
+        SQLiteDatabase dbFood = openOrCreateDatabase("food", MODE_PRIVATE, null);
         db = new DatabaseHandler(this);
 //            // TODO: CREATE / INITIALIZE THE DATABASE
 //        // is the database created already
@@ -47,22 +49,41 @@ public class MainActivity extends AppCompatActivity {
         if (name.equalsIgnoreCase("Your name")) {
             Intent intent = new Intent(this, acUserProfile.class);
             startActivity(intent);
+
         }
+        // VERIFIES THE DATABASE IS THERE
+        // TODO: REMOVE THIS FOR FINAL CODE
+        FoodItem apple = new FoodItem("apple",1,150);
+        db.AddFood(apple);
         boolean test = doesDatabaseExist(this,"food.db");
         if (!test) {
             Toast.makeText(MainActivity.this,"DB does not Exist", Toast.LENGTH_LONG).show();
 
         } else {
             Toast.makeText(MainActivity.this,"WAHOOO! DB Exists!", Toast.LENGTH_LONG).show();
-
         }
-
+//        List<String> foodList = List.newArrayList["Cuban Sandwich", "Jell-o","mofongo", "tacos", "life cereal"];
+//        for (int i = 0; i < ; i++) {
+//
+//        }
+//        ArrayList<List> initSearch = foodSearcher.NutriSearch();
+        //String jsonFood = JsonReader.getJsonFromAssets(this,"FoodLibrary.json");
+//        try {
+//            FileReader reader = new FileReader("FoodLibrary.json");
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
     }
+
+
     private static boolean doesDatabaseExist(Context context, String dbName) {
         File dbFile = context.getDatabasePath(dbName);
         return dbFile.exists();
     }
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -134,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, acUserProfile.class);
         startActivity(intent);
     }
-
 
 
 
