@@ -13,15 +13,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
+import java.io.File;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     // TODO: DatabaseHandler dbNameHere;
+    DatabaseHandler db;
+
 
 
     @Override
@@ -29,7 +31,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //TODO: dbNameHere = new DatabaseHandler(this);
-
+        db = new DatabaseHandler(this);
+//            // TODO: CREATE / INITIALIZE THE DATABASE
+//        // is the database created already
+//        boolean db.VerifyExistance()
+//            true = toast "food db loaded";
+//            false = toast "loading food db";
+        // if (Datat)
+        //  TODO: VERIFY IF THE DATABASE FILE EXISTS AND IF FOOD TABLE IS POPULATED
+        // TODO: IF FOOD TABLE IS NOT POPULATED, LOAD FOOD LIBRARY
         // Pull SharedPreferences and check "name" for default value
         // If default then auto-nav to acUserProfile to get set up
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
@@ -38,8 +48,21 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, acUserProfile.class);
             startActivity(intent);
         }
-    }
+        boolean test = doesDatabaseExist(this,"food.db");
+        if (!test) {
+            Toast.makeText(MainActivity.this,"DB does not Exist", Toast.LENGTH_LONG).show();
 
+        } else {
+            Toast.makeText(MainActivity.this,"WAHOOO! DB Exists!", Toast.LENGTH_LONG).show();
+
+        }
+
+
+    }
+    private static boolean doesDatabaseExist(Context context, String dbName) {
+        File dbFile = context.getDatabasePath(dbName);
+        return dbFile.exists();
+    }
     @Override
     protected void onResume() {
         super.onResume();

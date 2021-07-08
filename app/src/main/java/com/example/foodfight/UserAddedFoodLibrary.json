@@ -2,21 +2,21 @@
   "userFoodLibraryAlphabetical": {
     "A": [
       {
-        "food-name": "Apple",
+        "food_name": "Apple",
         "calories": 200
       },
       {
-        "food-name": "Almonds",
+        "food_name": "Almonds",
         "calories": 300
       }
     ],
     "B": [
       {
-        "food-name": "Banana",
+        "food_name": "Banana",
         "Calories": 400
       },
       {
-        "food-name": "Bread, White",
+        "food_name": "Bread, White",
         "calories": 600
       }
     ]

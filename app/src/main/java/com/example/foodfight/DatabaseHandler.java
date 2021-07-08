@@ -17,7 +17,8 @@ import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "MealFood.db";
+    public static final String DATABASE_NAME = "food.db";
+    // was "MealFood.db";
 
 //name for the Food Table
     public static final String FOOD_TABLE_NAME =  "food";
@@ -203,6 +204,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //2nd argument is String containing nullColumnHack
         db.close(); // Closing database connection
     }
+//    public boolean VerifyExistance(){
+//        // query to the database food table will go
+//        if ( SELECT COUNT(*) * FROM FOOD_TABLE){
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+
 
 
 
