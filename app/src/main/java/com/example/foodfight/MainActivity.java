@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         }
         // VERIFIES THE DATABASE IS THERE
         // TODO: REMOVE THIS FOR FINAL CODE
-        FoodItem apple = new FoodItem("apple",1,150);
+        FoodItem apple = new FoodItem(1,"apple",150);
+        FoodItem apple2 = new FoodItem(1,"1% LOWFAT MILK",88,240,"ml",1,"cup","Target Stores");
         db.AddFood(apple);
         boolean test = doesDatabaseExist(this,"food.db");
         if (!test) {

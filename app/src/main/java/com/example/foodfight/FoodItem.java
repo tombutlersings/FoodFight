@@ -20,7 +20,7 @@ public class FoodItem {
     // If the suggestion 1 is implemented, this construction won't
     // need a calories parameter.
 
-    public FoodItem(String name, int Id, int calories, float serving_size_m, float serving_size_hh, String serving_size_hh_unit, String serving_size_m_unit, String manufacturer, String sourceDB) {
+    public FoodItem(int Id, String name, int calories, float serving_size_m, String serving_size_m_unit, float serving_size_hh, String serving_size_hh_unit,  String manufacturer, String sourceDB) {
         this.FOOD_NAME = name;
         this.Id = Id;
         this.FOOD_CALORIES = calories;
@@ -32,12 +32,12 @@ public class FoodItem {
         this.SourceDB = sourceDB;
 
     }
-    public FoodItem(String name, int Id, int calories, float serving_size_m, float serving_size_hh, String serving_size_hh_unit, String serving_size_m_unit, String manufacturer) {
-        this(name, Id, calories, serving_size_m, serving_size_hh, serving_size_hh_unit, serving_size_m_unit, manufacturer, null);
+    public FoodItem(int Id, String name,  int calories, float serving_size_m, String serving_size_m_unit, float serving_size_hh, String serving_size_hh_unit,  String manufacturer) {
+        this(Id, name, calories, serving_size_m, serving_size_m_unit, serving_size_hh, serving_size_hh_unit,  manufacturer, null);
     }
 
-    public FoodItem(String name, int Id, int calories) {
-        this(name, Id, calories, 0, 0, null, null, null, null);
+    public FoodItem(int Id, String name,  int calories) {
+        this(Id, name,  calories, 0, null, 0, null, null, null);
     }
 
 
