@@ -36,7 +36,7 @@ public class FoodItem {
         this(Id, name, calories, serving_size_m, serving_size_m_unit, serving_size_hh, serving_size_hh_unit,  manufacturer, null);
     }
 
-    public FoodItem(int Id, String name,  int calories) {
+    public FoodItem(String name, int Id, int calories) {
         this(Id, name,  calories, 0, null, 0, null, null, null);
     }
 
