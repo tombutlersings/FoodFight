@@ -12,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
 /**
- * TODO:
+ * TODO: Get date from Calendar.  Does CalendarHandler need to exist if there's already a
+ *   Calendar method in Android?
  *
  */
 

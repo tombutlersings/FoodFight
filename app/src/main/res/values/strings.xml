@@ -30,16 +30,16 @@ Phillip Proctor"
     <string name="calendar_header">Pick a Date</string>
 
 
-    <string name="food_item_header">---needs title---</string>
+    <string name="food_item_header">[acFoodItem]</string>
 
 
-    <string name="food_list_header">Meal content</string>
+    <string name="food_list_header">[acFoodList] Meal content</string>
     <string name="food_list_label01">Selected Meal</string>
     <string name="food_list_label02">Total Meal Calories:</string>
     <string name="food_list_button01">Add Food</string>
 
 
-    <string name="meals_header">What are we eating today?</string>
+    <string name="meals_header">[acMeals]</string>
     <string name="meals_label01">Calories for mm-dd-yyyy</string>
     <string name="meals_label02">Total:</string>
     <string name="meals_label03">Calories</string>
