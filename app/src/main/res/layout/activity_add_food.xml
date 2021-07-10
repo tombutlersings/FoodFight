@@ -32,36 +32,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchFood" />
 
+
     <ListView
         android:id="@+id/searchResults"
         android:layout_width="405dp"
-        android:layout_height="446dp"
+        android:layout_height="430dp"
         android:background="@color/Aquamarine"
         app:layout_constraintBottom_toTopOf="@+id/addCustomButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton"
+        app:layout_constraintVertical_bias="0.52">
+
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/foodSearchResultsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/food_search_results_title"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchFood" />
+
+    <TextView
+        android:id="@+id/searchStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchFood"
-        app:layout_constraintVertical_bias="0.548">
-
-
-        <TextView
-            android:id="@+id/foodSearchResultsTitle"
-            android:layout_width="275dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/food_search_results_title"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/searchStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent" />
-    </ListView>
+        app:layout_constraintVertical_bias="0.548"/>
 
     <Button
         android:id="@+id/addCustomButton"
