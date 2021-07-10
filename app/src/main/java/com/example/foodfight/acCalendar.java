@@ -2,18 +2,18 @@ package com.example.foodfight;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.content.Intent;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.os.Bundle;
 
-/* Caleb 8Jun21:
- * GET SYSTEM DATE
- * getSystemDate() returns current android system date.
- */
 public class acCalendar extends AppCompatActivity {
+
     // Create CalendarView and TextView objects, calender and date_view.
     private CalendarView calenderView;
     private TextView calendarDateView;
@@ -27,10 +27,10 @@ public class acCalendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
         // Define view objects as their view ID.
         calenderView = (CalendarView)findViewById(R.id.calendar);
         calendarDateView = (TextView) findViewById(R.id.calendar_date);
+
 
         // Add Listener in calendar
         calenderView.setOnDateChangeListener(
@@ -61,6 +61,7 @@ public class acCalendar extends AppCompatActivity {
                         calendarDateView.setText(calendarDate);
                     }
                 });
+
     }
 
     public void btnDone(View view) {
