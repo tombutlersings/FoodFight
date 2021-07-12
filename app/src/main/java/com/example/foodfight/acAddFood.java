@@ -30,6 +30,7 @@ public class acAddFood extends AppCompatActivity {
         searchFood = (EditText) findViewById(R.id.searchFood);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchResults = (ListView) findViewById(R.id.searchResults);
+        foodSearch();
 
 
     }
@@ -47,12 +48,15 @@ public class acAddFood extends AppCompatActivity {
                     @Override
                     public void onClick(View v){
                         String foodSearch = searchFood.getText().toString();
+                        Toast.makeText(acAddFood.this,foodSearch, Toast.LENGTH_LONG).show();
                         try {
                             /**
                              * STEP 1
                              * This makes a new thread, calls the ApiHandler.java , and send the activity and foodsearch
                              */
-                            new Thread (new ApiHandler(acAddFood.this, foodSearch));
+                            onViewCreated onViewCreatedOne = new onViewCreated(acAddFood.this, foodSearch);
+
+//                            new Thread(new ApiHandler(acAddFood.this, foodSearch)).start();
                             Toast.makeText(acAddFood.this,"Search Button Clicked", Toast.LENGTH_LONG).show();
 
                         } catch (IOException e) {

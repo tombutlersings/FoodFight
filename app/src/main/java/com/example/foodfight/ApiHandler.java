@@ -35,8 +35,10 @@ public class ApiHandler implements Runnable {
     /**  STEP 2 - uses the foodsearch to get results
      * sets the results list to global foodSearchResults
      * Then run() uses it to open a responding thread
+     * @param activityName
+     * @param foodSearch
      */
-    public ApiHandler(Activity activityName, String foodSearch) throws IOException {
+    public ApiHandler(acAddFood activityName, String foodSearch) throws IOException {
         //code goes here
         this.activityName = activityName;
         this.foodSearch = foodSearch;
