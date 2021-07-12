@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
@@ -41,6 +42,8 @@ public class ApiHandler implements Runnable {
         this.foodSearch = foodSearch;
 
         ArrayList<List> foodSearchResultsInternal = NutriSearch(foodSearch);
+        if (!(foodSearchResultsInternal.size() >= 0)) {
+        } else {Toast.makeText(this.activityName,"Step 2 Reached!", Toast.LENGTH_LONG).show();}
         //TODO: Figure out how to get foodSearchResults into a different thread and return the results to the acAddFood Search Results TextView
         //        Thread thread = new Thread();
         //        thread.start();
@@ -94,7 +97,7 @@ public class ApiHandler implements Runnable {
                              * Populates the list view with
                              */
                             // Changing the status area to show 'completed search'
-                            TextView searchStatus = refActivity.findViewById(R.id.searchStatus);
+                            TextView searchStatus = refActivity.findViewById(R.id.searchStatusTitle);
                             searchStatus.setText("Search complete!");
 
                             // todo: IMPORTANT

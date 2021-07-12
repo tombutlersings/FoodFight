@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +19,7 @@ import java.io.IOException;
 public class acAddFood extends AppCompatActivity {
 
     EditText searchFood;
+    TextView searchStatus;
     Button searchButton;
     ListView searchResults;
 
@@ -50,6 +53,7 @@ public class acAddFood extends AppCompatActivity {
                              * This makes a new thread, calls the ApiHandler.java , and send the activity and foodsearch
                              */
                             new Thread (new ApiHandler(acAddFood.this, foodSearch));
+                            Toast.makeText(acAddFood.this,"Search Button Clicked", Toast.LENGTH_LONG).show();
 
                         } catch (IOException e) {
                             e.printStackTrace();

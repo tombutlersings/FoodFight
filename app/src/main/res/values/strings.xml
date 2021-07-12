@@ -4,7 +4,8 @@
     <string name="main_label01">Daily Goal</string>
     <string name="main_label02">Weekly Goal</string>
 
-
+    <string name="add_custom_food">Add Custom Food</string>
+    <string name="search_status">Status:</string>
     <string name="add_food_header">Add Food</string>
     <string name="food_search_hint">Enter Food Name Here</string>
     <string name="food_search_btn">Search</string>

@@ -163,7 +163,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                FoodItem food = new FoodItem(null,0,0);
+                FoodItem food = new FoodItem(1,null,150);
                 food.setId(Integer.parseInt(cursor.getString(0)));
                 food.setName(cursor.getString(1));
                 food.setCalories(Integer.parseInt(cursor.getString(2)));

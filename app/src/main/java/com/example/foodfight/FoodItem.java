@@ -9,9 +9,9 @@ public class FoodItem {
     public static int Id;
     public static String FOOD_NAME;
     public static int FOOD_CALORIES;
-    public static float FOOD_METRIC_SERVING;
+    public static double FOOD_METRIC_SERVING;
     public static String FOOD_METRIC_SERVING_UNIT;
-    public static float FOOD_HOUSEHOLD_SERVING;
+    public static double FOOD_HOUSEHOLD_SERVING;
     public static String FOOD_HOUSEHOLD_UNIT;
     public static String FOOD_MANUFACTURER;
     public static String SourceDB;
@@ -20,7 +20,7 @@ public class FoodItem {
     // If the suggestion 1 is implemented, this construction won't
     // need a calories parameter.
 
-    public FoodItem(int Id, String name, int calories, float serving_size_m, String serving_size_m_unit, float serving_size_hh, String serving_size_hh_unit,  String manufacturer, String sourceDB) {
+    public FoodItem(int Id, String name, int calories, double serving_size_m, String serving_size_m_unit, double serving_size_hh, String serving_size_hh_unit,  String manufacturer, String sourceDB) {
         this.FOOD_NAME = name;
         this.Id = Id;
         this.FOOD_CALORIES = calories;
@@ -32,11 +32,11 @@ public class FoodItem {
         this.SourceDB = sourceDB;
 
     }
-    public FoodItem(int Id, String name,  int calories, float serving_size_m, String serving_size_m_unit, float serving_size_hh, String serving_size_hh_unit,  String manufacturer) {
+    public FoodItem(int Id, String name,  int calories, double serving_size_m, String serving_size_m_unit, double serving_size_hh, String serving_size_hh_unit,  String manufacturer) {
         this(Id, name, calories, serving_size_m, serving_size_m_unit, serving_size_hh, serving_size_hh_unit,  manufacturer, null);
     }
 
-    public FoodItem(String name, int Id, int calories) {
+    public FoodItem(int Id, String name,  int calories) {
         this(Id, name,  calories, 0, null, 0, null, null, null);
     }
 
@@ -82,7 +82,7 @@ public class FoodItem {
         this.FOOD_CALORIES = calories;
     }
 
-    public float getServingSize() {
+    public double getServingSize() {
         return FOOD_METRIC_SERVING;
     }
 
@@ -92,7 +92,7 @@ public class FoodItem {
 
     public static void setFoodMetricServingUnit(String foodMetricServingUnit) { FOOD_METRIC_SERVING_UNIT = foodMetricServingUnit; }
 
-    public static float getFoodHouseholdServing() { return FOOD_HOUSEHOLD_SERVING; }
+    public static double getFoodHouseholdServing() { return FOOD_HOUSEHOLD_SERVING; }
 
     public static void setFoodHouseholdServing(float foodHouseholdServing) { FOOD_HOUSEHOLD_SERVING = foodHouseholdServing; }
 
