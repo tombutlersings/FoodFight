@@ -19,10 +19,16 @@ public class acFoodList extends AppCompatActivity {
     // ListView for the list of foods that gets displayed
     // private ListView foodListView;
 
+    //information to get the date information from the database
+    Intent intent = getIntent();
+    String selectedDate = intent.getStringExtra("MealDate");
+    String mealType = intent.getStringExtra("MealType");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
+
     }
     //create date obj
     //date have meals inside
@@ -49,6 +55,9 @@ public class acFoodList extends AppCompatActivity {
         // Called when user taps the Add Food button
     public void btnAddFood(View view) {
         Intent intent = new Intent(this, acAddFood.class);
+        //pass information for data base access
+        intent.putExtra("MealDate",selectedDate);
+        intent.putExtra("MealType",mealType);
         startActivity(intent);
     }
 
