@@ -1,5 +1,6 @@
 package com.example.foodfight;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,12 @@ public class acFoodItem extends AppCompatActivity {
     String servingUnit;
     int hhServings;
     String hhServingUnits;
+
+
+    //Variables to get database information
+    Intent intent = getIntent();
+    String selectedDate = intent.getStringExtra("MealDate");
+    String mealType = intent.getStringExtra("MealType");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

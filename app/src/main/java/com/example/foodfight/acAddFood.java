@@ -4,6 +4,7 @@ package com.example.foodfight;
  */
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,21 @@ public class acAddFood extends AppCompatActivity {
     TextView searchStatus;
     Button searchButton;
     ListView searchResults;
+
+    //variables for database access
+    Intent intent = getIntent();
+    String selectedDate = intent.getStringExtra("MealDate");
+    String mealType = intent.getStringExtra("MealType");
+
+    /*
+    put the next lines where we create the food item activity
+     Intent intent = new Intent(this, acFoodItem.class);
+        //pass information for data base access
+        intent.putExtra("MealDate",selectedDate);
+        intent.putExtra("MealType",mealType);
+        startActivity(intent);
+     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
