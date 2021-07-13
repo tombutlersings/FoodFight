@@ -30,7 +30,7 @@ public class Date {
         FoodItem salt = new FoodItem(4,"salt",  45);
 
         // Store foods of the date in meal Items.
-        MealItem breakfast = new MealItem(Breakfast, sugar, flour);
+        /*MealItem breakfast = new MealItem(Breakfast, sugar, flour);
         MealItem lunch = new MealItem(Lunch, oil, salt);
         MealItem dinner = new MealItem(Dinner, flour, oil);
         MealItem afternoonSnack = new MealItem(AfternoonSnack, sugar, oil);
@@ -41,7 +41,7 @@ public class Date {
         mealList.add(lunch);
         mealList.add(dinner);
         mealList.add(afternoonSnack);
-        mealList.add(eveningSnack);
+        mealList.add(eveningSnack);*/
     }
 
     public static ArrayList<MealItem> getDate() {
