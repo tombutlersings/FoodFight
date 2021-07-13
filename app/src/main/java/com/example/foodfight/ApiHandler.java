@@ -50,6 +50,8 @@ public class ApiHandler implements Runnable {
         //        Thread thread = new Thread();
         //        thread.start();
         foodSearchResults = foodSearchResultsInternal;
+//        new FoodResultThreadCreator(foodSearchResults);
+
 
     }
     public ArrayList<List> NutriSearch(String foodSearch) throws IOException {
@@ -88,28 +90,33 @@ public class ApiHandler implements Runnable {
                         public void run() {
                             //everything we want to change in the user interface goes here
                             // TODO: send apiListOfResults to the screen
-                            try {
-                                ArrayList<List> foodlist = NutriSearch(foodSearch);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                            /**
-                             * STEP 3 - The responding thread passes back the results to the acAddFood screen
-                             * Populates the list view with
-                             */
-                            // Changing the status area to show 'completed search'
+                            //                                ArrayList<List> foodlist = NutriSearch(foodSearch);
                             TextView searchStatus = refActivity.findViewById(R.id.searchStatusTitle);
                             searchStatus.setText("Search complete!");
-                            ArrayList<String> testList = new ArrayList<String>();
-                            testList.add("one");
-                            testList.add("two");
+                            ArrayList<String> testList = new ArrayList<>();
+                            for (int i = 0; i < foodSearchResults.size(); i++) {
+                                List foodResultOne = foodSearchResults.get(i);
+                                String foodNameOne = (String) foodResultOne.get(0);
+                                String foodManufacturer = (String) foodResultOne.get(1);
+                                String foodCalories = ((Double) foodResultOne.get(2)).toString();
+                                String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  " + foodCalories);
+                                testList.add(line);
+                            }
+//                            testList.add("one");
+//                            testList.add("two");
 
                             // todo: IMPORTANT
                             // POPULATING THE SEARCH RESULTS
                             ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, testList);
                             ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
                             listView.setAdapter(itemsAdapter);
+
+                            /**
+                             * STEP 3 - The responding thread passes back the results to the acAddFood screen
+                             * Populates the list view with
+                             */
+                            // Changing the status area to show 'completed search'
+
 
 
 
