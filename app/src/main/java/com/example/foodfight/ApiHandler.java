@@ -70,7 +70,7 @@ public class ApiHandler implements Runnable {
             apiSearchResults.add(manufacturer);
 
             System.out.println("  Calories:" + NutritioixBrandedFoodResults.get(0).get("nf_calories"));
-            int calories = (int) NutritioixBrandedFoodResults.get(0).get("nf_calories");
+            double calories = (double) NutritioixBrandedFoodResults.get(0).get("nf_calories");
             apiSearchResults.add(calories);
             apiListOfResults.add(apiSearchResults);
         }
@@ -101,10 +101,13 @@ public class ApiHandler implements Runnable {
                             // Changing the status area to show 'completed search'
                             TextView searchStatus = refActivity.findViewById(R.id.searchStatusTitle);
                             searchStatus.setText("Search complete!");
+                            ArrayList<String> testList = new ArrayList<String>();
+                            testList.add("one");
+                            testList.add("two");
 
                             // todo: IMPORTANT
                             // POPULATING THE SEARCH RESULTS
-                            ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, foodSearchResults);
+                            ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, testList);
                             ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
                             listView.setAdapter(itemsAdapter);
 
