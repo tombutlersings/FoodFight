@@ -171,7 +171,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 foodList.add(food);
             } while (cursor.moveToNext());
         }
-
+        db.close();
         // return food list
         return foodList;
 

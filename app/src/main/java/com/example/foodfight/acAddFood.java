@@ -54,7 +54,7 @@ public class acAddFood extends AppCompatActivity {
                              * STEP 1
                              * This makes a new thread, calls the ApiHandler.java , and send the activity and foodsearch
                              */
-                            onViewCreated onViewCreatedOne = new onViewCreated(acAddFood.this, foodSearch);
+                            FoodSearchThreadCreator onViewCreatedOne = new FoodSearchThreadCreator(acAddFood.this, foodSearch);
 
 //                            new Thread(new ApiHandler(acAddFood.this, foodSearch)).start();
                             Toast.makeText(acAddFood.this,"Search Button Clicked", Toast.LENGTH_LONG).show();

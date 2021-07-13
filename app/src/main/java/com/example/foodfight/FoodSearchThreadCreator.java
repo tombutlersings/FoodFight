@@ -5,10 +5,10 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-public class onViewCreated {
+public class FoodSearchThreadCreator {
 
 
-    public onViewCreated(acAddFood acAddFood, String foodSearch) throws IOException {
+    public FoodSearchThreadCreator(acAddFood acAddFood, String foodSearch) throws IOException {
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > 8)
         {
