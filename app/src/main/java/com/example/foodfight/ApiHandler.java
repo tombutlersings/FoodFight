@@ -102,6 +102,9 @@ public class ApiHandler implements Runnable {
                                 String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  " + foodCalories);
                                 testList.add(line);
                             }
+                            // TODO Make each item a button that refers to an object (creates the object and then can
+
+
 //                            testList.add("one");
 //                            testList.add("two");
 
