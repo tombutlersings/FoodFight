@@ -16,7 +16,7 @@ public class FoodSearchThreadCreator {
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
             //your codes here
-            new ApiHandler(acAddFood, foodSearch);
+            new ApiHandler(acAddFood, foodSearch).run();
             Toast.makeText(acAddFood,"Search Button Clicked", Toast.LENGTH_LONG).show();
         }
     }

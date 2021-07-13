@@ -79,7 +79,7 @@ public class ApiHandler implements Runnable {
 
     @Override
     public void run() {
-        final Activity refActivity = activity;
+        final Activity refActivity = activityName;
         if ( refActivity != null) {
             refActivity.runOnUiThread(new Runnable() {
                 @Override
