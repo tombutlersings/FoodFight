@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acAddFood extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class acAddFood extends AppCompatActivity {
     ListView searchResults;
     String selectedDate;
     String mealType;
+    public ArrayList<List> foodSearchList;
 
     //variables for database access
     //Intent intent = getIntent();
@@ -116,24 +119,35 @@ public class acAddFood extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Dessert dessert = desserts.get(i);
-                switch(i) {
-                    case 0:
-                        Toast.makeText(acAddFood.this,"Item 0", Toast.LENGTH_LONG).show();
-                        break;
-                    case 1:
-                        Toast.makeText(acAddFood.this,"Item 1", Toast.LENGTH_LONG).show();
-                        break;
-                    case 2:
-                        Toast.makeText(acAddFood.this,"Item 2", Toast.LENGTH_LONG).show();
-                        break;
-                    case 3:
-                        Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
-                        foodItem.putExtra("MealDate",selectedDate);
-                        foodItem.putExtra("MealType",mealType);
-                        foodItem.putExtra("FoodType","apple");
-                        startActivity(foodItem);
-                        break;
-                }
+
+                //get the search list
+                foodSearchList = Goals.getFoodSearchList();
+                List foodData = foodSearchList.get(i);
+                Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
+                foodItem.putExtra("MealDate",selectedDate);
+                foodItem.putExtra("MealType",mealType);
+                foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
+                startActivity(foodItem);
+
+//
+//                switch(i) {
+//                    case 0:
+//                        Toast.makeText(acAddFood.this,"Item 0", Toast.LENGTH_LONG).show();
+//                        break;
+//                    case 1:
+//                        Toast.makeText(acAddFood.this,"Item 1", Toast.LENGTH_LONG).show();
+//                        break;
+//                    case 2:
+//                        Toast.makeText(acAddFood.this,"Item 2", Toast.LENGTH_LONG).show();
+//                        break;
+//                    case 3:
+//                        Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
+//                        foodItem.putExtra("MealDate",selectedDate);
+//                        foodItem.putExtra("MealType",mealType);
+//                        foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
+//                        startActivity(foodItem);
+//                        break;
+//                }
             }
         });
     }

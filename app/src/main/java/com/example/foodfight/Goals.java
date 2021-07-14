@@ -1,5 +1,8 @@
 package com.example.foodfight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Goals {
     private static int GoalDaily;
     public static int getDaily() { return GoalDaily; }
@@ -17,4 +20,7 @@ public class Goals {
     public static int getCurrentWeekly() { return CurrentWeekly; }
     public static void setCurrentWeekly(int currentWeekly) { CurrentWeekly = currentWeekly; }
 
+    private static ArrayList<List> foodSearchList;
+    public static ArrayList<List> getFoodSearchList() { return foodSearchList; }
+    public static void setFoodSearchList(ArrayList<List> foodSearchList) { Goals.foodSearchList = foodSearchList; }
 }

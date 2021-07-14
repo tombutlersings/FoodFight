@@ -6,15 +6,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class acFoodItem extends AppCompatActivity {
 
     String foodName;
     String manufacturer;
-    int calories;
+    float calories;
     int servings;
     String servingUnit;
     int hhServings;
     String hhServingUnits;
+    String selectedDate;
+    String mealType;
 
 
 
@@ -25,12 +29,15 @@ public class acFoodItem extends AppCompatActivity {
 
         //Variables to get database information
         Intent intent = getIntent();
-        String selectedDate = intent.getStringExtra("MealDate");
-        String mealType = intent.getStringExtra("MealType");
-        String foodType = intent.getStringExtra("FoodType");
+        selectedDate = intent.getStringExtra("MealDate");
+        mealType = intent.getStringExtra("MealType");
+        ArrayList<String> foodType = intent.getStringArrayListExtra("FoodType");
+        foodName = foodType.get(0);
+        manufacturer = foodType.get(1);
+        calories = Float.parseFloat(foodType.get(2));
 
+        Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(this, selectedDate + mealType + foodType, Toast.LENGTH_SHORT).show();
     }
     //  TODO: 1. get food information from database
     //  TODO: 2. display the food information, calories, name and the serving sizes with serving unit

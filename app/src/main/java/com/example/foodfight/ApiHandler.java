@@ -114,6 +114,17 @@ public class ApiHandler implements Runnable {
                             ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
                             listView.setAdapter(itemsAdapter);
 
+                            ArrayList<List> newList = new ArrayList<List>();
+                            for (int i = 0; i < foodSearchResults.size(); i++) {
+                                ArrayList subList = new ArrayList();
+                                List foodResultOne = foodSearchResults.get(i);
+                                subList.add((String) foodResultOne.get(0));
+                                subList.add((String) foodResultOne.get(1));
+                                subList.add(((Double) foodResultOne.get(2)).toString());
+                                newList.add(subList);
+                            }
+                            Goals.setFoodSearchList(newList);
+
                             /**
                              * STEP 3 - The responding thread passes back the results to the acAddFood screen
                              * Populates the list view with
