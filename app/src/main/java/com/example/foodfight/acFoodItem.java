@@ -14,7 +14,7 @@ public class acFoodItem extends AppCompatActivity {
     String foodName;
     String manufacturer;
     float calories;
-    int servings;
+    int servings = 0;
     String servingUnit;
     int hhServings;
     String hhServingUnits;
@@ -49,11 +49,17 @@ public class acFoodItem extends AppCompatActivity {
     // Called when user taps the red minus button
     public void btnCalorieDown(View view) {
         // TODO: Add code to decrement serving count IF current value is greater than zero
+        if (servings > 0) {
+            servings -= 1;
+        }
     }
 
     // Called when user taps the green plus button
     public void btnCalorieUp(View view) {
         // TODO: Add code to increment serving count (is there a max?)
+        if (servings >= 0) {
+            servings += 1;
+        }
     }
 
     // Called when user taps the blue Done button
