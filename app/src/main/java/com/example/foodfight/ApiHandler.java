@@ -91,8 +91,8 @@ public class ApiHandler implements Runnable {
                             //everything we want to change in the user interface goes here
                             // TODO: send apiListOfResults to the screen
                             //                                ArrayList<List> foodlist = NutriSearch(foodSearch);
-                            TextView searchStatus = refActivity.findViewById(R.id.searchStatusTitle);
-                            searchStatus.setText("Search complete!");
+                            // TextView searchStatus = refActivity.findViewById(R.id.searchStatusTitle);
+                            // searchStatus.setText("Search complete!");
                             ArrayList<String> testList = new ArrayList<>();
                             for (int i = 0; i < foodSearchResults.size(); i++) {
                                 List foodResultOne = foodSearchResults.get(i);

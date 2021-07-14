@@ -21,7 +21,7 @@ import java.io.IOException;
 public class acAddFood extends AppCompatActivity {
 
     EditText searchFood;
-    TextView searchStatus;
+    // TextView searchStatus;
     Button searchButton;
     ListView searchResults;
 
@@ -50,8 +50,9 @@ public class acAddFood extends AppCompatActivity {
         foodSearch();
         itemClick();
 
-
     }
+
+
     private Activity currentActivity = null;
     public Activity getCurrentActivity(){
         return currentActivity;
@@ -59,6 +60,8 @@ public class acAddFood extends AppCompatActivity {
     public void setCurrentActivity(Activity currentActivity){
         this.currentActivity = currentActivity;
     }
+
+
     // TODO: METHOD search for food
     public void foodSearch(){
         searchButton.setOnClickListener(
@@ -90,23 +93,23 @@ public class acAddFood extends AppCompatActivity {
     }
 
     // Todo: 2 threads (one for DB and one for Api)
-        //top five results from DB
-        //next five results from api
-            //todo: method to call apiHandlerClass
-                //provides the search string
+    // top five results from DB
+    // next five results from api
+    // todo: method to call apiHandlerClass
+    // provides the search string
 
 
-            // first internal search
+    // first internal search
     // TODO: METHOD display results
-        // TODO: Creating Connection between results and buttons
-        // TODO: Click on the result to bring that food up on the food item page.
-            // pass foodItem data to the acAddFood and AddFoodHandler screen
+    // TODO: Creating Connection between results and buttons
+    // TODO: Click on the result to bring that food up on the food item page.
+    // pass foodItem data to the acAddFood and AddFoodHandler screen
+
     public void itemClick(){
         ListView listView = findViewById(R.id.searchResults);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 //Dessert dessert = desserts.get(i);
                 switch(i) {
                     case 0:

@@ -37,8 +37,6 @@ public class acMeals extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy", Locale.getDefault());
         Calendar rightNow = Calendar.getInstance();
 
-
-
     }
 
     @Override
@@ -59,62 +57,62 @@ public class acMeals extends AppCompatActivity {
     }
 
     // Might have to rework the date handling
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1) {
-//            if (resultCode == RESULT_OK) {
-//                String result = "Calories for " + data.getStringExtra("result");
-//                dateView.setText(result);
-//            }
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String result = "Calories for " + data.getStringExtra("result");
+                dateView.setText(result);
+            }
+        }
+    }
 
     // Called when user taps the Breakfast button
     public void btnBreakfast(View view) {
         Intent intent = new Intent(this, acFoodList.class);
-        //intent.putExtra("MealDate",selectedDate);
-        //intent.putExtra("MealType","Breakfast");
+        intent.putExtra("MealDate",selectedDate);
+        intent.putExtra("MealType","Breakfast");
         startActivity(intent);
     }
 
     // Called when user taps the Snack 1 button
     public void btnSnack1(View view) {
         Intent intent = new Intent(this, acFoodList.class);
-        //intent.putExtra("MealDate",selectedDate);
-        //intent.putExtra("MealType","Snack1");
+        intent.putExtra("MealDate",selectedDate);
+        intent.putExtra("MealType","Snack1");
         startActivity(intent);
     }
 
     // Called when user taps the Lunch button
     public void btnLunch(View view) {
         Intent intent = new Intent(this, acFoodList.class);
-        //intent.putExtra("MealDate",selectedDate);
-        //intent.putExtra("MealType","Lunch");
+        intent.putExtra("MealDate",selectedDate);
+        intent.putExtra("MealType","Lunch");
         startActivity(intent);
     }
 
     // Called when user taps the Snack 2 button
     public void btnSnack2(View view) {
         Intent intent = new Intent(this, acFoodList.class);
-        //intent.putExtra("MealDate", selectedDate);
-        //intent.putExtra("MealType","Snack2");
+        intent.putExtra("MealDate", selectedDate);
+        intent.putExtra("MealType","Snack2");
         startActivity(intent);
     }
 
     // Called when user taps the Dinner button
     public void btnDinner(View view) {
         Intent intent = new Intent(this, acFoodList.class);
-        //intent.putExtra("MealDate",selectedDate);
-        //intent.putExtra("MealType","Dinner");
+        intent.putExtra("MealDate",selectedDate);
+        intent.putExtra("MealType","Dinner");
         startActivity(intent);
     }
 
     // Called when user taps the Snack 3 button
     public void btnSnack3(View view) {
         Intent intent = new Intent(this, acFoodList.class);
-        //intent.putExtra("MealDate",selectedDate);
-        //intent.putExtra("MealType","Snack3");
+        intent.putExtra("MealDate",selectedDate);
+        intent.putExtra("MealType","Snack3");
         startActivity(intent);
     }
 

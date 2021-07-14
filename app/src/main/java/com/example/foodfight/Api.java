@@ -24,6 +24,7 @@ public class Api {
         }).getType());
         return map;
     }
+
     public static int getTime() {
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("ss");
@@ -36,6 +37,7 @@ public class Api {
             return 1;
         }
     }
+
     public static String getApiKey(){
         int time = getTime();
         if (time==0){
@@ -48,6 +50,7 @@ public class Api {
             return USDA_API_KEY;
         }
     }
+
     public String UsdaApiNameSearch(String foodSearch){
         String USDA_API_KEY = getApiKey();
         String NUM_RESULTS = "7";
@@ -56,6 +59,7 @@ public class Api {
 
         return result;
     }
+
     public String UsdaApiIdSearch(String foodSearch){
         String USDA_API_KEY = "oMQt8MccUkatYncHPLhsLbTQldjBukgocgOTA6yl";
         // search by ID
@@ -63,6 +67,7 @@ public class Api {
         String result = "https://api.nal.usda.gov/fdc/v1/food/" + foodSearch + "?api_key=" + USDA_API_KEY;
         return result;
     }
+
     public String NutriNameSearch(String foodSearch){
 
         // search by ID
@@ -90,6 +95,7 @@ public class Api {
         Map<String, Object> foodCall = jsonToMap(apiResults.toString());
         return foodCall;
     }
+
     public static Map NutriApiEngine(String urlString) throws IOException {
         StringBuilder apiResults = new StringBuilder();
         URL url = new URL(urlString);
