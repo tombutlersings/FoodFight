@@ -53,7 +53,7 @@ public class acMeals extends AppCompatActivity {
     // Called when user taps Select Another Day
     public void getAnotherDay(View view) {
         Intent intent = new Intent(this, acCalendar.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
     // Might have to rework the date handling
@@ -62,8 +62,7 @@ public class acMeals extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                String result = "Calories for " + data.getStringExtra("result");
-                dateView.setText(result);
+                selectedDate = data.getStringExtra("result");
             }
         }
     }
