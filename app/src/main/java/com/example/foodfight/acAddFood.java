@@ -54,12 +54,16 @@ public class acAddFood extends AppCompatActivity {
         searchResults = (ListView) findViewById(R.id.searchResults);
         foodSearch();
         itemClick();
-        Intent intent = getIntent();
-        selectedDate = intent.getStringExtra("MealDate");
-        mealType = intent.getStringExtra("MealType");
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        selectedDate = intent.getStringExtra("MealDate");
+        mealType = intent.getStringExtra("MealType");
+    }
 
     private Activity currentActivity = null;
     public Activity getCurrentActivity(){

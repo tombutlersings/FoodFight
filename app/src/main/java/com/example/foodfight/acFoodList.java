@@ -34,7 +34,7 @@ public class acFoodList extends AppCompatActivity {
     }
 
     //create date obj
-    private Date date = new Date();
+    private Date date = new Date("");
 
     //date have meals inside
     //get total calories
@@ -52,7 +52,7 @@ public class acFoodList extends AppCompatActivity {
         Intent intent = getIntent();
         selectedDate = intent.getStringExtra("MealDate");
         mealType = intent.getStringExtra("MealType");
-        Log.i("FF_FoodList","Activity starts with " + mealType + " for " + selectedDate);
+        Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
 
