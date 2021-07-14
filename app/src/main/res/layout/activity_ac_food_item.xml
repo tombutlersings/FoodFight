@@ -46,6 +46,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="48dp"
         android:background="@color/DodgerBlue"
+        android:onClick="btnDone"
         app:layout_constraintBottom_toBottomOf="@+id/group"
         app:layout_constraintStart_toEndOf="@+id/iBtnPlus"
         app:srcCompat="@drawable/ic_baseline_done_36" />
@@ -56,6 +57,7 @@
         android:layout_height="36dp"
         android:layout_marginEnd="8dp"
         android:background="@color/FireBrick"
+        android:onClick="btnCalorieDown"
         app:layout_constraintBottom_toBottomOf="@+id/qtyDisplay"
         app:layout_constraintEnd_toStartOf="@+id/qtyDisplay"
         app:layout_constraintTop_toTopOf="@+id/qtyDisplay"
@@ -66,6 +68,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:background="@color/LimeGreen"
+        android:onClick="btnCalorieUp"
         app:layout_constraintBottom_toBottomOf="@+id/btnAdd"
         app:layout_constraintStart_toEndOf="@+id/group"
         app:layout_constraintTop_toTopOf="@+id/btnAdd"

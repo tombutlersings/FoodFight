@@ -2,6 +2,7 @@ package com.example.foodfight;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,5 +45,21 @@ public class acFoodItem extends AppCompatActivity {
     //  TODO: METHOD increasing quantity tied to green button
     //  TODO: METHOD decreasing quantity tied to red button
     //  TODO: METHOD SAVE DATA
+
+    // Called when user taps the red minus button
+    public void btnCalorieDown(View view) {
+        // TODO: Add code to decrement serving count IF current value is greater than zero
+    }
+
+    // Called when user taps the green plus button
+    public void btnCalorieUp(View view) {
+        // TODO: Add code to increment serving count (is there a max?)
+    }
+
+    // Called when user taps the blue Done button
+    public void btnDone(View view) {
+        // TODO: Add code to pass info back to acFoodList
+    }
+
 
 }
