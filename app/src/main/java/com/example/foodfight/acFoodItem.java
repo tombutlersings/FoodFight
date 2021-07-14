@@ -3,6 +3,7 @@ package com.example.foodfight;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,11 @@ public class acFoodItem extends AppCompatActivity {
     String hhServingUnits;
     String selectedDate;
     String mealType;
+    TextView tvFoodName;
+    TextView tvHHServingSize;
+    TextView tvHHServingSizeUnit;
+    TextView tvCalories;
+
 
 
 
@@ -30,9 +36,9 @@ public class acFoodItem extends AppCompatActivity {
 
         //Variables to get database information
         Intent intent = getIntent();
-        selectedDate = intent.getStringExtra("MealDate");
-        mealType = intent.getStringExtra("MealType");
-        ArrayList<String> foodType = intent.getStringArrayListExtra("FoodType");
+        selectedDate = intent.getStringExtra("MealDate"); // passes meal date between intents
+        mealType = intent.getStringExtra("MealType"); // passes meal type between intents
+        ArrayList<String> foodType = intent.getStringArrayListExtra("FoodType"); // passes list between intents
         foodName = foodType.get(0);
         manufacturer = foodType.get(1);
         calories = Float.parseFloat(foodType.get(2));

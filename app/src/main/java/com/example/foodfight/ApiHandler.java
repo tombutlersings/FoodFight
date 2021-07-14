@@ -7,7 +7,6 @@ package com.example.foodfight;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -95,17 +94,28 @@ public class ApiHandler implements Runnable {
                             // searchStatus.setText("Search complete!");
                             ArrayList<String> testList = new ArrayList<>();
                             for (int i = 0; i < foodSearchResults.size(); i++) {
+                                // todo everything has the same calories right now
+
+
+                                // TODO: also pass food object info for each line in case they need it to be created into a food object
+
+                                // below is creating string objects of just the 0) food name 1) manufacturer 2) calories
                                 List foodResultOne = foodSearchResults.get(i);
                                 String foodNameOne = (String) foodResultOne.get(0);
                                 String foodManufacturer = (String) foodResultOne.get(1);
                                 String foodCalories = ((Double) foodResultOne.get(2)).toString();
+                                // TODO: add household serving size
+                                // TODO: add household serving unit
+                                // TODO: add photo link
+                                // TODO: add household serving unit
                                 String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  " + foodCalories);
+                                // TODO: return some sort of list -
                                 testList.add(line);
                             }
                             // TODO Make each item a button that refers to an object (creates the object and then can
 
 
-//                            testList.add("one");
+//                            testList.add("one");ww
 //                            testList.add("two");
 
                             // todo: IMPORTANT
