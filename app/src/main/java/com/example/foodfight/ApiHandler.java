@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
@@ -34,17 +35,23 @@ public class ApiHandler implements Runnable {
     /**  STEP 2 - uses the foodsearch to get results
      * sets the results list to global foodSearchResults
      * Then run() uses it to open a responding thread
+     * @param activityName
+     * @param foodSearch
      */
-    public ApiHandler(Activity activityName, String foodSearch) throws IOException {
+    public ApiHandler(acAddFood activityName, String foodSearch) throws IOException {
         //code goes here
         this.activityName = activityName;
         this.foodSearch = foodSearch;
 
         ArrayList<List> foodSearchResultsInternal = NutriSearch(foodSearch);
+        if (!(foodSearchResultsInternal.size() >= 0)) {
+        } else {Toast.makeText(this.activityName,"Step 2 Reached!", Toast.LENGTH_LONG).show();}
         //TODO: Figure out how to get foodSearchResults into a different thread and return the results to the acAddFood Search Results TextView
         //        Thread thread = new Thread();
         //        thread.start();
         foodSearchResults = foodSearchResultsInternal;
+//        new FoodResultThreadCreator(foodSearchResults);
+
 
     }
     public ArrayList<List> NutriSearch(String foodSearch) throws IOException {
@@ -65,7 +72,7 @@ public class ApiHandler implements Runnable {
             apiSearchResults.add(manufacturer);
 
             System.out.println("  Calories:" + NutritioixBrandedFoodResults.get(0).get("nf_calories"));
-            int calories = (int) NutritioixBrandedFoodResults.get(0).get("nf_calories");
+            double calories = (double) NutritioixBrandedFoodResults.get(0).get("nf_calories");
             apiSearchResults.add(calories);
             apiListOfResults.add(apiSearchResults);
         }
@@ -74,7 +81,7 @@ public class ApiHandler implements Runnable {
 
     @Override
     public void run() {
-        final Activity refActivity = activity;
+        final Activity refActivity = activityName;
         if ( refActivity != null) {
             refActivity.runOnUiThread(new Runnable() {
                 @Override
@@ -83,25 +90,47 @@ public class ApiHandler implements Runnable {
                         public void run() {
                             //everything we want to change in the user interface goes here
                             // TODO: send apiListOfResults to the screen
-                            try {
-                                ArrayList<List> foodlist = NutriSearch(foodSearch);
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                            //                                ArrayList<List> foodlist = NutriSearch(foodSearch);
+                            // TextView searchStatus = refActivity.findViewById(R.id.searchStatusTitle);
+                            // searchStatus.setText("Search complete!");
+                            ArrayList<String> testList = new ArrayList<>();
+                            for (int i = 0; i < foodSearchResults.size(); i++) {
+                                List foodResultOne = foodSearchResults.get(i);
+                                String foodNameOne = (String) foodResultOne.get(0);
+                                String foodManufacturer = (String) foodResultOne.get(1);
+                                String foodCalories = ((Double) foodResultOne.get(2)).toString();
+                                String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  " + foodCalories);
+                                testList.add(line);
                             }
+                            // TODO Make each item a button that refers to an object (creates the object and then can
+
+
+//                            testList.add("one");
+//                            testList.add("two");
+
+                            // todo: IMPORTANT
+                            // POPULATING THE SEARCH RESULTS
+                            ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, testList);
+                            ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
+                            listView.setAdapter(itemsAdapter);
+
+                            ArrayList<List> newList = new ArrayList<List>();
+                            for (int i = 0; i < foodSearchResults.size(); i++) {
+                                ArrayList subList = new ArrayList();
+                                List foodResultOne = foodSearchResults.get(i);
+                                subList.add((String) foodResultOne.get(0));
+                                subList.add((String) foodResultOne.get(1));
+                                subList.add(((Double) foodResultOne.get(2)).toString());
+                                newList.add(subList);
+                            }
+                            Goals.setFoodSearchList(newList);
 
                             /**
                              * STEP 3 - The responding thread passes back the results to the acAddFood screen
                              * Populates the list view with
                              */
                             // Changing the status area to show 'completed search'
-                            TextView searchStatus = refActivity.findViewById(R.id.searchStatus);
-                            searchStatus.setText("Search complete!");
 
-                            // todo: IMPORTANT
-                            // POPULATING THE SEARCH RESULTS
-                            ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, foodSearchResults);
-                            ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
-                            listView.setAdapter(itemsAdapter);
 
 
 

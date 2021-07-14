@@ -106,24 +106,60 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     /*** TODO get the meal query into its appropriate object */
     //Gets a Meal and all foods added to it
-    public void GetMeal(String date, String mealName){
+    public MealItem GetMeal(String date, String mealName){
         SQLiteDatabase db = this.getReadableDatabase();
         //gets information for a meal
-        db.execSQL("");
-        /*
-        this query gets the information from a meal
-        SELECT meal.date, meal_food.servings, servings * calories as total_calories, food.name. food.id
-            FROM meal
-	            LEFT JOIN meal_food ON meal.mealID = meal_food.mealID
-                LEFT JOIN food ON meal_food.foodID = food.foodID
-        WHERE meal.date = date AND mealName = mealName
-         */
+
+        // gets all foods for a meal
+        ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
+        // Select All Query
+        String selectQuery = "SELECT " + FOOD_TABLE_NAME +".* " +
+                                "FROM " + MEAL_TABLE_NAME +
+                                " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
+                                " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
+                                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = " + mealName;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                FoodItem food = new FoodItem(1,null,150);
+                food.setId(Integer.parseInt(cursor.getString(0)));
+                food.setName(cursor.getString(1));
+                food.setCalories(Integer.parseInt(cursor.getString(2)));
+                food.setFoodHouseholdServing(Integer.parseInt(cursor.getString(3)));
+                food.setFoodHouseholdUnit(cursor.getString(4));
+                food.setServingSize(Integer.parseInt(cursor.getString(5)));
+                food.setFoodMetricServingUnit(cursor.getString(6));
+                food.setFoodManufacturer(cursor.getString(7));
+                food.setSourceDB(cursor.getString(8));
+
+                // Adding contact to list
+                foodList.add(food);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+        String mealIDQuery = "SELECT " + MEAL_TABLE_NAME + "." + MEAL_ID +
+                " FROM " + MEAL_TABLE_NAME +
+                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = " + mealName;
+
+        cursor = db.rawQuery(mealIDQuery, null);
+
+        Integer id = null;
+
+        if (cursor.moveToFirst()) {
+            id = Integer.parseInt(cursor.getString(0));
+        }
+
+        MealItem meal = new MealItem(id, mealName, foodList);
+        // return food list
+        return meal;
+
     }
 
-    public void DailyCalories(){
-        // Handled Elsewhere, will delete if no longer needed
-        //gets the calories for a day
-    }
+
 
 
     //adds a food to the database using a FoodItem object
@@ -163,15 +199,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                FoodItem food = new FoodItem(null,0,0);
+                FoodItem food = new FoodItem(1,null,150);
                 food.setId(Integer.parseInt(cursor.getString(0)));
                 food.setName(cursor.getString(1));
                 food.setCalories(Integer.parseInt(cursor.getString(2)));
+                food.setFoodHouseholdServing(Integer.parseInt(cursor.getString(3)));
+                food.setFoodHouseholdUnit(cursor.getString(4));
+                food.setServingSize(Integer.parseInt(cursor.getString(5)));
+                food.setFoodMetricServingUnit(cursor.getString(6));
+                food.setFoodManufacturer(cursor.getString(7));
+                food.setSourceDB(cursor.getString(8));
+
                 // Adding contact to list
                 foodList.add(food);
             } while (cursor.moveToNext());
         }
-
+        db.close();
         // return food list
         return foodList;
 

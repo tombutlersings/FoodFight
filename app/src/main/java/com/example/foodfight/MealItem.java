@@ -1,23 +1,26 @@
 package com.example.foodfight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MealItem {
-    private MealsEnum name; //from meals enum
+    public Integer ID;
+    private String name; //from meals enum
     //private int totalCalories; // math total for calories in the food lists of the meals
-    public static final ArrayList<FoodItem> foodItems = new ArrayList<>();
+    public ArrayList<FoodItem> foodItems = new ArrayList<>();
 
     // Constructor for storing a food item
     // (object of the FoodItem class) in
     // foodItems array.
-    public MealItem(MealsEnum name, FoodItem item1, FoodItem item2) {
+    public MealItem(Integer ID, String name, ArrayList<FoodItem> foods) {
         this.name = name;
-
-        foodItems.add(item1);
-        foodItems.add(item2);
+        this.foodItems = foods;
+        this.ID = ID;
+        //foodItems.add(item1);
+        //foodItems.add(item2);
     }
 
-    public MealsEnum getMealName() {return name;}
+    public String getMealName() {return name;}
 
     // Find the total calories of all food.
     public int getTotalCalories() {
@@ -30,6 +33,10 @@ public class MealItem {
         }
 
         return totalCalories;
+    }
+
+    public void addFoodToList(FoodItem food){
+        foodItems.add(food);
     }
 }
 

@@ -49,13 +49,15 @@ public class MainActivity extends AppCompatActivity {
         if (name.equalsIgnoreCase("Your name")) {
             Intent intent = new Intent(this, acUserProfile.class);
             startActivity(intent);
-
         }
         // VERIFIES THE DATABASE IS THERE
         // TODO: REMOVE THIS FOR FINAL CODE
-        FoodItem apple = new FoodItem("apple",1,150);
-        FoodItem apple2 = new FoodItem(1,"1% LOWFAT MILK",88,240,"ml",1,"cup","Target Stores");
+        FoodItem apple = new FoodItem(1,"apple",150);
+        FoodItem apple2 = new FoodItem(569,"1% LOWFAT MILK",88,240,"ml",1,"cup","Target Stores");
         db.AddFood(apple);
+        db.AddFood(apple2);
+        FoodLibraryCreator foodLib = new FoodLibraryCreator();
+        foodLib.libCreator(this);
         boolean test = doesDatabaseExist(this,"food.db");
         if (!test) {
             Toast.makeText(MainActivity.this,"DB does not Exist", Toast.LENGTH_LONG).show();
