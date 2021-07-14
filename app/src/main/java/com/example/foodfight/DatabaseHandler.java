@@ -104,7 +104,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    /*** TODO get the meal query into its appropriate object */
+
     //Gets a Meal and all foods added to it
     public MealItem GetMeal(String date, String mealName){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -143,7 +143,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         String mealIDQuery = "SELECT " + MEAL_TABLE_NAME + "." + MEAL_ID +
                 " FROM " + MEAL_TABLE_NAME +
-                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = " + mealName;
+                " WHERE " + MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = " + mealName;
 
         cursor = db.rawQuery(mealIDQuery, null);
 
@@ -262,14 +262,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-//    public boolean VerifyExistance(){
-//        // query to the database food table will go
-//        if ( SELECT COUNT(*) * FROM FOOD_TABLE){
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    public Integer getIdFromAPI(FoodItem foodItem){
+        SQLiteDatabase db = this.getWritableDatabase();
+        //adds the food to the database
+        this.AddFood(foodItem);
+
+
+        String sql = "SELECT * FROM " + FOOD_TABLE_NAME +
+                " WHERE " + FOOD_NAME + " = " + foodItem.getName() + " AND " +
+                            FOOD_CALORIES + " = " + foodItem.getCalories() + " AND " +
+                            FOOD_HOUSEHOLD_SERVING + " = " + foodItem.getFoodHouseholdServing() + " AND " +
+                            FOOD_HOUSEHOLD_UNIT + " = " + foodItem.getFoodHouseholdUnit() + " AND " +
+                            FOOD_METRIC_SERVING + " = " + foodItem.getServingSize() + " AND " +
+                            FOOD_METRIC_SERVING_UNIT + " = " + foodItem.getFoodMetricServingUnit() + " AND " +
+                            FOOD_MANUFACTURER + " = " + foodItem.getFoodManufacturer() + " AND " +
+                            "SourceDB" + " = " + foodItem.getSourceDB();
+
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor !=null)
+            cursor.moveToFirst();
+            Integer id = Integer.parseInt(cursor.getString(0));
+
+
+
+        return id;
+    };
+
+
 
 
 
