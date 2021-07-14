@@ -24,6 +24,8 @@ public class acAddFood extends AppCompatActivity {
     // TextView searchStatus;
     Button searchButton;
     ListView searchResults;
+    String selectedDate;
+    String mealType;
 
     //variables for database access
     //Intent intent = getIntent();
@@ -49,6 +51,9 @@ public class acAddFood extends AppCompatActivity {
         searchResults = (ListView) findViewById(R.id.searchResults);
         foodSearch();
         itemClick();
+        Intent intent = getIntent();
+        selectedDate = intent.getStringExtra("MealDate");
+        mealType = intent.getStringExtra("MealType");
 
     }
 
@@ -123,6 +128,9 @@ public class acAddFood extends AppCompatActivity {
                         break;
                     case 3:
                         Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
+                        foodItem.putExtra("MealDate",selectedDate);
+                        foodItem.putExtra("MealType",mealType);
+                        foodItem.putExtra("FoodType","apple");
                         startActivity(foodItem);
                         break;
                 }
