@@ -24,9 +24,13 @@ public class acFoodList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
     }
+
     //create date obj
+    private Date date = new Date();
+
     //date have meals inside
-    //get toal calories
+    //get total calories
+    public int totalCalories;
 
     // TODO: Drop down menu for the meal [PSP: Change to fixed label - populate from transfer of data from intent]
     // TODO: Display the date, items of food + quantities + total Calories  in the meal
@@ -52,6 +56,17 @@ public class acFoodList extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
+     * Assumming this activity class has total calories variable of
+     * all the displayed food. The btnOk method will update
+     * acMeals by forwarding totalCalories of foods.
+     */
+    private void btnOk(View view) {
+        Intent resultIntent = new Intent(this, acMeals.class);
+        resultIntent.putExtra("result", totalCalories);
+        setResult(RESULT_OK, resultIntent);
+        this.finish();
+    }
 
     // This is where the list of foods for the selected day get populated into the ListView
     // This needs to be refactored to match the actual names of classes and methods

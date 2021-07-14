@@ -16,10 +16,6 @@ public class FoodItem {
     public static String FOOD_MANUFACTURER;
     public static String SourceDB;
 
-    // Suggestion 2:
-    // If the suggestion 1 is implemented, this construction won't
-    // need a calories parameter.
-
     public FoodItem(int Id, String name, int calories, float serving_size_m, String serving_size_m_unit, float serving_size_hh, String serving_size_hh_unit,  String manufacturer, String sourceDB) {
         this.FOOD_NAME = name;
         this.Id = Id;
@@ -72,8 +68,7 @@ public class FoodItem {
         Id = id;
     }
 
-    // Suggestion 1:
-    // This method should get calories data of food from FoodLibrary.json
+
     public int getCalories() {
         return FOOD_CALORIES;
     }
