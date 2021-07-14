@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -47,6 +48,7 @@ public class acAddFood extends AppCompatActivity {
         searchButton = (Button) findViewById(R.id.searchButton);
         searchResults = (ListView) findViewById(R.id.searchResults);
         foodSearch();
+        itemClick();
 
 
     }
@@ -99,5 +101,30 @@ public class acAddFood extends AppCompatActivity {
         // TODO: Creating Connection between results and buttons
         // TODO: Click on the result to bring that food up on the food item page.
             // pass foodItem data to the acAddFood and AddFoodHandler screen
+    public void itemClick(){
+        ListView listView = findViewById(R.id.searchResults);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //Dessert dessert = desserts.get(i);
+                switch(i) {
+                    case 0:
+                        Toast.makeText(acAddFood.this,"Item 0", Toast.LENGTH_LONG).show();
+                        break;
+                    case 1:
+                        Toast.makeText(acAddFood.this,"Item 1", Toast.LENGTH_LONG).show();
+                        break;
+                    case 2:
+                        Toast.makeText(acAddFood.this,"Item 2", Toast.LENGTH_LONG).show();
+                        break;
+                    //case 3:
+                    //Intent foodItem = new Intent(currentActivity, FoodItem.class);
+                    //startActivity(foodItem);
+                    //break;
+                }
+            }
+        });
+    }
 
 }
