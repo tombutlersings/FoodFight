@@ -25,9 +25,9 @@ public class acAddFood extends AppCompatActivity {
     ListView searchResults;
 
     //variables for database access
-    Intent intent = getIntent();
-    String selectedDate = intent.getStringExtra("MealDate");
-    String mealType = intent.getStringExtra("MealType");
+    //Intent intent = getIntent();
+    //String selectedDate = intent.getStringExtra("MealDate");
+    //String mealType = intent.getStringExtra("MealType");
 
     /*
     put the next lines where we create the food item activity

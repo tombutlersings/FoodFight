@@ -21,8 +21,8 @@ public class acFoodList extends AppCompatActivity {
 
     //information to get the date information from the database
     Intent intent = getIntent();
-    String selectedDate = intent.getStringExtra("MealDate");
-    String mealType = intent.getStringExtra("MealType");
+    //String selectedDate = intent.getStringExtra("MealDate");
+    //String mealType = intent.getStringExtra("MealType");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +56,8 @@ public class acFoodList extends AppCompatActivity {
     public void btnAddFood(View view) {
         Intent intent = new Intent(this, acAddFood.class);
         //pass information for data base access
-        intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealType",mealType);
+        //intent.putExtra("MealDate",selectedDate);
+        //intent.putExtra("MealType",mealType);
         startActivity(intent);
     }
 
