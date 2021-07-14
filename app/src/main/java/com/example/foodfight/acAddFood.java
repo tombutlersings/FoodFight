@@ -118,10 +118,10 @@ public class acAddFood extends AppCompatActivity {
                     case 2:
                         Toast.makeText(acAddFood.this,"Item 2", Toast.LENGTH_LONG).show();
                         break;
-                    //case 3:
-                    //Intent foodItem = new Intent(currentActivity, FoodItem.class);
-                    //startActivity(foodItem);
-                    //break;
+                    case 3:
+                        Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
+                        startActivity(foodItem);
+                        break;
                 }
             }
         });

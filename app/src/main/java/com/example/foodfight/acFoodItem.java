@@ -17,9 +17,9 @@ public class acFoodItem extends AppCompatActivity {
 
 
     //Variables to get database information
-    Intent intent = getIntent();
-    String selectedDate = intent.getStringExtra("MealDate");
-    String mealType = intent.getStringExtra("MealType");
+    //Intent intent = getIntent();
+    //String selectedDate = intent.getStringExtra("MealDate");
+    //String mealType = intent.getStringExtra("MealType");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
