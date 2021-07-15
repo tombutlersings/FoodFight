@@ -35,7 +35,7 @@ Phillip Proctor"
     <string name="food_item_label01">per serving</string>
 
 
-    <string name="food_list_header">[acFoodList] Meal content</string>
+    <string name="food_list_header">What you\'ve eaten</string>
     <string name="food_list_label01">Selected Meal</string>
     <string name="food_list_label02">Total Meal Calories:</string>
     <string name="food_list_button01">Add Food</string>

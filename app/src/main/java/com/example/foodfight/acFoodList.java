@@ -1,9 +1,5 @@
 package com.example.foodfight;
 
-/* This activity is where the embedded food list can be edited.  Adding new items
- * to the list navigates to the MenuEditor activity
- * TODO: This list is within the Meal, correct? - Tom 8-jun-21
- */
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,12 +12,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class acFoodList extends AppCompatActivity {
-    // ListView for the list of foods that gets displayed
-    // private ListView foodListView;
-
-
     String selectedDate;
     String mealType;
+    String totalCalories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +26,6 @@ public class acFoodList extends AppCompatActivity {
 
     }
 
-    //create date obj
-    private Date date = new Date("");
-
-    //date have meals inside
-    //get total calories
-    public int totalCalories;
-
-    // TODO: Drop down menu for the meal [PSP: Change to fixed label - populate from transfer of data from intent]
-    // TODO: Display the date, items of food + quantities + total Calories  in the meal
-    // TODO: METHOD AddFood
-    // TODO: Show mealList for the selected Date
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -56,9 +36,18 @@ public class acFoodList extends AppCompatActivity {
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
 
+        /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be
+                 pushed into the ListView foodListView
+         */
+
+        /* TODO: The total calories need to be collected from every item in foodListView and set
+                 into TextView tvCalories
+         */
+
+
     }
 
-        // Called when user taps the Add Food button
+    // Called when user taps the Add Food button
     public void btnAddFood(View view) {
         Intent acAddFood = new Intent(this, acAddFood.class);
         //pass information for data base access
@@ -67,26 +56,12 @@ public class acFoodList extends AppCompatActivity {
         startActivity(acAddFood);
     }
 
-    /*
-     * Assumming this activity class has total calories variable of
-     * all the displayed food. The btnOk method will update
-     * acMeals by forwarding totalCalories of foods.
-     */
-    private void btnOk(View view) {
-        Intent resultIntent = new Intent(this, acMeals.class);
-        resultIntent.putExtra("result", totalCalories);
-        setResult(RESULT_OK, resultIntent);
-        this.finish();
-    }
+    /* TODO: When an item in foodListView is tapped, that information should be extracted
+             and sent to acFoodItem (via Intent) where the amount of food (and its calories)
+             is increased or decreased.  acFoodItem will drop back to this activity when
+             the blue checkmark is touched where onResume will update the list.
+    */
 
-    // This is where the list of foods for the selected day get populated into the ListView
-    // This needs to be refactored to match the actual names of classes and methods
-    //   that will feedback the meal items for a certain day
-//    public void displayMealItems(MealItem mealItem) {
-//        ArrayAdapter<MealItem> adapter = new ArrayAdapter<>
-//                (this, android.R.layout.simple_list_item_1,mealItem.getMealItems());
-//        foodListView.setAdapter(adapter);
-//    }
 
 
 

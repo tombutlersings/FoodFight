@@ -11,15 +11,12 @@ import java.util.ArrayList;
 
 public class acFoodItem extends AppCompatActivity {
 
-    String foodName;
-    String manufacturer;
+    String foodName, manufacturer, selectedDate, mealType;
     float calories;
     int servings = 0;
     String servingUnit;
-    int hhServings;
     String hhServingUnits;
-    String selectedDate;
-    String mealType;
+    int hhServings;
 
 
 
@@ -39,12 +36,11 @@ public class acFoodItem extends AppCompatActivity {
 
         Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
 
+
+
+
+
     }
-    //  TODO: 1. get food information from database
-    //  TODO: 2. display the food information, calories, name and the serving sizes with serving unit
-    //  TODO: METHOD increasing quantity tied to green button
-    //  TODO: METHOD decreasing quantity tied to red button
-    //  TODO: METHOD SAVE DATA
 
     // Called when user taps the red minus button
     public void btnCalorieDown(View view) {
@@ -57,14 +53,15 @@ public class acFoodItem extends AppCompatActivity {
     // Called when user taps the green plus button
     public void btnCalorieUp(View view) {
         // TODO: Add code to increment serving count (is there a max?)
-        if (servings >= 0) {
             servings += 1;
-        }
     }
 
     // Called when user taps the blue Done button
     public void btnDone(View view) {
-        // TODO: Add code to pass info back to acFoodList
+        /* TODO: Code to calculate calories from the given servings (is this being kept in the
+                 DB for later use/update?).  The fooditem should be updated for calorie count
+                 when passed back to acFoodList.
+         */
     }
 
 

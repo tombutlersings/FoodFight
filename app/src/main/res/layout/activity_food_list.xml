@@ -33,18 +33,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/food_list_label02"
         android:textAlignment="textEnd"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tCalories" />
+        app:layout_constraintEnd_toStartOf="@+id/tvCalories" />
 
     <TextView
-        android:id="@+id/tCalories"
+        android:id="@+id/tvCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textSize="20sp"
@@ -61,21 +61,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddFood" />
-
-    <Button
-        android:id="@+id/btnOK"
-        android:layout_width="94dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="btnOk"
-        android:text="OK"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvLabel02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodListView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
