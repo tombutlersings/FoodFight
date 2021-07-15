@@ -69,19 +69,19 @@ public class ApiHandler implements Runnable {
             apiSearchResults.add(food_name);
 
             // MANUFACTURER
-            String manufacturer = (String) NutritioixBrandedFoodResults.get(0).get("brand_name");
+            String manufacturer = (String) NutritioixBrandedFoodResults.get(i).get("brand_name");
             apiSearchResults.add(manufacturer);
 
             // CALORIES
-            double calories = (double) NutritioixBrandedFoodResults.get(0).get("nf_calories");
+            double calories = (double) NutritioixBrandedFoodResults.get(i).get("nf_calories");
             apiSearchResults.add(calories);
 
             // SERVING UNIT
-            String serving_unit = (String) NutritioixBrandedFoodResults.get(0).get("serving");
+            String serving_unit = (String) NutritioixBrandedFoodResults.get(i).get("serving_unit");
             apiSearchResults.add(serving_unit);
 
             // SERVING SIZE
-            double serving_size = (double) NutritioixBrandedFoodResults.get(0).get("serving_qty");
+            double serving_size = (double) NutritioixBrandedFoodResults.get(i).get("serving_qty");
             apiSearchResults.add(serving_size);
 
 //            LinkedTreeMap photo = (LinkedTreeMap) NutritioixBrandedFoodResults.get(0).get("photo");
@@ -127,7 +127,9 @@ public class ApiHandler implements Runnable {
                                 // TODO: add household serving unit
                                 // TODO: add photo link
                                 // TODO: add household serving unit
-                                String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  " + foodCalories);
+                                String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  "
+                                        + foodCalories + "  Brand: " + foodManufacturer
+                                        + "  Serving Unit: " + foodServingUnit + "  Serving size: " + foodServingSize);
                                 // TODO: return some sort of list -
                                 testList.add(line);
                             }

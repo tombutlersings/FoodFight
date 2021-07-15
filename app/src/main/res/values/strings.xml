@@ -9,6 +9,16 @@
     <string name="add_food_btn02">Search</string>
     <string name="add_food_etSearch">Enter Food Name Here</string>
 
+    <string name="food_name_header">Food Name: </string>
+    <string name="qty_header">Qty: </string>
+    <string name="serving_size_header">Serving Size: </string>
+    <string name="serving_unit_header">Serving Unit: </string>
+    <string name="total_calories_header">Total Calories: </string>
+    <string name="manufacturer_header">Brand Name: </string>
+    <string name="food_confirm">Confirm</string>
+    <string name="food_cancel">Cancel</string>
+    <string name="cals_header">Total Calories</string>
+
 
     <string name="app_about_header">About the App</string>
     <string name="app_about_0">CS 246, Spring 2021, Team 18 Project</string>

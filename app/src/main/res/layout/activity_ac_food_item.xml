@@ -7,38 +7,57 @@
     tools:context=".acFoodItem">
 
     <TextView
-        android:id="@+id/tvfoodName"
-        android:layout_width="wrap_content"
+        android:id="@+id/displayTotalCalories"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="FoodName"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/headerTotalCals" />
+
+    <TextView
+        android:id="@+id/displayManufacturer"
+        android:layout_width="99dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/headerManufacturer"
+        app:layout_constraintTop_toBottomOf="@+id/displayServingUnit" />
+
+    <TextView
+        android:id="@+id/titleFoodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/food_name_header"
         android:textAlignment="textStart"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvCalorieServing"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/food_item_label01"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvCalorieServing"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/serving_size_header"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCalorieServing" />
 
     <TextView
         android:id="@+id/tvCalorieServing"
-        android:layout_width="wrap_content"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="@string/meals_label03"
-        android:textAlignment="textEnd"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
-        app:layout_constraintEnd_toStartOf="@+id/textView17" />
+        android:textAlignment="textStart"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleFoodName" />
 
     <ImageButton
         android:id="@+id/btnAdd"
@@ -55,18 +74,19 @@
         android:id="@+id/iBtnMinus"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:background="@color/FireBrick"
         android:onClick="btnCalorieDown"
-        app:layout_constraintBottom_toBottomOf="@+id/tvServings"
-        app:layout_constraintEnd_toStartOf="@+id/tvServings"
-        app:layout_constraintTop_toTopOf="@+id/tvServings"
+        app:layout_constraintBottom_toBottomOf="@+id/showQty"
+        app:layout_constraintEnd_toStartOf="@+id/showQty"
+        app:layout_constraintTop_toTopOf="@+id/showQty"
         app:srcCompat="@drawable/ic_baseline_remove_24" />
 
     <ImageButton
         android:id="@+id/iBtnPlus"
         android:layout_width="36dp"
         android:layout_height="36dp"
+        android:layout_marginStart="24dp"
         android:background="@color/LimeGreen"
         android:onClick="btnCalorieUp"
         app:layout_constraintBottom_toBottomOf="@+id/btnAdd"
@@ -75,22 +95,22 @@
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <TextView
-        android:id="@+id/tvServings"
-        android:layout_width="wrap_content"
+        android:id="@+id/showQty"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/iBtnPlus"
         app:layout_constraintEnd_toStartOf="@+id/iBtnPlus"
-        app:layout_constraintTop_toTopOf="@+id/iBtnPlus" />
+        app:layout_constraintTop_toTopOf="@+id/iBtnPlus"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="btnAdd,iBtnMinus,tvServings,iBtnPlus"
+        app:constraint_referenced_ids="btnAdd,iBtnMinus,showQty,iBtnPlus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -98,47 +118,103 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvCalorieTotal"
+        android:id="@+id/headerQty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="4dp"
-        android:text="@string/meals_label03"
-        android:textAlignment="textEnd"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+        android:layout_marginBottom="24dp"
+        android:text="@string/qty_header"
+        app:layout_constraintBottom_toTopOf="@+id/showQty"
+        app:layout_constraintEnd_toEndOf="@+id/iBtnPlus"
+        app:layout_constraintStart_toStartOf="@+id/iBtnMinus" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/displayCalories"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/tvCalorieServing"
+        app:layout_constraintTop_toBottomOf="@+id/displayFood" />
+
+    <TextView
+        android:id="@+id/displayFood"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/titleFoodName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/displayServingSize"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/displayCalories" />
+
+    <TextView
+        android:id="@+id/displayServingUnit"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/headerServingUnit"
+        app:layout_constraintTop_toBottomOf="@+id/displayServingSize" />
+
+    <TextView
+        android:id="@+id/headerServingUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/food_item_label02"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvCalorieTotal"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/serving_unit_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/headerManufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/manufacturer_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerServingUnit" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="104dp"
+        android:background="@color/DarkGreen"
+        android:backgroundTint="#288C41"
+        android:text="@string/food_confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/textView19"
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/food_item_label03"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iBtnMinus" />
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="104dp"
+        android:background="@color/DarkGreen"
+        android:backgroundTint="#288C41"
+        android:text="@string/food_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvServingUnit"
+        android:id="@+id/headerTotalCals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ServingUnit"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="200dp"
+        android:text="@string/total_calories_header"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
