@@ -95,6 +95,7 @@ public class ApiHandler implements Runnable {
         return apiListOfResults;
     }
 
+
     @Override
     public void run() {
         final Activity refActivity = activityName;
