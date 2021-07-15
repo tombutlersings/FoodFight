@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class acFoodList extends AppCompatActivity {
@@ -78,7 +79,15 @@ public class acFoodList extends AppCompatActivity {
         //add food name to string
         //add food calories to sting
         //add string to foods list
-
+        ArrayList<FoodItem> foodItems = mealItem.foodItems;
+        int tempCalories = 0;
+        for (int i = 0; i < foodItems.size(); i++){
+            String output;
+            //tempCalories += servings * fooditem.getCalories();
+            FoodItem fooditem = foodItems.get(i);
+            output = fooditem.getName() + "      " + fooditem.getCalories();
+            foodsList.add(output);
+        }
         ListView foodListView = findViewById(R.id.foodListView);
         ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1,foodsList);
         foodListView.setAdapter(adapter);

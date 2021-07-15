@@ -5,6 +5,7 @@ import java.util.List;
 
 public class MealItem {
     public Integer ID;
+    public String date;
     private String name; //from meals enum
     //private int totalCalories; // math total for calories in the food lists of the meals
     public ArrayList<FoodItem> foodItems = new ArrayList<>();
@@ -12,10 +13,11 @@ public class MealItem {
     // Constructor for storing a food item
     // (object of the FoodItem class) in
     // foodItems array.
-    public MealItem(Integer ID, String name, ArrayList<FoodItem> foods) {
+    public MealItem(Integer ID, String date, String name, ArrayList<FoodItem> foods) {
         this.name = name;
         this.foodItems = foods;
         this.ID = ID;
+        this.date = date;
         //foodItems.add(item1);
         //foodItems.add(item2);
     }
