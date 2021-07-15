@@ -9,15 +9,18 @@ public class MealItem {
     private String name; //from meals enum
     //private int totalCalories; // math total for calories in the food lists of the meals
     public ArrayList<FoodItem> foodItems = new ArrayList<>();
+    public  ArrayList<Float> qty = new ArrayList<>();
+
 
     // Constructor for storing a food item
     // (object of the FoodItem class) in
     // foodItems array.
-    public MealItem(Integer ID, String date, String name, ArrayList<FoodItem> foods) {
+    public MealItem(Integer ID, String date, String name, ArrayList<FoodItem> foods, ArrayList<Float> qty) {
         this.name = name;
         this.foodItems = foods;
         this.ID = ID;
         this.date = date;
+        this.qty = qty;
         //foodItems.add(item1);
         //foodItems.add(item2);
     }
