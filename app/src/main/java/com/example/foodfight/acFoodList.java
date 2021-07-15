@@ -44,6 +44,7 @@ public class acFoodList extends AppCompatActivity {
         Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
+        //displayMealItems(mealItem);
 
         /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be
                  pushed into the ListView foodListView
@@ -80,7 +81,9 @@ public class acFoodList extends AppCompatActivity {
         //add food calories to sting
         //add string to foods list
         ArrayList<FoodItem> foodItems = mealItem.foodItems;
-        int tempCalories = 0;
+        TextView tvCalories = findViewById(R.id.tvCalories);
+        float cals = mealItem.getTotalCalories();
+        tvCalories.setText(Float.toString(cals));
         for (int i = 0; i < foodItems.size(); i++){
             String output;
             //tempCalories += servings * fooditem.getCalories();

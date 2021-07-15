@@ -36,6 +36,12 @@ public class MealItem {
         for (FoodItem food : foodItems) {
             totalCalories += food.getCalories();
         }
+        for (int i = 0; i < foodItems.size(); i++){
+            //tempCalories += servings * fooditem.getCalories();
+            FoodItem fooditem = foodItems.get(i);
+            totalCalories += fooditem.getCalories() * qty.get(i);
+
+        }
 
         return totalCalories;
     }
