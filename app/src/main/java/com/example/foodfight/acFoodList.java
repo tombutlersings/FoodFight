@@ -44,7 +44,9 @@ public class acFoodList extends AppCompatActivity {
         Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
-        //displayMealItems(mealItem);
+        DatabaseHandler db = new DatabaseHandler(acFoodList.this);
+        MealItem meal = db.GetMeal(selectedDate, mealType);
+        displayMealItems(meal);
 
         /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be
                  pushed into the ListView foodListView
