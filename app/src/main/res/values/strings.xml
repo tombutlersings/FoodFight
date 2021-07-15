@@ -53,7 +53,7 @@ Phillip Proctor"
     <string name="food_list_button01">Add Food</string>
 
 
-    <string name="meals_header">[acMeals]</string>
+    <string name="meals_header">Select your meal</string>
     <string name="meals_label01">Calories for mm-dd-yyyy</string>
     <string name="meals_label02">Total:</string>
     <string name="meals_label03">Calories</string>
