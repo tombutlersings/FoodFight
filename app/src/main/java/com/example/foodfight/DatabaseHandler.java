@@ -285,6 +285,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Integer id = Integer.parseInt(cursor.getString(0));
 
 
+        db.close();
 
         return id;
     };
