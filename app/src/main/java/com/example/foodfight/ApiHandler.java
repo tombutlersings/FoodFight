@@ -63,17 +63,34 @@ public class ApiHandler implements Runnable {
         for (int i = 0; i < NutritioixBrandedFoodResults.size(); i++) {
             ArrayList apiSearchResults = new ArrayList<String>();
             System.out.println((i + 1) + ". " + NutritioixBrandedFoodResults.get(i).get("food_name"));
+
+            // FOOD NAME
             String food_name = (String) NutritioixBrandedFoodResults.get(i).get("food_name");
             apiSearchResults.add(food_name);
-            System.out.println("  By:" + NutritioixBrandedFoodResults.get(0).get("brand_name"));
 
+            // MANUFACTURER
             String manufacturer = (String) NutritioixBrandedFoodResults.get(0).get("brand_name");
             apiSearchResults.add(manufacturer);
 
-            System.out.println("  Calories:" + NutritioixBrandedFoodResults.get(0).get("nf_calories"));
+            // CALORIES
             double calories = (double) NutritioixBrandedFoodResults.get(0).get("nf_calories");
             apiSearchResults.add(calories);
+
+            // SERVING UNIT
+            String serving_unit = (String) NutritioixBrandedFoodResults.get(0).get("serving");
+            apiSearchResults.add(serving_unit);
+
+            // SERVING SIZE
+            double serving_size = (double) NutritioixBrandedFoodResults.get(0).get("serving_qty");
+            apiSearchResults.add(serving_size);
+
+//            LinkedTreeMap photo = (LinkedTreeMap) NutritioixBrandedFoodResults.get(0).get("photo");
+//            String _photo = (String) photo.get("thumb");
+//            apiSearchResults.add(_photo);
+
+
             apiListOfResults.add(apiSearchResults);
+
         }
         return apiListOfResults;
     }
@@ -104,6 +121,8 @@ public class ApiHandler implements Runnable {
                                 String foodNameOne = (String) foodResultOne.get(0);
                                 String foodManufacturer = (String) foodResultOne.get(1);
                                 String foodCalories = ((Double) foodResultOne.get(2)).toString();
+                                String foodServingUnit = (String) foodResultOne.get(3);
+                                String foodServingSize = ((Double) foodResultOne.get(4)).toString();
                                 // TODO: add household serving size
                                 // TODO: add household serving unit
                                 // TODO: add photo link
@@ -131,6 +150,8 @@ public class ApiHandler implements Runnable {
                                 subList.add((String) foodResultOne.get(0));
                                 subList.add((String) foodResultOne.get(1));
                                 subList.add(((Double) foodResultOne.get(2)).toString());
+                                subList.add((String) foodResultOne.get(3));
+                                subList.add(((Double) foodResultOne.get(4)).toString());
                                 newList.add(subList);
                             }
                             Goals.setFoodSearchList(newList);

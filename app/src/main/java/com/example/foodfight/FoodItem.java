@@ -41,6 +41,10 @@ public class FoodItem {
         this(Id, name,  calories, 0, null, 0, null, null, null);
     }
 
+    public FoodItem(int Id, String name, int calories, String manufacturer, double serving_size_hh, String serving_size_hh_unit){
+        this(Id, name, calories, 0.0, null, serving_size_hh,serving_size_hh_unit,manufacturer);
+    }
+
 
 
 
