@@ -3,6 +3,7 @@ package com.example.foodfight;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,7 @@ public class acFoodItem extends AppCompatActivity {
 
     String foodName, manufacturer, selectedDate, mealType;
     float calories;
-    int servings = 0;
+    float servings = 0;
     String servingUnit;
     String hhServingUnits;
     int hhServings;
@@ -36,6 +37,10 @@ public class acFoodItem extends AppCompatActivity {
 
         Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
 
+        TextView caloriePerServing = findViewById(R.id.tvCalorieServing);
+        TextView calorieTotal = findViewById(R.id.tvCalorieTotal);
+        TextView numServings = findViewById(R.id.tvServings);
+
 
 
 
@@ -45,9 +50,9 @@ public class acFoodItem extends AppCompatActivity {
     // Called when user taps the red minus button
     public void btnCalorieDown(View view) {
         // TODO: Add code to decrement serving count IF current value is greater than zero
-        if (servings > 0) {
-            servings -= 1;
-        }
+        if (servings > 0) { servings -= 0.5; }
+
+
     }
 
     // Called when user taps the green plus button

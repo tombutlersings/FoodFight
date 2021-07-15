@@ -141,6 +141,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         db.close();
 
+
+        //gets the meal ID
         String mealIDQuery = "SELECT " + MEAL_TABLE_NAME + "." + MEAL_ID +
                 " FROM " + MEAL_TABLE_NAME +
                 " WHERE " + MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = " + mealName;
@@ -153,7 +155,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             id = Integer.parseInt(cursor.getString(0));
         }
 
-        MealItem meal = new MealItem(id, date,  mealName, foodList);
+
+
+        //gets the quantities consumed from the database
+        ArrayList<Float> quantityList = null;
+        String quantityQuery = "SELECT " + LINKING_TABLE +"." + SERVINGS_NAME +
+                "FROM " + MEAL_TABLE_NAME +
+                " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
+                " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
+                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = " + mealName;
+
+        cursor = db.rawQuery(quantityQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Float quantity = Float.parseFloat(cursor.getString(0));
+
+
+                // Adding contact to list
+                quantityList.add(quantity);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+        MealItem meal = new MealItem(id, date,  mealName, foodList, quantityList);
         // return food list
         return meal;
 

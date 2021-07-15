@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/qtyLabel"
+        android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -38,7 +38,7 @@
         android:textAlignment="textEnd"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnAdd"
-        app:layout_constraintEnd_toStartOf="@+id/qtyLabel" />
+        app:layout_constraintEnd_toStartOf="@+id/textView17" />
 
     <ImageButton
         android:id="@+id/btnAdd"
@@ -96,5 +96,47 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCalorieTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/meals_label03"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/food_item_label02"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvCalorieTotal"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/food_item_label03"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iBtnMinus" />
+
+    <TextView
+        android:id="@+id/tvServingUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ServingUnit"
+        tools:layout_editor_absoluteX="245dp"
+        tools:layout_editor_absoluteY="379dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

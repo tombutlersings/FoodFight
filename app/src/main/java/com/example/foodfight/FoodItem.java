@@ -16,7 +16,8 @@ public class FoodItem {
     public static String FOOD_MANUFACTURER;
     public static String SourceDB;
 
-    // Suggestion 2:
+
+// Suggestion 2:
     // If the suggestion 1 is implemented, this construction won't
     // need a calories parameter.
 
@@ -107,5 +108,7 @@ public class FoodItem {
     public static String getSourceDB() { return SourceDB; }
 
     public static void setSourceDB(String sourceDB) { SourceDB = sourceDB; }
+
+
 }
 
