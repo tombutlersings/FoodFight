@@ -24,7 +24,7 @@ public class acFoodList extends AppCompatActivity {
     String selectedDate;
     String mealType;
     String totalCalories;
-    DatabaseHandler db = new DatabaseHandler(acFoodList.this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +45,9 @@ public class acFoodList extends AppCompatActivity {
         Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
-
-        MealItem meal = db.GetMeal(selectedDate, mealType);
-        displayMealItems(meal);
+        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        //MealItem meal = db.GetMeal(selectedDate, mealType);
+        //displayMealItems(meal);
 
         /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be
                  pushed into the ListView foodListView
@@ -93,7 +93,6 @@ public class acFoodList extends AppCompatActivity {
         tvCalories.setText(Float.toString(cals));
         for (int i = 0; i < foodItems.size(); i++){
             String output;
-            //tempCalories += servings * fooditem.getCalories();
             FoodItem fooditem = foodItems.get(i);
             output = fooditem.getName() + "      " + fooditem.getCalories();
             foodsList.add(output);
