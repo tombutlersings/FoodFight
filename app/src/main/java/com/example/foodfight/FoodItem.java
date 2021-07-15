@@ -47,7 +47,7 @@ public class FoodItem {
     // Adding Custom
 
 
-    public String getName() {
+    public static String getName() {
         return FOOD_NAME;
     }
 
@@ -64,17 +64,17 @@ public class FoodItem {
     }
 
 
-    public int getId() {
+    public static int getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public static void setId(int id) {
         Id = id;
     }
 
     // Suggestion 1:
     // This method should get calories data of food from FoodLibrary.json
-    public int getCalories() {
+    public static int getCalories() {
         return FOOD_CALORIES;
     }
 
@@ -82,7 +82,7 @@ public class FoodItem {
         this.FOOD_CALORIES = calories;
     }
 
-    public double getServingSize() {
+    public static double getServingSize() {
         return FOOD_METRIC_SERVING;
     }
 
