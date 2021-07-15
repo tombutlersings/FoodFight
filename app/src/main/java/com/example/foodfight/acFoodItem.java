@@ -32,6 +32,7 @@ public class acFoodItem extends AppCompatActivity {
         servingUnit = foodType.get(3);
         servingSize = Float.parseFloat(foodType.get(4));
 
+        // INITIALIZES TEXTVIEWS
         Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
         TextView showQty = findViewById(R.id.showQty);
         TextView displayFood = findViewById(R.id.displayFood);
@@ -40,18 +41,18 @@ public class acFoodItem extends AppCompatActivity {
         TextView displayServingUnit = findViewById(R.id.displayServingUnit);
         TextView displayManufacturer = findViewById(R.id.displayManufacturer);
 
+        // CONVERTS THE FLOATS TO STRINGS
         String caloriesConverted = Float.toString(calories);
         String sizeConverted = Float.toString(servingSize);
         String qtyConverted = Float.toString(qty);
 
+        // DISPLAYS DATA
         displayFood.setText(foodName);
         displayCalories.setText(caloriesConverted);
         showQty.setText(qtyConverted);
         displayServingUnit.setText(servingUnit);
         displayServingSize.setText(sizeConverted);
         displayManufacturer.setText(manufacturer);
-
-
 
 
     }
@@ -64,6 +65,8 @@ public class acFoodItem extends AppCompatActivity {
             TextView showQty = findViewById(R.id.showQty);
             String qtyConverted = Float.toString(qty);
             showQty.setText(qtyConverted);
+
+            // Udpate the views with new data
             TextView totalCalories2 = findViewById(R.id.displayTotalCalories);
             totalCalories = qty * calories;
             String totcalsConverted = Float.toString(totalCalories);
@@ -81,6 +84,8 @@ public class acFoodItem extends AppCompatActivity {
         TextView showQty = findViewById(R.id.showQty);
         String qtyConverted = Float.toString(qty);
         showQty.setText(qtyConverted);
+
+        // Udpate the views with new data
         TextView totalCalories2 = findViewById(R.id.displayTotalCalories);
         totalCalories = qty * calories;
         String totcalsConverted = Float.toString(totalCalories);
@@ -93,6 +98,10 @@ public class acFoodItem extends AppCompatActivity {
                  DB for later use/update?).  The fooditem should be updated for calorie count
                  when passed back to acFoodList.
          */
+
+        // TODO: create a food item out of info on the page
+        // TODO: open database handler and edit the mealId (or create it if it doesn't exist)
+
     }
 //getIdFromAPI
 

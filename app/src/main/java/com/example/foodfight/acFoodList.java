@@ -24,6 +24,7 @@ public class acFoodList extends AppCompatActivity {
     String selectedDate;
     String mealType;
     String totalCalories;
+    DatabaseHandler db = new DatabaseHandler(acFoodList.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class acFoodList extends AppCompatActivity {
         Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
-        DatabaseHandler db = new DatabaseHandler(acFoodList.this);
+
         MealItem meal = db.GetMeal(selectedDate, mealType);
         displayMealItems(meal);
 
@@ -63,6 +64,10 @@ public class acFoodList extends AppCompatActivity {
     public void btnAddFood(View view) {
         Intent acAddFood = new Intent(this, acAddFood.class);
         //pass information for data base access
+        //todo: create a meal item
+        MealItem meal = new MealItem(0,selectedDate,mealType
+                ,new ArrayList<FoodItem>(),new ArrayList<Float>());
+
         acAddFood.putExtra("MealDate",selectedDate);
         acAddFood.putExtra("MealType",mealType);
         startActivity(acAddFood);
