@@ -45,9 +45,12 @@ public class acFoodList extends AppCompatActivity {
         Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
-        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-        //MealItem meal = db.GetMeal(selectedDate, mealType);
-        //displayMealItems(meal);
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        MealItem meal = new MealItem(0,selectedDate,mealType
+                ,new ArrayList<FoodItem>(),new ArrayList<Float>());
+        db.CreateMeal(selectedDate, mealType, 0);
+        //MealItem displayMeal = db.GetMeal(selectedDate, mealType);
+        //displayMealItems(displayMeal);
 
         /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be
                  pushed into the ListView foodListView
@@ -65,8 +68,7 @@ public class acFoodList extends AppCompatActivity {
         Intent acAddFood = new Intent(this, acAddFood.class);
         //pass information for data base access
         //todo: create a meal item
-        MealItem meal = new MealItem(0,selectedDate,mealType
-                ,new ArrayList<FoodItem>(),new ArrayList<Float>());
+
 
         acAddFood.putExtra("MealDate",selectedDate);
         acAddFood.putExtra("MealType",mealType);
