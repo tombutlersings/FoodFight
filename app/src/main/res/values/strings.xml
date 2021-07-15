@@ -33,6 +33,8 @@ Phillip Proctor"
     <string name="food_item_header">How much did you eat?</string>
     <string name="food_item_btn01">ADD</string>
     <string name="food_item_label01">per serving</string>
+    <string name="food_item_label02">this meal</string>
+    <string name="food_item_label03">Servings eaten</string>
 
 
     <string name="food_list_header">What you\'ve eaten</string>
