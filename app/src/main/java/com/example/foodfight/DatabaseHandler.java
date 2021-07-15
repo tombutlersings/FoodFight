@@ -153,7 +153,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             id = Integer.parseInt(cursor.getString(0));
         }
 
-        MealItem meal = new MealItem(id, mealName, foodList);
+        MealItem meal = new MealItem(id, date,  mealName, foodList);
         // return food list
         return meal;
 
