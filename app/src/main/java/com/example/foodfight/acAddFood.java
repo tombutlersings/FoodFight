@@ -131,6 +131,10 @@ public class acAddFood extends AppCompatActivity {
                 foodItem.putExtra("MealDate",selectedDate);
                 foodItem.putExtra("MealType",mealType);
                 foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
+                FoodItem newFoodItem = new FoodItem(0, foodData.get(0).toString(), Math.round(Float.parseFloat(foodData.get(2).toString())));
+                //place data base item creation here
+                //get id to pass to acFoodItem
+
                 startActivity(foodItem);
 
 //
