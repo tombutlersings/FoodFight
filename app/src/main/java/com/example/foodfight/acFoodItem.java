@@ -15,6 +15,7 @@ public class acFoodItem extends AppCompatActivity {
     String foodName, manufacturer, selectedDate, mealType, servingUnit;
     float calories, servingSize, totalCalories;
     float qty = 1;
+    int conCals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class acFoodItem extends AppCompatActivity {
         calories = Float.parseFloat(foodType.get(2));
         servingUnit = foodType.get(3);
         servingSize = Float.parseFloat(foodType.get(4));
+        conCals = Math.round(calories);
 
         // Initialize TextViews
         // Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
@@ -97,7 +99,7 @@ public class acFoodItem extends AppCompatActivity {
      *  and then drops back to the FoodList activity
      */
     public void addFoodEnter(View view){
-        FoodItem newFoodItem = new FoodItem(0, foodName, Integer.parseInt(Float.toString(calories)),manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
+        FoodItem newFoodItem = new FoodItem(0, foodName, 5000,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
         //open database
         // add food to database and getID
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -116,8 +118,9 @@ public class acFoodItem extends AppCompatActivity {
          */
 
         // TODO: create a food item out of info on the page
+        //Integer.parseInt(Float.toString(calories))
 
-       FoodItem newFoodItem = new FoodItem(0, foodName, Integer.parseInt(Float.toString(calories)),manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
+       FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
        //open database
         // add food to database and getID
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -133,7 +136,7 @@ public class acFoodItem extends AppCompatActivity {
 
         // TODO: open database handler and edit the mealId (or create it if it doesn't exist)
 
-        this.finish();
+        //this.finish();
     }
 
     //getIdFromAPI
