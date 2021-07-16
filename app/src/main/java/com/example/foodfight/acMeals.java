@@ -16,9 +16,10 @@ import java.util.Calendar;
 import java.util.Locale;
 
 /**
- * TODO: Get date from Calendar. Does CalendarHandler need to exist if there's already a
- *   Calendar method in Android?
- *
+ * This Activity displays the meals that can be reviewed or edited by the user.
+ * The display at the top showing the actual date or the selected date.
+ * The select another day button takes opens acCalendar for the user to select a date
+ * and will pass it back th new date on returning to this screen.
  */
 
 public class acMeals extends AppCompatActivity {
@@ -56,7 +57,7 @@ public class acMeals extends AppCompatActivity {
         startActivityForResult(intent, 1);
     }
 
-    // Might have to rework the date handling
+    // Set the date to the one passed from the acCalendar
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
