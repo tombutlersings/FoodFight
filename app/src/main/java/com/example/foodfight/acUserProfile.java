@@ -42,15 +42,18 @@ public class acUserProfile extends AppCompatActivity {
         String dailyCurrent = String.valueOf(Goals.getCurrentDaily());
         String weeklyCurrent = String.valueOf(Goals.getCurrentWeekly());
 
+        //open connection to saved data in shared preferences
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
+        //put data form the user into the shared preferences
         editor.putString("name", (name.getText().toString()));
         editor.putString("height", (height.getText().toString()));
         editor.putString("weight", (weight.getText().toString()));
         editor.putString("dailyGoal", (dailyGoal.getText().toString()));
         editor.putString("dailyCurrent",dailyCurrent);
         editor.putString("weeklyCurrent",weeklyCurrent);
+        //commit changes
         editor.commit();
         Log.d("FoodFight", "Saved SharedPreferences");
         getValues();
@@ -82,6 +85,7 @@ public class acUserProfile extends AppCompatActivity {
         double ht = Double.parseDouble(height);
         double bmi = Math.round((wt * 45.36) / Math.pow(ht / 39.7, 2)) /100.0;
 
+        //set the bmi value on the screen
         String numBMI = String.valueOf(bmi);
         TextView BMIView = findViewById(R.id.numBMI);
         BMIView.setText(numBMI);

@@ -1,9 +1,5 @@
 package com.example.foodfight;
 
-/* The main activity screen shows progress bars for daily and weekly calorie
- * counts against user goals.  Buttons at the bottom of the screen navigate to
- * the Meals, Trend and UserProfile activities
- */
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,9 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.util.Calendar;
-
+/**
+ * The main activity screen shows progress bars for daily and weekly calorie
+ * counts against user goals.  Buttons at the bottom of the screen navigate to
+ * the Meals, Trend and UserProfile activities
+ */
 public class MainActivity extends AppCompatActivity {
-    // TODO: DatabaseHandler dbNameHere;
+    //DatabaseHandler dbNameHere;
     SQLiteDatabase dbFood;
     DatabaseHandler db;
     ApiHandler foodSearcher;
@@ -31,17 +31,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //TODO: dbNameHere = new DatabaseHandler(this);
-        SQLiteDatabase dbFood = openOrCreateDatabase("food", MODE_PRIVATE, null);
-        db = new DatabaseHandler(this);
-//            // TODO: CREATE / INITIALIZE THE DATABASE
-//        // is the database created already
-//        boolean db.VerifyExistance()
-//            true = toast "food db loaded";
-//            false = toast "loading food db";
-        // if (Datat)
-        //  TODO: VERIFY IF THE DATABASE FILE EXISTS AND IF FOOD TABLE IS POPULATED
-        // TODO: IF FOOD TABLE IS NOT POPULATED, LOAD FOOD LIBRARY
+
+        /* check if the user has used the app for the
+        first time by checking the profile set up.*/
         // Pull SharedPreferences and check "name" for default value
         // If default then auto-nav to acUserProfile to get set up
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
@@ -50,7 +42,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, acUserProfile.class);
             startActivity(intent);
         }
+
         // VERIFIES THE DATABASE IS THERE
+        SQLiteDatabase dbFood = openOrCreateDatabase("food", MODE_PRIVATE, null);
+        db = new DatabaseHandler(this);
+        //CREATE / INITIALIZE THE DATABASE
+        //VERIFY IF THE DATABASE FILE EXISTS AND IF FOOD TABLE IS POPULATED
+        // TODO: IF FOOD TABLE IS NOT POPULATED, LOAD FOOD LIBRARY
         // TODO: REMOVE THIS FOR FINAL CODE
         FoodItem apple = new FoodItem(1,"apple",150);
         FoodItem apple2 = new FoodItem(569,"1% LOWFAT MILK",88,240,"ml",1,"cup","Target Stores");
@@ -65,17 +63,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivity.this,"WAHOOO! DB Exists!", Toast.LENGTH_LONG).show();
         }
-//        List<String> foodList = List.newArrayList["Cuban Sandwich", "Jell-o","mofongo", "tacos", "life cereal"];
-//        for (int i = 0; i < ; i++) {
-//
-//        }
-//        ArrayList<List> initSearch = foodSearcher.NutriSearch();
-        //String jsonFood = JsonReader.getJsonFromAssets(this,"FoodLibrary.json");
-//        try {
-//            FileReader reader = new FileReader("FoodLibrary.json");
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
 
     }
 
@@ -97,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
         String name = sp.getString("name","Your name");
 
+        //customize message to fit the time of dame
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         String msg;
         if (hour < 6) {
@@ -146,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Called when user taps the User Profile button
+    // This is a stretch part.
     public void btnTrend(View view) {
         Intent intent = new Intent(this, acTrend.class);
         startActivity(intent);

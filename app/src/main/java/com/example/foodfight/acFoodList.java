@@ -43,13 +43,17 @@ public class acFoodList extends AppCompatActivity {
         selectedDate = intent.getStringExtra("MealDate");
         mealType = intent.getStringExtra("MealType");
         Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
+
+
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealType);
+
+
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         MealItem meal = new MealItem(0,selectedDate,mealType
                 ,new ArrayList<FoodItem>(),new ArrayList<Float>());
         db.CreateMeal(selectedDate, mealType, 0);
-        //MealItem displayMeal = db.GetMeal(selectedDate, mealType);
+        MealItem displayMeal = db.GetMeal(selectedDate, mealType);
         //displayMealItems(displayMeal);
 
         /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be

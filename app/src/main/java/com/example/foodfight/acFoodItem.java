@@ -14,14 +14,15 @@ public class acFoodItem extends AppCompatActivity {
 
     String foodName, manufacturer, selectedDate, mealType, servingUnit;
     float calories, servingSize, totalCalories;
-    float qty = (float) 1.0;
+    float qty = 1;
+    int conCals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ac_food_item);
 
-        //Variables to get database information
+        // Variables to get database information
         Intent intent = getIntent();
         selectedDate = intent.getStringExtra("MealDate");
         mealType = intent.getStringExtra("MealType");
@@ -31,9 +32,10 @@ public class acFoodItem extends AppCompatActivity {
         calories = Float.parseFloat(foodType.get(2));
         servingUnit = foodType.get(3);
         servingSize = Float.parseFloat(foodType.get(4));
+        conCals = Math.round(calories);
 
-        // INITIALIZES TEXTVIEWS
-        Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
+        // Initialize TextViews
+        // Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
         TextView showQty = findViewById(R.id.showQty);
         TextView displayFood = findViewById(R.id.displayFood);
         TextView displayCalories = findViewById(R.id.displayCalories);
@@ -41,12 +43,12 @@ public class acFoodItem extends AppCompatActivity {
         TextView displayServingUnit = findViewById(R.id.displayServingUnit);
         TextView displayManufacturer = findViewById(R.id.displayManufacturer);
 
-        // CONVERTS THE FLOATS TO STRINGS
+        // Convert floats to strings for display in TextViews
         String caloriesConverted = Float.toString(calories);
         String sizeConverted = Float.toString(servingSize);
         String qtyConverted = Float.toString(qty);
 
-        // DISPLAYS DATA
+        // Display initial data
         displayFood.setText(foodName);
         displayCalories.setText(caloriesConverted);
         showQty.setText(qtyConverted);
@@ -57,42 +59,58 @@ public class acFoodItem extends AppCompatActivity {
 
     }
 
-    // Called when user taps the red minus button
+    /** Called when user taps the red minus button
+     *
+     * @param view
+     */
     public void btnCalorieDown(View view) {
-        // TODO: Add code to decrement serving count IF current value is greater than zero
-        if (qty > 0) {
-            qty -= 0.5;
-            TextView showQty = findViewById(R.id.showQty);
-            String qtyConverted = Float.toString(qty);
-            showQty.setText(qtyConverted);
-
-            // Udpate the views with new data
-            TextView totalCalories2 = findViewById(R.id.displayTotalCalories);
-            totalCalories = qty * calories;
-            String totcalsConverted = Float.toString(totalCalories);
-            totalCalories2.setText(totcalsConverted);
-        }
-
-
-
+        if (qty > 0) { qty -= 0.5; }
+        updateDisplay();
     }
 
-    // Called when user taps the green plus button
+
+    /** Called when user taps the green plus button
+     *
+     * @param view
+     */
     public void btnCalorieUp(View view) {
-        // TODO: Add code to increment serving count (is there a max?)
-            qty += 0.5;
+        qty += 0.5;
+        updateDisplay();
+    }
+
+
+    /** Updates consumption fields after being modified
+     */
+    private void updateDisplay() {
         TextView showQty = findViewById(R.id.showQty);
         String qtyConverted = Float.toString(qty);
         showQty.setText(qtyConverted);
 
-        // Udpate the views with new data
+        // Update the views with new data
         TextView totalCalories2 = findViewById(R.id.displayTotalCalories);
         totalCalories = qty * calories;
         String totcalsConverted = Float.toString(totalCalories);
         totalCalories2.setText(totcalsConverted);
     }
 
-    // Called when user taps the blue Done button
+
+
+    /** Called when user taps the blue Done button, consumption data is pushed into database
+     *  and then drops back to the FoodList activity
+     */
+    public void addFoodEnter(View view){
+        FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
+        //open database
+        // add food to database and getID
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        //
+        // add the food to the list of foods
+        db.AddFood(newFoodItem);
+        // get foodid
+        int foodId = db.getIdFromAPI(newFoodItem);
+        Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
+    }
+
     public void btnDone(View view) {
         /* TODO: Code to calculate calories from the given servings (is this being kept in the
                  DB for later use/update?).  The fooditem should be updated for calorie count
@@ -100,9 +118,29 @@ public class acFoodItem extends AppCompatActivity {
          */
 
         // TODO: create a food item out of info on the page
+        //Integer.parseInt(Float.toString(calories))
+
+       FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
+       //open database
+        // add food to database and getID
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        //
+        // add the food to the list of foods
+        db.AddFood(newFoodItem);
+        // get foodid
+        int foodId = db.getIdFromAPI(newFoodItem);
+        Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
+        // get the meal
+        int mealid = db.getMealID(selectedDate, mealType);
+        // add the food using foodid to the meal
+        db.AddToMeal(mealid, foodId, Math.round(qty));
+
+
         // TODO: open database handler and edit the mealId (or create it if it doesn't exist)
 
+        //this.finish();
     }
-//getIdFromAPI
+
+    //getIdFromAPI
 
 }
