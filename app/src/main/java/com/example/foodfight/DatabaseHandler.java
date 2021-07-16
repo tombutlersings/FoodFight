@@ -289,18 +289,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Integer getIdFromAPI(FoodItem foodItem){
         SQLiteDatabase db = this.getWritableDatabase();
         //adds the food to the database
-        this.AddFood(foodItem);
+        //this.AddFood(foodItem);
 
 
         String sql = "SELECT * FROM " + FOOD_TABLE_NAME +
-                " WHERE " + FOOD_NAME + " = " + foodItem.getName() + " AND " +
-                            FOOD_CALORIES + " = " + foodItem.getCalories() + " AND " +
-                            FOOD_HOUSEHOLD_SERVING + " = " + foodItem.getFoodHouseholdServing() + " AND " +
-                            FOOD_HOUSEHOLD_UNIT + " = " + foodItem.getFoodHouseholdUnit() + " AND " +
-                            FOOD_METRIC_SERVING + " = " + foodItem.getServingSize() + " AND " +
-                            FOOD_METRIC_SERVING_UNIT + " = " + foodItem.getFoodMetricServingUnit() + " AND " +
-                            FOOD_MANUFACTURER + " = " + foodItem.getFoodManufacturer() + " AND " +
-                            "SourceDB" + " = " + foodItem.getSourceDB();
+                " WHERE " + FOOD_NAME + " = '" + foodItem.getName() + "' AND " +
+                            FOOD_CALORIES + " = " + foodItem.getCalories();// + " AND " +
+//                            FOOD_HOUSEHOLD_SERVING + " = " + foodItem.getFoodHouseholdServing() + " AND " +
+//                            FOOD_HOUSEHOLD_UNIT + " = " + foodItem.getFoodHouseholdUnit() + " AND " +
+//                            FOOD_METRIC_SERVING + " = " + foodItem.getServingSize() + " AND " +
+//                            FOOD_METRIC_SERVING_UNIT + " = " + foodItem.getFoodMetricServingUnit() + " AND " +
+//                            FOOD_MANUFACTURER + " = '" + foodItem.getFoodManufacturer() + "' AND " +
+//                            "SourceDB" + " = " + foodItem.getSourceDB() + "";
 
         Cursor cursor = db.rawQuery(sql, null);
 

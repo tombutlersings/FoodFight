@@ -131,7 +131,9 @@ public class acFoodItem extends AppCompatActivity {
         int foodId = db.getIdFromAPI(newFoodItem);
         Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
         // get the meal
+        int mealid = db.getMealID(selectedDate, mealType);
         // add the food using foodid to the meal
+        db.AddToMeal(mealid, foodId, Math.round(qty));
 
 
         // TODO: open database handler and edit the mealId (or create it if it doesn't exist)
