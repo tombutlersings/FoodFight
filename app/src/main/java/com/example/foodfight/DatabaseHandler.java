@@ -125,7 +125,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                                 "FROM " + MEAL_TABLE_NAME +
                                 " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
                                 " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
-                                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
+                                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = '" + date + "' AND " + MEAL_NAME + " = '" + mealName + "'";
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -147,13 +147,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 foodList.add(food);
             } while (cursor.moveToNext());
         }
-        db.close();
+
 
 
         //gets the meal ID
         String mealIDQuery = "SELECT " + MEAL_TABLE_NAME + "." + MEAL_ID +
                 " FROM " + MEAL_TABLE_NAME +
-                " WHERE " + MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
+                " WHERE " + MEAL_TABLE_NAME +"." + MEAL_DATE + " = '" + date + "' AND " + MEAL_NAME + " = '" + mealName + "'";
 
         cursor = db.rawQuery(mealIDQuery, null);
 
@@ -168,7 +168,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //gets the quantities consumed from the database
         ArrayList<Float> quantityList = null;
         String quantityQuery = "SELECT " + LINKING_TABLE +"." + SERVINGS_NAME +
-                "FROM " + MEAL_TABLE_NAME +
+                " FROM " + MEAL_TABLE_NAME +
                 " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
                 " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
                 " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
@@ -226,7 +226,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //Initializes the list of FoodItems that will be returned
         List<FoodItem> foodList = new ArrayList<FoodItem>();
         // Select All Query
-        String selectQuery = "SELECT * FROM " + FOOD_TABLE_NAME + "WHERE " + FOOD_NAME + " LIKE %" + foodname + "%";
+        String selectQuery = "SELECT * FROM " + FOOD_TABLE_NAME + " WHERE " + FOOD_NAME + " LIKE '%" + foodname + "%'";
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -311,6 +311,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.close();
 
+        return id;
+    };
+
+    public Integer getMealID(String date, String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = "SELECT " + MEAL_ID +
+                " FROM " + MEAL_TABLE_NAME +
+                " WHERE " + MEAL_DATE + " = '" + date + "' AND " + MEAL_NAME + " = '" + name + "'";
+
+
+
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor !=null)
+            cursor.moveToFirst();
+        Integer id = Integer.parseInt(cursor.getString(0));
+
+
+        db.close();
         return id;
     };
 
