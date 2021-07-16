@@ -113,7 +113,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // gets all foods for a meal
         ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
         // Select All Query
-        String selectQuery = "SELECT " + FOOD_TABLE_NAME +".* " +
+        String selectQuery = "SELECT " + FOOD_TABLE_NAME + "." + FOOD_NAME + ", "
+                                + FOOD_TABLE_NAME + "." + FOOD_CALORIES +", "
+                                + FOOD_TABLE_NAME + "." + FOOD_HOUSEHOLD_SERVING +", "
+                                + FOOD_TABLE_NAME + "." + FOOD_HOUSEHOLD_UNIT + ", "
+                                + FOOD_TABLE_NAME + "." + FOOD_METRIC_SERVING + ", "
+                                + FOOD_TABLE_NAME + "." + FOOD_METRIC_SERVING_UNIT +", "
+                                + FOOD_TABLE_NAME + "." + FOOD_MANUFACTURER + ", "
+                                + FOOD_TABLE_NAME + ".SourceDB, "
+                                + FOOD_TABLE_NAME + ".picture_link " +
                                 "FROM " + MEAL_TABLE_NAME +
                                 " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
                                 " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
@@ -277,16 +285,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public void fillTable(String name, String calories, String manufacturer) {
-        SQLiteDatabase db = this.getWritableDatabase(); // line just for troubleshooting
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(FOOD_NAME, name);
-        contentValues.put(FOOD_CALORIES, calories);
-        contentValues.put(FOOD_MANUFACTURER, manufacturer);
-        long result = db.insert(FOOD_TABLE_NAME, null,contentValues);
-        db.close();
-
-    }
 
     public Integer getIdFromAPI(FoodItem foodItem){
         SQLiteDatabase db = this.getWritableDatabase();
