@@ -99,7 +99,7 @@ public class acFoodItem extends AppCompatActivity {
      *  and then drops back to the FoodList activity
      */
     public void addFoodEnter(View view){
-        FoodItem newFoodItem = new FoodItem(0, foodName, 5000,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
+        FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
         //open database
         // add food to database and getID
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
