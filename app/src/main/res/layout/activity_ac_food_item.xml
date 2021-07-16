@@ -193,4 +193,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/addFoodEnter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addFoodEnter"
+        android:text="ENTER PLEASE WORK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
