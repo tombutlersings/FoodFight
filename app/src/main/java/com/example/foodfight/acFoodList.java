@@ -49,12 +49,25 @@ public class acFoodList extends AppCompatActivity {
         textView.setText(mealType);
 
 
+        //get information from the database
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-        MealItem meal = new MealItem(0,selectedDate,mealType
-                ,new ArrayList<FoodItem>(),new ArrayList<Float>());
-        db.CreateMeal(selectedDate, mealType, 0);
-        MealItem displayMeal = db.GetMeal(selectedDate, mealType);
-        //displayMealItems(displayMeal);
+//        MealItem meal = new MealItem(0,selectedDate,mealType
+//                ,new ArrayList<FoodItem>(),new ArrayList<Float>());
+
+        //create meal item only i there is not already one
+
+
+//        //my idea here is that if the meal id is not found it will return null but dbhandler is not set up to do that.
+        //the next line is for testing to see what it did when a meal was present.
+db.CreateMeal(selectedDate, mealType, 0);
+
+//        if (db.getMealID(selectedDate, mealType) == null){
+//            db.CreateMeal(selectedDate, mealType, 0);
+//        }
+//        MealItem displayMeal = db.GetMeal(selectedDate, mealType);
+//        //display foods if there are any
+//        if (displayMeal.foodItems.size() > 0 ){
+//            displayMealItems(displayMeal);}
 
         /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be
                  pushed into the ListView foodListView

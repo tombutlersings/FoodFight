@@ -294,7 +294,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //simplified query to make it run more better.
         String sql = "SELECT * FROM " + FOOD_TABLE_NAME +
-                " WHERE " + FOOD_NAME + " = '" + foodItem.getName() + "' AND " +
+                " WHERE " + FOOD_NAME + " = \"" + foodItem.getName() + "\" AND " +
                             FOOD_CALORIES + " = " + foodItem.getCalories();// + " AND " +
 //                            FOOD_HOUSEHOLD_SERVING + " = " + foodItem.getFoodHouseholdServing() + " AND " +
 //                            FOOD_HOUSEHOLD_UNIT + " = " + foodItem.getFoodHouseholdUnit() + " AND " +
