@@ -103,6 +103,8 @@ public class acFoodItem extends AppCompatActivity {
          */
 
         // TODO: create a food item out of info on the page
+
+       //FoodItem newFoodItem = new FoodItem(0, foodName, Integer.parseInt(Float.toString(calories)), Double.parseDouble(Float.toString( servingSize)), servingUnit);
         // TODO: open database handler and edit the mealId (or create it if it doesn't exist)
 
         this.finish();

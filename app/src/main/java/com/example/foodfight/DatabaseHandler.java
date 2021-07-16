@@ -147,7 +147,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 foodList.add(food);
             } while (cursor.moveToNext());
         }
-        db.close();
+        //db.close();
 
 
         //gets the meal ID
@@ -168,7 +168,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //gets the quantities consumed from the database
         ArrayList<Float> quantityList = null;
         String quantityQuery = "SELECT " + LINKING_TABLE +"." + SERVINGS_NAME +
-                "FROM " + MEAL_TABLE_NAME +
+                " FROM " + MEAL_TABLE_NAME +
                 " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
                 " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
                 " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
