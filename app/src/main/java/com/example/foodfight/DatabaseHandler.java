@@ -292,6 +292,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //this.AddFood(foodItem);
 
 
+        //simplified query to make it run more better.
         String sql = "SELECT * FROM " + FOOD_TABLE_NAME +
                 " WHERE " + FOOD_NAME + " = '" + foodItem.getName() + "' AND " +
                             FOOD_CALORIES + " = " + foodItem.getCalories();// + " AND " +
