@@ -61,13 +61,28 @@ public class acCalendar extends AppCompatActivity {
 
                     // Store the value of date with format in String type Variable
                     // Add 1 in month because month index is start with 0
-                    calendarDate = "0" + (month + 1) + "-"
-                            + dayOfMonth + "-" + year;
-
+                    // less than 10 day
+                    if (dayOfMonth<10){
+                    if(calendarMonth>9){
+                        calendarDate = (month + 1) + "-"
+                                + "0" + dayOfMonth + "-" + year;
+                    } else {
+                        calendarDate = "0" + (month + 1) + "-"
+                                + "0" + dayOfMonth + "-" + year;
+                    }} else {
+                        if (calendarMonth > 9) {
+                            calendarDate = (month + 1) + "-"
+                                    + dayOfMonth + "-" + year;
+                        } else {
+                            calendarDate = "0" + (month + 1) + "-"
+                                    + dayOfMonth + "-" + year;
+                        }
+                    }
                     // set this date in TextView for Display
                     calendarDateView.setText(calendarDate);
                 });
     }
+
     // When pressing done, the intent information within resultIntent is then sent to
     // acMeals and received by acMeals' onActivityResult
     public void btnDone(View view) {
