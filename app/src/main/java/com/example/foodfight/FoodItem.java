@@ -17,10 +17,8 @@ public class FoodItem {
     public static String SourceDB;
 
 
-// Suggestion 2:
-    // If the suggestion 1 is implemented, this construction won't
-    // need a calories parameter.
-
+    // multiple methods for creating FoodItems depending on how much information we had and our db schema
+    // citation:
     public FoodItem(int Id, String name, int calories, double serving_size_m, String serving_size_m_unit, double serving_size_hh, String serving_size_hh_unit,  String manufacturer, String sourceDB) {
         this.FOOD_NAME = name;
         this.Id = Id;
@@ -45,13 +43,6 @@ public class FoodItem {
         this(Id, name, calories, 0.0, null, serving_size_hh,serving_size_hh_unit,manufacturer, null);
     }
 
-
-
-
-
-    // Adding Custom
-
-
     public static String getName() {
         return FOOD_NAME;
     }
@@ -59,15 +50,6 @@ public class FoodItem {
     public void setName(String name) {
         this.FOOD_NAME = name;
     }
-
-    public void printName(String firstName, String lastName){
-        printName(firstName + " " + lastName);
-    }
-
-    public void printName(String name){
-        //Do stuff
-    }
-
 
     public static int getId() {
         return Id;
@@ -77,8 +59,6 @@ public class FoodItem {
         Id = id;
     }
 
-    // Suggestion 1:
-    // This method should get calories data of food from FoodLibrary.json
     public static int getCalories() {
         return FOOD_CALORIES;
     }
@@ -113,6 +93,4 @@ public class FoodItem {
 
     public static void setSourceDB(String sourceDB) { SourceDB = sourceDB; }
 
-
 }
-

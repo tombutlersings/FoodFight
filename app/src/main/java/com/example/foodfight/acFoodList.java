@@ -24,9 +24,6 @@ public class acFoodList extends AppCompatActivity {
     String totalCalories;
     String mealId;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +41,11 @@ public class acFoodList extends AppCompatActivity {
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealName);
 
-        //get information from the database
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         db.CreateMeal(selectedDate, mealName, 0);
-
         MealItem mealItem = db.GetMeal(selectedDate, mealName);
-
         Log.i("FoodListMealItem", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
-        //
+
         ArrayList<String> outputString = new ArrayList<>();
         ArrayList<List> ids = db.getFoodList(mealItem.ID);
         int calories = 0;
@@ -61,16 +55,9 @@ public class acFoodList extends AppCompatActivity {
             String tempString = "";
             tempString += testItem.getName() + "      " + testItem.getCalories() * (int) ids.get(i).get(1);
             outputString.add(tempString);
-            //update caloririe total
             calories += testItem.getCalories() * ((int) ids.get(i).get(1));
         }
 
-        //for id in ids get meal item
-        //multiply
-
-
-
-        //
         totalCalories = String.valueOf(calories);
         TextView tvCalories = findViewById(R.id.tvCalories);
         String cals = String.valueOf(totalCalories);
@@ -82,58 +69,14 @@ public class acFoodList extends AppCompatActivity {
         ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1, outputString);
         foodListView.setAdapter(adapter);
 
-
-
-        /* TODO: The list of foods for the given 'selectedDate' and 'mealName' need to be
-                 pushed into the ListView foodListView
-         */
-
-        /* TODO: The total calories need to be collected from every item in foodListView and set
-                 into TextView tvCalories
-         */
-
-
     }
 
-    // Called when user taps the Add Food button
     public void btnAddFood(View view) {
+        //inter-activity info passing via intent
         Intent acAddFood = new Intent(this, acAddFood.class);
-        //pass information for data base access
-        //todo: create a meal item
-
         acAddFood.putExtra("previousActivity","acFoodList");
         acAddFood.putExtra("MealDate",selectedDate);
         acAddFood.putExtra("MealName", mealName);
         startActivity(acAddFood);
     }
-
-    /* TODO: When an item in foodListView is tapped, that information should be extracted
-             and sent to acFoodItem (via Intent) where the amount of food (and its calories)
-             is increased or decreased.  acFoodItem will drop back to this activity when
-             the blue checkmark is touched where onResume will update the list.
-    */
-
-    // This is where the list of foods for the selected day get populated into the ListView
-    // This needs to be refactored to match the actual names of classes and methods
-    //   that will feedback the meal items for a certain day
-
-//        List<String> foodsList = null;
-    //add food name to string
-    //add food calories to sting
-    //add string to foods list
-//        String output;
-//        FoodItem foodItem;
-//        ArrayList<FoodItem> foodItems = mealItem.foodItems;
-//        ArrayList<String> foodsList = new ArrayList<String>
-//
-//
-//        for (int i = 0; i < foodItems.size(); i++){
-//            foodItem = foodItems.get(i);
-//            output = foodItem.getName() + "      " + foodItem.getCalories();
-//            foodsList.add(output);
-//        }
-
-
-
-
 }

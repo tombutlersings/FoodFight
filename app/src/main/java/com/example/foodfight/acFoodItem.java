@@ -87,7 +87,7 @@ public class acFoodItem extends AppCompatActivity {
        int mealIdInt = db.getMealID(selectedDate, mealName);
        db.AddToMeal(mealIdInt, foodId, Math.round(qty));
 
-
+        //inter-activity info passing via intent
         Intent intent = new Intent(this, acAddFood.class);
         selectedDate = intent.getStringExtra("MealDate");
         mealName = intent.getStringExtra("MealName");

@@ -14,13 +14,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** the acAddFood class
+/**
+ * The acAddFood class is for controlling the activity_add_food.xml, its elements and objects,
+ * and updating it with data and information as the user interacts with it.
  */
 
 public class acAddFood extends AppCompatActivity {
 
     EditText searchFood;
-    // TextView searchStatus;
     Button searchButton;
     String previousActivity;
     ListView searchResults;
@@ -59,9 +60,12 @@ public class acAddFood extends AppCompatActivity {
                     public void onClick(View v){
                         String foodSearch = searchFood.getText().toString();
                         try {
-                            /*
-                             * STEP 1
-                             * This makes a new thread, calls the ApiHandler.java , and send the activity and foodsearch
+                            /**
+                             * The foodSearch searchButton onclick listener was pivotal
+                             * for us to be able to get data back to the acAddFood Screen
+                             * This makes a new thread, calls the ApiHandler.java,
+                             * and send the activity and foodsearch.
+                             * Citations:
                              */
                             FoodSearchThreadCreator onViewCreatedOne = new FoodSearchThreadCreator(acAddFood.this, foodSearch);
 
@@ -80,6 +84,8 @@ public class acAddFood extends AppCompatActivity {
 
                 foodSearchList = Goals.getFoodSearchList();
                 List foodData = foodSearchList.get(i);
+
+                //inter-activity info passing via intent
                 Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
                 foodItem.putExtra("MealDate",selectedDate);
                 foodItem.putExtra("MealName", mealName);

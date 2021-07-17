@@ -1,10 +1,11 @@
 package com.example.foodfight;
 
 import android.os.StrictMode;
-import android.widget.Toast;
-
 import java.io.IOException;
 
+/**
+ * Creates the thread needed to display the list of items into the search results on acAddFood
+ */
 public class FoodSearchThreadCreator {
 
     public FoodSearchThreadCreator(acAddFood acAddFood, String foodSearch) throws IOException {
@@ -14,9 +15,7 @@ public class FoodSearchThreadCreator {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
-            //your codes here
             new ApiHandler(acAddFood, foodSearch).run();
-            Toast.makeText(acAddFood,"Search Button Clicked", Toast.LENGTH_LONG).show();
         }
     }
 }
