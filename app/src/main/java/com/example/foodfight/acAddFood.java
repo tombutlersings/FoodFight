@@ -52,6 +52,13 @@ public class acAddFood extends AppCompatActivity {
         }
     }
 
+    /**
+     * The foodSearch searchButton onclick listener was pivotal
+     * for us to be able to get data back to the acAddFood Screen
+     * This makes a new thread, calls the ApiHandler.java,
+     * and send the activity and foodsearch.
+     * Citations:
+     */
     public void foodSearch(){
         searchButton.setOnClickListener(
                 new View.OnClickListener(){
@@ -59,13 +66,6 @@ public class acAddFood extends AppCompatActivity {
                     public void onClick(View v){
                         String foodSearch = searchFood.getText().toString();
                         try {
-                            /**
-                             * The foodSearch searchButton onclick listener was pivotal
-                             * for us to be able to get data back to the acAddFood Screen
-                             * This makes a new thread, calls the ApiHandler.java,
-                             * and send the activity and foodsearch.
-                             * Citations:
-                             */
                             FoodSearchThreadCreator onViewCreatedOne = new FoodSearchThreadCreator(acAddFood.this, foodSearch);
 
                         } catch (IOException e) {
