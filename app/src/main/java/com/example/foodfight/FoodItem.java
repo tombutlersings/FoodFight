@@ -1,10 +1,9 @@
 package com.example.foodfight;
 
 /**
-* One of the most important Classes in this app
+ * FoodItem is one of the most important Classes in this app
  * This holds the information for the food item that is added to the meal
  */
-
 public class FoodItem {
     public static int Id;
     public static String FOOD_NAME;

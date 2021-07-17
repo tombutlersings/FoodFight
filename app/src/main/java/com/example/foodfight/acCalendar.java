@@ -8,9 +8,10 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-/** acCalendar class provides selection of day (within a ±1 year constraint)
+/**
+ *  acCalendar class provides selection of day (within a ±1 year constraint)
  *  for use by acMeal activity (and subsequent activities) as part of the index
- *  for retrieving meal content from the databaase
+ *  for retrieving meal content from the database.
  */
 public class acCalendar extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class acCalendar extends AppCompatActivity {
         Calendar cal2;
         long afterOneYearsinMilli = 0;
         long beforeOneYearsinMilli = 0;
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             // Max
             cal1 = Calendar.getInstance();
@@ -45,6 +47,7 @@ public class acCalendar extends AppCompatActivity {
             cal2.add(Calendar.YEAR, -1);
             beforeOneYearsinMilli = cal2.getTimeInMillis();
         }
+
         calendarView.setMaxDate(afterOneYearsinMilli);
         calendarView.setMinDate(beforeOneYearsinMilli);
 

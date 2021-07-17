@@ -6,24 +6,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
-* TODO: hardcode 2-3 foods, all meals for one date June 30
+ * TODO: hardcode 2-3 foods, all meals for one date June 30
  */
-
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "food.db";
-    // was "MealFood.db";
 
-//name for the Food Table
+    //name for the Food Table
     public static final String FOOD_TABLE_NAME =  "food";
-//Column names
+    //Column names
     public static final String FOOD_ID =  "foodID";
     public static final String FOOD_CALORIES =  "calories";
     public static final String FOOD_METRIC_SERVING =  "serving_size_m";
@@ -35,39 +31,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
-//names for the meal table
+    //names for the meal table
     public static final String MEAL_TABLE_NAME = "meal";
-//Column names
+    //Column names
     public static final String MEAL_ID =  "mealID";
     public static final String MEAL_DATE =  "date";
     public static final String PROFILE_NAME =  "profile";
     public static final String MEAL_NAME = "mealName";
 
-//Linking table
+    //Linking table
     public static final String LINKING_TABLE = "meal_food";
-//Linking Table Column Names
+    //Linking Table Column Names
     public static final String SERVINGS_NAME = "servings";
     public static final String MEAL_FOOD_ID = "id";
 
-
-
-
-
+    // This constructor will create the database
     public DatabaseHandler(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-        //when this construct is run this database will be created
-        //SQLiteDatabase db = this.getWritableDatabase(); // line just for troubleshooting
     }
 
 
-    //This is done for now
+    /** Creates the database tables for Meals, Foods, and a linking table
+     *
+     * @param db: name of database
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-//        db = this.getReadableDatabase();
-        //db = this.getReadableDatabase();
-
-        //code for the database tables
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + MEAL_TABLE_NAME
                 + " (" + MEAL_DATE +" TEXT, "
@@ -89,13 +78,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + LINKING_TABLE
                 + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + SERVINGS_NAME + " FLOAT NOT NULL," + MEAL_ID + " INTEGER, " + FOOD_ID + " INTEGER)");
-//                + " FOREIGN KEY(" + MEAL_ID + ") REFERENCES " + MEAL_TABLE_NAME + "(" + MEAL_ID + ") ON DELETE CASCADE,"
-//                + " FOREIGN KEY(" + FOOD_ID + ") REFERENCES " + FOOD_TABLE_NAME + "(" + FOOD_ID + ") ON DELETE CASCADE)");
 
     }
 
 
-    //not sure what to do here, but may revisit later if need be
+    // Future use method for upgrading table structure (deletes current content)
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //pass for now
@@ -105,13 +92,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-
-    //Gets a Meal and all foods added to it
+    /** Gets a meal (Breakfast, Lunch, etc) and all the foods tied to that meal
+     *
+     * @param date: date of meal
+     * @param mealName: name of meal (see MealsEnum)
+     * @return MealItem
+     */
     public MealItem GetMeal(String date, String mealName){
         SQLiteDatabase db = this.getReadableDatabase();
-        //gets information for a meal
-
-        // gets all foods for a meal
         ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
         // Select All Query
         String selectQuery = "SELECT " + FOOD_TABLE_NAME + "." + FOOD_NAME + ", "
@@ -135,7 +123,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 FoodItem food = new FoodItem(1,null,150);
                 food.setId(cursor.getInt(cursor.getColumnIndex(FOOD_ID)));
-//                String name = cursor.getInt(cursor.getColumnIndex("table_column_name"));
                 food.setName(cursor.getString(cursor.getColumnIndex(FOOD_NAME)));
                 food.setCalories(cursor.getInt(cursor.getColumnIndex(FOOD_CALORIES)));
                 food.setFoodHouseholdServing(cursor.getInt(cursor.getColumnIndex(FOOD_HOUSEHOLD_SERVING)));
@@ -165,8 +152,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             id = cursor.getInt(cursor.getColumnIndex(MEAL_ID));
         }
 
-
-
         //gets the quantities consumed from the database
         ArrayList<Float> quantityList = null;
         String quantityQuery = "SELECT " + LINKING_TABLE +"." + SERVINGS_NAME +
@@ -192,10 +177,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         MealItem meal = new MealItem(id, date,  mealName, foodList, quantityList);
         // return food list
         return meal;
-
     }
-
-
 
 
     //adds a food to the database using a FoodItem object

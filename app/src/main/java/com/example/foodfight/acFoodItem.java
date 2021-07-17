@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * acFoodItem class use retrieved food data (food name, calories,
+ * serving size, serving unit, and brand name) from database and other
+ * acMeal class to update activity_food_item.xml
+ */
 public class acFoodItem extends AppCompatActivity {
 
     String foodName, manufacturer, selectedDate, mealName, servingUnit;

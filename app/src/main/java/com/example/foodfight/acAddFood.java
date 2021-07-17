@@ -15,10 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The acAddFood class is for controlling the activity_add_food.xml, its elements and objects,
+ * acAddFood class controls the activity_add_food.xml, its elements and objects,
  * and updating it with data and information as the user interacts with it.
  */
-
 public class acAddFood extends AppCompatActivity {
 
     EditText searchFood;
@@ -76,6 +75,7 @@ public class acAddFood extends AppCompatActivity {
                 }
         );
     }
+
     public void itemClick(){
         //ListView listView = findViewById(R.id.searchResults);
         searchResults.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -95,5 +95,4 @@ public class acAddFood extends AppCompatActivity {
             }
         });
     }
-
 }
