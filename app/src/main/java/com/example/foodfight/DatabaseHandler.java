@@ -345,7 +345,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         String sql = "SELECT " + MEAL_ID +
                 " FROM " + LINKING_TABLE +
-                " WHERE mealId "  + " = '" + MEAL_ID + "' AND " + MEAL_NAME + " = '" + name + "'";
+                " WHERE mealId "  + " = '" + MEAL_ID + "'";
 // SELECT * from "meal_food" where mealID = 58
 
 
