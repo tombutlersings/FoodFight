@@ -99,10 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         //weekly goal stuff
 
-        Calendar dayThing = Calendar.getInstance();
-        Date date = dayThing.getTime();
-        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-        int dayCalories = calsDay(df.format(date));
+        int dayCalories = calsDay(CalendarHandler.getSystemDate());
         int weeklyCalories = weekCalories();
         //put data form the user into the shared preferences
         SharedPreferences.Editor editor = sp.edit();

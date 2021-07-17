@@ -2,7 +2,6 @@ package com.example.foodfight;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -23,7 +22,6 @@ public class acAddFood extends AppCompatActivity {
 
     EditText searchFood;
     Button searchButton;
-    Button addCustomButton;
     String previousActivity;
     ListView searchResults;
     String selectedDate;
@@ -37,7 +35,6 @@ public class acAddFood extends AppCompatActivity {
         searchFood = (EditText) findViewById(R.id.searchFood);
         searchButton = (Button) findViewById(R.id.btnSearchFood);
         searchResults = (ListView) findViewById(R.id.searchResults);
-        addCustomButton = (Button) findViewById(R.id.addCustomButton);
         foodSearch();
         itemClick();
 
@@ -55,12 +52,13 @@ public class acAddFood extends AppCompatActivity {
         }
     }
 
-    public void btnCustom(View view) {
-        Intent intent = new Intent(this, acAddCustomFood.class);
-        Log.i("FF_Main","Launching acMeals");
-        startActivity(intent);
-    }
-
+    /**
+     * The foodSearch searchButton onclick listener was pivotal
+     * for us to be able to get data back to the acAddFood Screen
+     * This makes a new thread, calls the ApiHandler.java,
+     * and send the activity and foodsearch.
+     * Citations:
+     */
     public void foodSearch(){
         searchButton.setOnClickListener(
                 new View.OnClickListener(){
@@ -68,15 +66,7 @@ public class acAddFood extends AppCompatActivity {
                     public void onClick(View v){
                         String foodSearch = searchFood.getText().toString();
                         try {
-                            /**
-                             * The foodSearch searchButton onclick listener was pivotal
-                             * for us to be able to get data back to the acAddFood Screen
-                             * This makes a new thread, calls the ApiHandler.java,
-                             * and send the activity and foodsearch.
-                             * Citations:
-                             */
                             FoodSearchThreadCreator onViewCreatedOne = new FoodSearchThreadCreator(acAddFood.this, foodSearch);
-
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -86,7 +76,6 @@ public class acAddFood extends AppCompatActivity {
     }
 
     public void itemClick(){
-        //ListView listView = findViewById(R.id.searchResults);
         searchResults.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -103,5 +92,13 @@ public class acAddFood extends AppCompatActivity {
 
             }
         });
+    }
+
+    // Called when user taps the Add Custom Food button
+    // This is a stretch part.
+    public void btnAddCustomFood(View view) {
+        Intent intent = new Intent(this, acAddCustomFood.class);
+        startActivity(intent);
+
     }
 }
