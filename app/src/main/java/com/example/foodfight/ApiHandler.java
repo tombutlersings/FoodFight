@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * ApiHandler class manages food map from Api class so that food name,
+ * manufacturer, calories, serving unit, and serving size are
+ * retrieved from the map for use in other activities.
+ */
 public class ApiHandler implements Runnable {
     Activity activityName;
     String foodSearch;
@@ -36,6 +41,7 @@ public class ApiHandler implements Runnable {
         }
         foodSearchResults = foodSearchResultsInternal;
     }
+
     public ArrayList<List> NutriSearch(String foodSearch) throws IOException {
         Api nutriApi = new Api();
         String nutriUrl = nutriApi.NutriNameSearch(foodSearch);
@@ -78,7 +84,11 @@ public class ApiHandler implements Runnable {
         return apiListOfResults;
     }
 
-
+    /**
+     * The run() method initialize a background thread to update current class
+     * (using ApiHandler object) with Food name, manufacturer, calories, serving unit,
+     * and serving size.
+     */
     @Override
     public void run() {
         final Activity refActivity = activityName;
@@ -121,7 +131,6 @@ public class ApiHandler implements Runnable {
 
                                 testList.add(line);
                                 newList.add(subList);
-
                             }
 
                             Goals.setFoodSearchList(newList);

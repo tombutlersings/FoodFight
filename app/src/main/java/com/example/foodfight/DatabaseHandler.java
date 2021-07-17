@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* TODO: hardcode 2-3 foods, all meals for one date June 30
+ * TODO: hardcode 2-3 foods, all meals for one date June 30
  */
-
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "food.db";

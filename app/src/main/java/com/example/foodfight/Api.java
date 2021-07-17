@@ -11,6 +11,11 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Api class interfaces with nutritionix API to search for food data
+ * and returns a map of json food objects and values via NutriApiEngine
+ * function.
+ */
 public class Api {
 
     public static Map<String, Object> jsonToMap(String str) {

@@ -18,6 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * acFoodList class interact with the database to display on
+ * activity_food_list.xml a list of foods added by user.
+ * There is a btnAddfood method that jump to activity_add_food.xml,
+ * allowing user to add food.
+ */
 public class acFoodList extends AppCompatActivity {
     String selectedDate;
     String mealName;

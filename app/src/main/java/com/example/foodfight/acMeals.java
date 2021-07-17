@@ -15,10 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * This Activity displays the meals that can be reviewed or edited by the user.
- * The display at the top showing the actual date or the selected date.
+ * acMeals class displays (on activity_meals.xml) the meals that can be reviewed
+ * or edited by the user. The display at the top showing the actual date or the selected date.
  * The select another day button takes opens acCalendar for the user to select a date
  * and will pass it back th new date on returning to this screen.
  */
@@ -38,7 +37,6 @@ public class acMeals extends AppCompatActivity {
         selectedDate = calendarHandler.getSystemDate();
 //        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy", Locale.getDefault());
 //        Calendar rightNow = Calendar.getInstance();
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -108,7 +106,6 @@ public class acMeals extends AppCompatActivity {
             //commit changes
             editor.commit();
             String dailyGoal = sp.getString("dailyGoal", "2222");
-
         }
 
         //display calories for the day
@@ -179,5 +176,4 @@ public class acMeals extends AppCompatActivity {
         intent.putExtra("MealName","Snack3");
         startActivity(intent);
     }
-
 }
