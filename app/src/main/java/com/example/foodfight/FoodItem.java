@@ -42,6 +42,10 @@ public class FoodItem {
         this(Id, name, calories, 0.0, null, serving_size_hh,serving_size_hh_unit,manufacturer, null);
     }
 
+    public FoodItem(int Id, String name, int calories, String manufacturer) {
+        this(Id, name, calories, 0.0, null, 0.0 ,null,manufacturer, null);
+    }
+
     public static String getName() {
         return FOOD_NAME;
     }

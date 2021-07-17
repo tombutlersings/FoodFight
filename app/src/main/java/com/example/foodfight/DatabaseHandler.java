@@ -19,25 +19,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "food.db";
 
     //name for the Food Table
-    public static final String FOOD_TABLE_NAME =  "food";
+    public static final String FOOD_TABLE_NAME = "food";
     //Column names
-    public static final String FOOD_ID =  "foodID";
-    public static final String FOOD_CALORIES =  "calories";
-    public static final String FOOD_METRIC_SERVING =  "serving_size_m";
-    public static final String FOOD_METRIC_SERVING_UNIT =  "serving_size_m_unit";
-    public static final String FOOD_HOUSEHOLD_SERVING =  "serving_size_hh";
-    public static final String FOOD_HOUSEHOLD_UNIT =  "serving_size_hh_unit";
-    public static final String FOOD_NAME =  "name";
-    public static final String FOOD_MANUFACTURER =  "manufacturer";
-
+    public static final String FOOD_ID = "foodID";
+    public static final String FOOD_CALORIES = "calories";
+    public static final String FOOD_METRIC_SERVING = "serving_size_m";
+    public static final String FOOD_METRIC_SERVING_UNIT = "serving_size_m_unit";
+    public static final String FOOD_HOUSEHOLD_SERVING = "serving_size_hh";
+    public static final String FOOD_HOUSEHOLD_UNIT = "serving_size_hh_unit";
+    public static final String FOOD_NAME = "name";
+    public static final String FOOD_MANUFACTURER = "manufacturer";
 
 
     //names for the meal table
     public static final String MEAL_TABLE_NAME = "meal";
     //Column names
-    public static final String MEAL_ID =  "mealID";
-    public static final String MEAL_DATE =  "date";
-    public static final String PROFILE_NAME =  "profile";
+    public static final String MEAL_ID = "mealID";
+    public static final String MEAL_DATE = "date";
+    public static final String PROFILE_NAME = "profile";
     public static final String MEAL_NAME = "mealName";
 
     //Linking table
@@ -52,7 +51,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    /** Creates the database tables for Meals, Foods, and a linking table
+    /**
+     * Creates the database tables for Meals, Foods, and a linking table
      *
      * @param db: name of database
      */
@@ -60,25 +60,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + MEAL_TABLE_NAME
-                + " (" + MEAL_DATE +" TEXT, "
-                + MEAL_NAME +" TEXT, "
+                + " (" + MEAL_DATE + " TEXT, "
+                + MEAL_NAME + " TEXT, "
                 + PROFILE_NAME + " INTEGER,"
                 + MEAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                 "UNIQUE( " + MEAL_DATE + " , " + MEAL_NAME + "))");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + FOOD_TABLE_NAME + " (" + FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + FOOD_NAME + " TEXT,"
-                + FOOD_CALORIES +" INTEGER,"
-                + FOOD_HOUSEHOLD_SERVING +" FLOAT,"
+                + FOOD_CALORIES + " INTEGER,"
+                + FOOD_HOUSEHOLD_SERVING + " FLOAT,"
                 + FOOD_HOUSEHOLD_UNIT + " TEXT,"
                 + FOOD_METRIC_SERVING + " FLOAT,"
-                + FOOD_METRIC_SERVING_UNIT +" TEXT,"
+                + FOOD_METRIC_SERVING_UNIT + " TEXT,"
                 + FOOD_MANUFACTURER + " TEXT,"
                 + " [SourceDB] TEXT,"
                 + " [picture_link] TEXT)");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + LINKING_TABLE
-                + " (" + MEAL_FOOD_ID +" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+                + " (" + MEAL_FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + SERVINGS_NAME + " FLOAT NOT NULL," + MEAL_ID + " INTEGER, " + FOOD_ID + " INTEGER)");
 
     }
@@ -97,36 +97,37 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    /** Gets a meal (Breakfast, Lunch, etc) and all the foods tied to that meal
+    /**
+     * Gets a meal (Breakfast, Lunch, etc) and all the foods tied to that meal
      *
-     * @param date: date of meal
+     * @param date:     date of meal
      * @param mealName: name of meal (see MealsEnum)
      * @return MealItem
      */
-    public MealItem GetMeal(String date, String mealName){
+    public MealItem GetMeal(String date, String mealName) {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
         // Select All Query
         String selectQuery = "SELECT " + FOOD_TABLE_NAME + "." + FOOD_NAME + ", "
-                                + FOOD_TABLE_NAME + "." + FOOD_CALORIES +", "
-                                + FOOD_TABLE_NAME + "." + FOOD_HOUSEHOLD_SERVING +", "
-                                + FOOD_TABLE_NAME + "." + FOOD_HOUSEHOLD_UNIT + ", "
-                                + FOOD_TABLE_NAME + "." + FOOD_METRIC_SERVING + ", "
-                                + FOOD_TABLE_NAME + "." + FOOD_METRIC_SERVING_UNIT +", "
-                                + FOOD_TABLE_NAME + "." + FOOD_MANUFACTURER + ", "
-                                + FOOD_TABLE_NAME + ".SourceDB, "
-                                + FOOD_TABLE_NAME + ".picture_link " +
-                                "FROM " + MEAL_TABLE_NAME +
-                                " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
-                                " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
-                                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
+                + FOOD_TABLE_NAME + "." + FOOD_CALORIES + ", "
+                + FOOD_TABLE_NAME + "." + FOOD_HOUSEHOLD_SERVING + ", "
+                + FOOD_TABLE_NAME + "." + FOOD_HOUSEHOLD_UNIT + ", "
+                + FOOD_TABLE_NAME + "." + FOOD_METRIC_SERVING + ", "
+                + FOOD_TABLE_NAME + "." + FOOD_METRIC_SERVING_UNIT + ", "
+                + FOOD_TABLE_NAME + "." + FOOD_MANUFACTURER + ", "
+                + FOOD_TABLE_NAME + ".SourceDB, "
+                + FOOD_TABLE_NAME + ".picture_link " +
+                "FROM " + MEAL_TABLE_NAME +
+                " LEFT JOIN " + LINKING_TABLE + " ON " + MEAL_TABLE_NAME + "." + MEAL_ID + "= " + LINKING_TABLE + "." + MEAL_ID +
+                " LEFT JOIN " + FOOD_TABLE_NAME + " ON " + LINKING_TABLE + "." + FOOD_ID + " =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
+                " WHERE " + MEAL_TABLE_NAME + "." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                FoodItem food = new FoodItem(1,null,150);
+                FoodItem food = new FoodItem(1, null, 150);
                 food.setId(cursor.getInt(cursor.getColumnIndex(FOOD_ID)));
                 food.setName(cursor.getString(cursor.getColumnIndex(FOOD_NAME)));
                 food.setCalories(cursor.getInt(cursor.getColumnIndex(FOOD_CALORIES)));
@@ -143,11 +144,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
 
-
         //gets the meal ID
         String mealIDQuery = "SELECT " + MEAL_TABLE_NAME + "." + MEAL_ID +
                 " FROM " + MEAL_TABLE_NAME +
-                " WHERE " + MEAL_TABLE_NAME +"." + MEAL_DATE + " = '" + date + "' AND " + MEAL_NAME + " = '" + mealName + "'";
+                " WHERE " + MEAL_TABLE_NAME + "." + MEAL_DATE + " = '" + date + "' AND " + MEAL_NAME + " = '" + mealName + "'";
 
         cursor = db.rawQuery(mealIDQuery, null);
 
@@ -159,11 +159,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //gets the quantities consumed from the database
         ArrayList<Float> quantityList = null;
-        String quantityQuery = "SELECT " + LINKING_TABLE +"." + SERVINGS_NAME +
+        String quantityQuery = "SELECT " + LINKING_TABLE + "." + SERVINGS_NAME +
                 " FROM " + MEAL_TABLE_NAME +
-                " LEFT JOIN " + LINKING_TABLE +" ON " + MEAL_TABLE_NAME + "." + MEAL_ID +"= " + LINKING_TABLE + "." + MEAL_ID +
-                " LEFT JOIN " + FOOD_TABLE_NAME +" ON " + LINKING_TABLE + "." + FOOD_ID +" =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
-                " WHERE "+ MEAL_TABLE_NAME +"." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
+                " LEFT JOIN " + LINKING_TABLE + " ON " + MEAL_TABLE_NAME + "." + MEAL_ID + "= " + LINKING_TABLE + "." + MEAL_ID +
+                " LEFT JOIN " + FOOD_TABLE_NAME + " ON " + LINKING_TABLE + "." + FOOD_ID + " =  " + FOOD_TABLE_NAME + "." + FOOD_ID +
+                " WHERE " + MEAL_TABLE_NAME + "." + MEAL_DATE + " = " + date + " AND " + MEAL_NAME + " = '" + mealName + "'";
 
         cursor = db.rawQuery(quantityQuery, null);
 
@@ -179,14 +179,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         db.close();
 
-        MealItem meal = new MealItem(id, date,  mealName, foodList, quantityList);
+        MealItem meal = new MealItem(id, date, mealName, foodList, quantityList);
         // return food list
         return meal;
     }
 
 
     //adds a food to the database using a FoodItem object
-    public void AddFood(FoodItem food){
+    public void AddFood(FoodItem food) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //gets the column names and assigns the values to them
@@ -208,7 +208,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public List<FoodItem> SearchFood(String foodname){
+    public List<FoodItem> SearchFood(String foodname) {
         SQLiteDatabase db = this.getReadableDatabase();
         //gets a list of foods from the database
 
@@ -222,7 +222,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                FoodItem food = new FoodItem(1,null,150);
+                FoodItem food = new FoodItem(1, null, 150);
                 food.setId(Integer.parseInt(cursor.getString(0)));
                 food.setName(cursor.getString(1));
                 food.setCalories(Integer.parseInt(cursor.getString(2)));
@@ -247,7 +247,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //public FoodItem GetFoodInfo(Integer foodID){}
 
     //Adds foods to a meal
-    public void AddToMeal(Integer mealID, Integer foodID, Integer servings){
+    public void AddToMeal(Integer mealID, Integer foodID, Integer servings) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -261,9 +261,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //Creates a meal that food can be added to
-    public void CreateMeal(String date, String mealName, Integer profile){
+    public void CreateMeal(String date, String mealName, Integer profile) {
         SQLiteDatabase db = this.getReadableDatabase();
-
 
 
         ContentValues values = new ContentValues();
@@ -273,7 +272,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         try {
             db.insert(MEAL_TABLE_NAME, null, values);
-        }catch (SQLException se){
+        } catch (SQLException se) {
             //pass
         }
 
@@ -282,7 +281,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public Integer getIdFromAPI(FoodItem foodItem){
+    public Integer getIdFromAPI(FoodItem foodItem) {
         SQLiteDatabase db = this.getWritableDatabase();
         //adds the food to the database
         //this.AddFood(foodItem);
@@ -291,7 +290,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //simplified query to make it run more better.
         String sql = "SELECT * FROM " + FOOD_TABLE_NAME +
                 " WHERE " + FOOD_NAME + " = \"" + foodItem.getName() + "\" AND " +
-                            FOOD_CALORIES + " = " + foodItem.getCalories();// + " AND " +
+                FOOD_CALORIES + " = " + foodItem.getCalories();// + " AND " +
 //                            FOOD_HOUSEHOLD_SERVING + " = " + foodItem.getFoodHouseholdServing() + " AND " +
 //                            FOOD_HOUSEHOLD_UNIT + " = " + foodItem.getFoodHouseholdUnit() + " AND " +
 //                            FOOD_METRIC_SERVING + " = " + foodItem.getServingSize() + " AND " +
@@ -301,7 +300,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(sql, null);
 
-        if (cursor !=null)
+        if (cursor != null)
             cursor.moveToFirst();
 //            Integer id = Integer.parseInt(cursor.getString(0));
 //        Integer id = Integer.parseInt(String.valueOf(cursor));
@@ -312,9 +311,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
 
         return id;
-    };
+    }
 
-    public Integer getMealID(String date, String name){
+    ;
+
+    public Integer getMealID(String date, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String sql = "SELECT " + MEAL_ID +
@@ -322,10 +323,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 " WHERE " + MEAL_DATE + " = '" + date + "' AND " + MEAL_NAME + " = '" + name + "'";
 
 
-
         Cursor cursor = db.rawQuery(sql, null);
 
-        if (cursor !=null)
+        if (cursor != null)
             cursor.moveToFirst();
         Integer id = Integer.parseInt(cursor.getString(0));
 
@@ -333,9 +333,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d("String", "meal id is: " + id.toString());
         db.close();
         return id;
-    };
+    }
 
-    public ArrayList<List> getFoodList(int mealID){
+    ;
+
+    public ArrayList<List> getFoodList(int mealID) {
         //
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -349,33 +351,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
         ArrayList<List> IDQTY = new ArrayList<>();
-                if (cursor.moveToFirst()) {
-                    do {
-                        ArrayList<Integer> list = new ArrayList<>();
-                        String id = (cursor.getString(cursor.getColumnIndex(FOOD_ID)));
-                        String servings = (cursor.getString(cursor.getColumnIndex(SERVINGS_NAME)));
-                        list.add(Integer.parseInt(id));
-                        list.add(Integer.parseInt(servings));
-                        IDQTY.add(list);
-                    } while (cursor.moveToNext());
-                }
+        if (cursor.moveToFirst()) {
+            do {
+                ArrayList<Integer> list = new ArrayList<>();
+                String id = (cursor.getString(cursor.getColumnIndex(FOOD_ID)));
+                String servings = (cursor.getString(cursor.getColumnIndex(SERVINGS_NAME)));
+                list.add(Integer.parseInt(id));
+                list.add(Integer.parseInt(servings));
+                IDQTY.add(list);
+            } while (cursor.moveToNext());
+        }
 
         db.close();
         return IDQTY;
-    };
+    }
+
+    ;
 
 
-    public FoodItem getFoodItemById(int foodid){
+    public FoodItem getFoodItemById(int foodid) {
         //
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String selectQuery = "SELECT * FROM " + FOOD_TABLE_NAME + " WHERE " + FOOD_ID + " = " + foodid ;
+        String selectQuery = "SELECT * FROM " + FOOD_TABLE_NAME + " WHERE " + FOOD_ID + " = " + foodid;
 // SELECT * from "meal_food" where mealID = 58
 
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        FoodItem food = new FoodItem(1,null,150);
+        FoodItem food = new FoodItem(1, null, 150);
         if (cursor.moveToFirst()) {
             do {
 
@@ -395,14 +399,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.close();
         return food;
-    };
+    }
 
+    ;
 
-
-
-
-
-
-
+    public void insertData(int id, String name, int calories, String manufacturer) {
+        SQLiteDatabase db = this.getWritableDatabase(); // line just for troubleshooting
+        FoodItem newFood = new FoodItem(100, name, calories, manufacturer);
+    }
 
 }
+

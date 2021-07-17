@@ -2,6 +2,7 @@ package com.example.foodfight;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class acAddFood extends AppCompatActivity {
 
     EditText searchFood;
     Button searchButton;
+    Button addCustomButton;
     String previousActivity;
     ListView searchResults;
     String selectedDate;
@@ -35,6 +37,7 @@ public class acAddFood extends AppCompatActivity {
         searchFood = (EditText) findViewById(R.id.searchFood);
         searchButton = (Button) findViewById(R.id.btnSearchFood);
         searchResults = (ListView) findViewById(R.id.searchResults);
+        addCustomButton = (Button) findViewById(R.id.addCustomButton);
         foodSearch();
         itemClick();
 
@@ -50,6 +53,12 @@ public class acAddFood extends AppCompatActivity {
         if(previousActivity.equals("acFoodItem")){
             this.finish();
         }
+    }
+
+    public void btnCustom(View view) {
+        Intent intent = new Intent(this, acAddCustomFood.class);
+        Log.i("FF_Main","Launching acMeals");
+        startActivity(intent);
     }
 
     public void foodSearch(){
