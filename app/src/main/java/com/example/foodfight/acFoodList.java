@@ -52,22 +52,35 @@ public class acFoodList extends AppCompatActivity {
 
         Log.i("FoodListMealItem", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
         //
+        ArrayList<String> outputString = new ArrayList<>();
         ArrayList<List> ids = db.getFoodList(mealItem.ID);
-        FoodItem testItem = db.getFoodItemById((int) ids.get(0).get(0));
-        Log.d("string", testItem.getName());
+        int calories = 0;
+        for(int i = 0; i < ids.size(); i++) {
+            FoodItem testItem = db.getFoodItemById((int) ids.get(i).get(0));
+            Log.d("string", testItem.getName());
+            String tempString = "";
+            tempString += testItem.getName() + "      " + String.valueOf(testItem.getCalories() * (int) ids.get(i).get(1));
+            outputString.add(tempString);
+            //update caloririe total
+            calories += testItem.getCalories() * ((int) ids.get(i).get(1));
+        }
+
+        //for id in ids get meal item
+        //multiply
 
 
 
         //
+        totalCalories = String.valueOf(calories);
         TextView tvCalories = findViewById(R.id.tvCalories);
-        String cals = String.valueOf(mealItem.getTotalCalories());
+        String cals = String.valueOf(totalCalories);
         tvCalories.setText(cals);
 
         Log.i("FoodListCalsTotal",cals);
 
 
         ListView foodListView = findViewById(R.id.foodListView);
-        ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1, mealItem.foodItems);
+        ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1, outputString);
         foodListView.setAdapter(adapter);
 
 

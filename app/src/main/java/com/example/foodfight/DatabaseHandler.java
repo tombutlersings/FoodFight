@@ -358,7 +358,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 if (cursor.moveToFirst()) {
                     do {
                         ArrayList<Integer> list = new ArrayList<>();
-                        String id = (cursor.getString(cursor.getColumnIndex(MEAL_FOOD_ID)));
+                        String id = (cursor.getString(cursor.getColumnIndex(FOOD_ID)));
                         String servings = (cursor.getString(cursor.getColumnIndex(SERVINGS_NAME)));
                         list.add(Integer.parseInt(id));
                         list.add(Integer.parseInt(servings));
