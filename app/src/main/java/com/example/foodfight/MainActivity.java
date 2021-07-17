@@ -69,21 +69,21 @@ public class MainActivity extends AppCompatActivity {
         // When MainActivity resumes, pull shared preferences for: name, calorie goal,
         // current daily calorie count, current weekly calorie count
         // Update progress bars
-        Log.i("[FoodFight]","Main Activity resumes");
+        Log.i("[FoodFight]", "Main Activity resumes");
         SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
-        String name = sp.getString("name","Your name");
+        String name = sp.getString("name", "Your name");
 
         //customize message to fit the time of dame
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         String msg;
         if (hour < 6) {
-            msg = "Wow, "+name+", you're up early!";
-        } else if (hour <12) {
-            msg = "Good morning, "+name+".";
+            msg = "Wow, " + name + ", you're up early!";
+        } else if (hour < 12) {
+            msg = "Good morning, " + name + ".";
         } else if (hour < 18) {
-            msg = "Good afternoon, "+name+".";
+            msg = "Good afternoon, " + name + ".";
         } else {
-            msg = "Good evening, "+name+".";
+            msg = "Good evening, " + name + ".";
         }
         TextView greeting = findViewById(R.id.textGreeting);
         greeting.setText(msg);
@@ -121,14 +121,18 @@ public class MainActivity extends AppCompatActivity {
         //   then display "you're doing great today on your goal!}
         // else if (dailygoal -250 >= current daily total ){ you're getting close} else { " you've exceeded your goal for the day}
         String message = "";
-        Float currentStatus = Float.parseFloat(dailyCurrent) / Float.parseFloat(dailyGoal);
-        if (currentStatus >= 1.0){
-            message = "You Exceeded Your DGoal";
-        }else if(currentStatus >= 0.8){
-            message = "You Are Getting Close to Your Goal.";
-        }else {
+        float currentStatus = Float.parseFloat(dailyCurrent) / Float.parseFloat(dailyGoal);
+        if (currentStatus >= 1.0) {
+            message = "You're gonna stop now, right?";
+        } else if (currentStatus >= 0.9) {
+            message = "Slow down. You're getting close!";
+        } else if (currentStatus >= 0.8) {
+            message = "Starting to feel full now?";
+        } else if (currentStatus >= 0.25 && currentStatus < 0.8) {
             message = "You Got This!";
-        }
+        } else
+            message = "You're allowed to eat a little more";
+
         TextView messageView = findViewById(R.id.tvDailyWords);
         messageView.setText(message);
     }
