@@ -90,6 +90,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //pass for now
         //Creates copies of tables
         //inserts data into new tables
+        db.execSQL("DROP TABLE " + FOOD_TABLE_NAME);
+        db.execSQL("DROP TABLE " + MEAL_TABLE_NAME);
+        db.execSQL("DROP TABLE " + LINKING_TABLE);
         onCreate(db);
     }
 
