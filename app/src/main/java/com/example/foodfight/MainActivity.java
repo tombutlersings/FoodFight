@@ -154,18 +154,19 @@ public class MainActivity extends AppCompatActivity {
 
         TextView messageView = findViewById(R.id.tvDailyWords);
         messageView.setText(message);
+
         String message2 = "";
         float currentStatus2 = Float.parseFloat(dailyCurrent) / Float.parseFloat(dailyGoal);
-        if (currentStatus >= 1.0) {
-            message = "Seriously, please find a diet book. PLEAAASE!";
-        } else if (currentStatus >= 0.9) {
-            message = "I'm guessing the belt is feeling tight this week?";
-        } else if (currentStatus >= 0.8) {
-            message = "If you stop eating now, you might lose weight.";
-        } else if (currentStatus >= 0.25 && currentStatus < 0.8) {
-            message = "You are definitely not starving ;) ";
+        if (currentStatus2 >= 1.0) {
+            message2 = "Seriously, please find a diet book. PLEAAASE!";
+        } else if (currentStatus2 >= 0.9) {
+            message2 = "I'm guessing the belt is feeling tight this week?";
+        } else if (currentStatus2 >= 0.8) {
+            message2 = "If you stop eating now, you might lose weight.";
+        } else if (currentStatus2 >= 0.25 && currentStatus2 < 0.8) {
+            message2 = "You are definitely not starving ;) ";
         } else
-            message = "Omitting some food entries, are we?";
+            message2 = "Omitting some food entries, are we?";
 
         TextView messageView2 = findViewById(R.id.tvWeeklyWords);
         messageView2.setText(message2);
