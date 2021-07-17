@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         TextView greeting = findViewById(R.id.textGreeting);
         greeting.setText(msg);
 
+        //update goals currants
+
+
         // Set the progress bars and captions
         String dailyGoal = sp.getString("dailyGoal", "2222");
         String dailyCurrent = sp.getString("dailyCurrent", "444");
@@ -146,6 +149,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, acUserProfile.class);
         startActivity(intent);
     }
+
+    //function to handle getting current caloiries for week
+    public int caloriesForWeek(){
+        //get dates for the week
+
+        return 0;
+    }
+
 
 
 
