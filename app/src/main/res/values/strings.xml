@@ -4,20 +4,11 @@
     <string name="main_label01">Daily Goal</string>
     <string name="main_label02">Weekly Goal</string>
 
+
     <string name="add_food_header">Add Food</string>
     <string name="add_food_btn01">Add Custom Food</string>
     <string name="add_food_btn02">Search</string>
     <string name="add_food_etSearch">Enter Food Name Here</string>
-
-    <string name="food_name_header">Food Name: </string>
-    <string name="qty_header">Qty: </string>
-    <string name="serving_size_header">Serving Size: </string>
-    <string name="serving_unit_header">Serving Unit: </string>
-    <string name="total_calories_header">Total Calories: </string>
-    <string name="manufacturer_header">Brand Name: </string>
-    <string name="food_confirm">Confirm</string>
-    <string name="food_cancel">Cancel</string>
-    <string name="cals_header">Total Calories</string>
 
 
     <string name="app_about_header">About the App</string>
@@ -42,9 +33,19 @@ Phillip Proctor"
 
     <string name="food_item_header">How much did you eat?</string>
     <string name="food_item_btn01">ADD</string>
-    <string name="food_item_label01">per serving</string>
-    <string name="food_item_label02">this meal</string>
+    <string name="food_item_label01">Food Name:</string>
+    <string name="food_item_label02">calories per</string>
     <string name="food_item_label03">Servings eaten</string>
+
+    <string name="food_name_header">Food Name:</string>
+    <string name="qty_header">Qty:</string>
+    <string name="serving_size_header">Serving Size:</string>
+    <string name="serving_unit_header">Serving Unit:</string>
+    <string name="total_calories_header">Total Calories:</string>
+    <string name="manufacturer_header">Brand Name:</string>
+    <string name="food_confirm">Confirm</string>
+    <string name="food_cancel">Cancel</string>
+    <string name="cals_header">Total Calories</string>
 
 
     <string name="food_list_header">What you\'ve eaten</string>
