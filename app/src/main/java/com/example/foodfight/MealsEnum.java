@@ -7,5 +7,5 @@ package com.example.foodfight;
  */
 
 public enum MealsEnum {
-    Breakfast,Morning_Snack,Lunch,Afternoon_Snack,Dinner,Evening_Snack
+    Breakfast,Snack1,Lunch,Snack2,Dinner,Snack3
 }
