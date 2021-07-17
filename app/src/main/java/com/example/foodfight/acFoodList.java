@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,12 +29,17 @@ public class acFoodList extends AppCompatActivity {
     String selectedDate;
     String mealName;
     String totalCalories;
-    String mealId;
+    ListView foodListView;
+    TextView textView;
+    ArrayList<String> outputString = new ArrayList<>();
+    ArrayList<List> foodSearchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
+        foodListView = (ListView) findViewById(R.id.foodListView);
+        textView = (TextView) findViewById(R.id.labelSelectedMeal);
     }
 
     @Override
@@ -44,7 +50,6 @@ public class acFoodList extends AppCompatActivity {
         mealName = intent.getStringExtra("MealName");
         Log.i("FF_FoodList","data starts with " + mealName + " for " + selectedDate);
 
-        TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealName);
 
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -52,7 +57,6 @@ public class acFoodList extends AppCompatActivity {
         MealItem mealItem = db.GetMeal(selectedDate, mealName);
         Log.i("FoodListMealItem", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
 
-        ArrayList<String> outputString = new ArrayList<>();
         ArrayList<List> ids = db.getFoodList(mealItem.ID);
         int calories = 0;
         for(int i = 0; i < ids.size(); i++) {
@@ -71,10 +75,29 @@ public class acFoodList extends AppCompatActivity {
 
         Log.i("FoodListCalsTotal",cals);
 
-        ListView foodListView = findViewById(R.id.foodListView);
         ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1, outputString);
         foodListView.setAdapter(adapter);
 
+//        itemClick();
+    }
+
+    public void itemClick(){
+        foodListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                foodSearchList = Goals.getFoodSearchList();
+                List foodData = foodSearchList.get(i);
+
+                //inter-activity info passing via intent
+                Intent foodItem = new Intent(acFoodList.this, acFoodItem.class);
+                foodItem.putExtra("MealDate",selectedDate);
+                foodItem.putExtra("MealName", mealName);
+                foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
+                startActivity(foodItem);
+
+            }
+        });
     }
 
     public void btnAddFood(View view) {

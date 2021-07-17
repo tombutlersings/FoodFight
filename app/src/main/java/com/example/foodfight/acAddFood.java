@@ -67,7 +67,6 @@ public class acAddFood extends AppCompatActivity {
                         String foodSearch = searchFood.getText().toString();
                         try {
                             FoodSearchThreadCreator onViewCreatedOne = new FoodSearchThreadCreator(acAddFood.this, foodSearch);
-
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -77,7 +76,6 @@ public class acAddFood extends AppCompatActivity {
     }
 
     public void itemClick(){
-        //ListView listView = findViewById(R.id.searchResults);
         searchResults.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -94,5 +92,13 @@ public class acAddFood extends AppCompatActivity {
 
             }
         });
+    }
+
+    // Called when user taps the Add Custom Food button
+    // This is a stretch part.
+    public void btnAddCustomFood(View view) {
+        Intent intent = new Intent(this, acAddCustomFood.class);
+        startActivity(intent);
+
     }
 }
