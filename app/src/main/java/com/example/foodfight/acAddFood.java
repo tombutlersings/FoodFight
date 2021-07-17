@@ -3,7 +3,6 @@ package com.example.foodfight;
 /* This activity uses the USDA API to retrieve data on selected foods
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -50,8 +49,9 @@ public class acAddFood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
         searchFood = (EditText) findViewById(R.id.searchFood);
-        searchButton = (Button) findViewById(R.id.searchButton);
+        searchButton = (Button) findViewById(R.id.btnSearchFood);
         searchResults = (ListView) findViewById(R.id.searchResults);
+
         foodSearch();
         itemClick();
 
@@ -67,18 +67,18 @@ public class acAddFood extends AppCompatActivity {
         selectedDate = intent.getStringExtra("MealDate");
         mealName = intent.getStringExtra("MealName");
         Toast.makeText(acAddFood.this,"Prev Activity: " + previousActivity, Toast.LENGTH_LONG).show();
-        if(previousActivity=="acFoodItem"){
+        if(previousActivity.equals("acFoodItem")){
             this.finish();
         }
     }
 
-    private Activity currentActivity = null;
-    public Activity getCurrentActivity(){
-        return currentActivity;
-    }
-    public void setCurrentActivity(Activity currentActivity){
-        this.currentActivity = currentActivity;
-    }
+//    private Activity currentActivity = null;
+//    public Activity getCurrentActivity(){
+//        return currentActivity;
+//    }
+//    public void setCurrentActivity(Activity currentActivity){
+//        this.currentActivity = currentActivity;
+//    }
 
 
     // TODO: METHOD search for food
@@ -90,14 +90,14 @@ public class acAddFood extends AppCompatActivity {
                         String foodSearch = searchFood.getText().toString();
                         Toast.makeText(acAddFood.this,foodSearch, Toast.LENGTH_LONG).show();
                         try {
-                            /**
+                            /*
                              * STEP 1
                              * This makes a new thread, calls the ApiHandler.java , and send the activity and foodsearch
                              */
                             FoodSearchThreadCreator onViewCreatedOne = new FoodSearchThreadCreator(acAddFood.this, foodSearch);
 
-//                            new Thread(new ApiHandler(acAddFood.this, foodSearch)).start();
-//                            Toast.makeText(acAddFood.this,"Search Button Clicked", Toast.LENGTH_LONG).show();
+                            // new Thread(new ApiHandler(acAddFood.this, foodSearch)).start();
+                            // Toast.makeText(acAddFood.this,"Search Button Clicked", Toast.LENGTH_LONG).show();
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -117,7 +117,6 @@ public class acAddFood extends AppCompatActivity {
     // todo: method to call apiHandlerClass
     // provides the search string
 
-
     // first internal search
     // TODO: METHOD display results
     // TODO: Creating Connection between results and buttons
@@ -125,8 +124,8 @@ public class acAddFood extends AppCompatActivity {
     // pass foodItem data to the acAddFood and AddFoodHandler screen
 
     public void itemClick(){
-        ListView listView = findViewById(R.id.searchResults);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        //ListView listView = findViewById(R.id.searchResults);
+        searchResults.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Dessert dessert = desserts.get(i);
@@ -138,31 +137,12 @@ public class acAddFood extends AppCompatActivity {
                 foodItem.putExtra("MealDate",selectedDate);
                 foodItem.putExtra("MealName", mealName);
                 foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
-                FoodItem newFoodItem = new FoodItem(0, foodData.get(0).toString(), Math.round(Float.parseFloat(foodData.get(2).toString())));
+                //FoodItem newFoodItem = new FoodItem(0, foodData.get(0).toString(), Math.round(Float.parseFloat(foodData.get(2).toString())));
                 //place data base item creation here
                 //get id to pass to acFoodItem
 
                 startActivity(foodItem);
 
-//
-//                switch(i) {
-//                    case 0:
-//                        Toast.makeText(acAddFood.this,"Item 0", Toast.LENGTH_LONG).show();
-//                        break;
-//                    case 1:
-//                        Toast.makeText(acAddFood.this,"Item 1", Toast.LENGTH_LONG).show();
-//                        break;
-//                    case 2:
-//                        Toast.makeText(acAddFood.this,"Item 2", Toast.LENGTH_LONG).show();
-//                        break;
-//                    case 3:
-//                        Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
-//                        foodItem.putExtra("MealDate",selectedDate);
-//                        foodItem.putExtra("MealName",mealName);
-//                        foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
-//                        startActivity(foodItem);
-//                        break;
-//                }
             }
         });
     }

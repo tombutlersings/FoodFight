@@ -159,7 +159,7 @@ public class ApiHandler implements Runnable {
                             }
                             Goals.setFoodSearchList(newList);
 
-                            /**
+                            /*
                              * STEP 3 - The responding thread passes back the results to the acAddFood screen
                              * Populates the list view with
                              */

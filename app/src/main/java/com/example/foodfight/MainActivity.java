@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // VERIFIES THE DATABASE IS THERE
-        SQLiteDatabase dbFood = openOrCreateDatabase("food", MODE_PRIVATE, null);
+        // SQLiteDatabase dbFood = openOrCreateDatabase("food", MODE_PRIVATE, null);
         db = new DatabaseHandler(this);
         //CREATE / INITIALIZE THE DATABASE
         //VERIFY IF THE DATABASE FILE EXISTS AND IF FOOD TABLE IS POPULATED
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         boolean test = doesDatabaseExist(this,"food.db");
         if (!test) {
             Toast.makeText(MainActivity.this,"DB does not Exist", Toast.LENGTH_LONG).show();
-
         } else {
             Toast.makeText(MainActivity.this,"WAHOOO! DB Exists!", Toast.LENGTH_LONG).show();
         }

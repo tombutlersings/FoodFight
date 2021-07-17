@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-// import android.widget.ArrayAdapter;
-// import android.widget.ListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,9 +31,6 @@ public class acFoodList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
-        Intent intent = getIntent();
-        selectedDate = intent.getStringExtra("MealDate");
-        mealName = intent.getStringExtra("MealName");
     }
 
     @Override
@@ -44,35 +39,32 @@ public class acFoodList extends AppCompatActivity {
         Intent intent = getIntent();
         selectedDate = intent.getStringExtra("MealDate");
         mealName = intent.getStringExtra("MealName");
-        mealId = intent.getStringExtra("mealId");
-//        Integer mealIdIntConverted = Integer.valueOf(mealId);
         Log.i("FF_FoodList","data starts with " + mealName + " for " + selectedDate);
-//        Log.i("FF_FoodList","mealId = " + mealIdIntConverted);
-
 
         TextView textView = findViewById(R.id.labelSelectedMeal);
         textView.setText(mealName);
 
-
         //get information from the database
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-//        MealItem meal = new MealItem(0,selectedDate,mealName
-//                ,new ArrayList<FoodItem>(),new ArrayList<Float>());
+        db.CreateMeal(selectedDate, mealName, 0);
 
-        //create meal item only i there is not already one
+        MealItem mealItem = db.GetMeal(selectedDate, mealName);
+
+        Log.i("FoodListMealItem", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
 
 
-//        //my idea here is that if the meal id is not found it will return null but dbhandler is not set up to do that.
-        //the next line is for testing to see what it did when a meal was present.
-db.CreateMeal(selectedDate, mealName, 0);
+        TextView tvCalories = findViewById(R.id.tvCalories);
+        String cals = String.valueOf(mealItem.getTotalCalories());
+        tvCalories.setText(cals);
 
-//        if (db.getMealID(selectedDate, mealName) == null){
-//            db.CreateMeal(selectedDate, mealName, 0);
-//        }
-//        MealItem displayMeal = db.GetMeal(selectedDate, mealName);
-//        //display foods if there are any
-//        if (displayMeal.foodItems.size() > 0 ){
-//            displayMealItems(displayMeal);}
+        Log.i("FoodListCalsTotal",cals);
+
+
+        ListView foodListView = findViewById(R.id.foodListView);
+        ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1, mealItem.foodItems);
+        foodListView.setAdapter(adapter);
+
+
 
         /* TODO: The list of foods for the given 'selectedDate' and 'mealName' need to be
                  pushed into the ListView foodListView
@@ -106,25 +98,23 @@ db.CreateMeal(selectedDate, mealName, 0);
     // This is where the list of foods for the selected day get populated into the ListView
     // This needs to be refactored to match the actual names of classes and methods
     //   that will feedback the meal items for a certain day
-    public void displayMealItems(MealItem mealItem) {
-        List<String> foodsList = null;
-        //add food name to string
-        //add food calories to sting
-        //add string to foods list
-        ArrayList<FoodItem> foodItems = mealItem.foodItems;
-        TextView tvCalories = findViewById(R.id.tvCalories);
-        float cals = mealItem.getTotalCalories();
-        tvCalories.setText(Float.toString(cals));
-        for (int i = 0; i < foodItems.size(); i++){
-            String output;
-            FoodItem fooditem = foodItems.get(i);
-            output = fooditem.getName() + "      " + fooditem.getCalories();
-            foodsList.add(output);
-        }
-        ListView foodListView = findViewById(R.id.foodListView);
-        ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1,foodsList);
-        foodListView.setAdapter(adapter);
-    }
+
+//        List<String> foodsList = null;
+    //add food name to string
+    //add food calories to sting
+    //add string to foods list
+//        String output;
+//        FoodItem foodItem;
+//        ArrayList<FoodItem> foodItems = mealItem.foodItems;
+//        ArrayList<String> foodsList = new ArrayList<String>
+//
+//
+//        for (int i = 0; i < foodItems.size(); i++){
+//            foodItem = foodItems.get(i);
+//            output = foodItem.getName() + "      " + foodItem.getCalories();
+//            foodsList.add(output);
+//        }
+
 
 
 
