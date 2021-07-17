@@ -34,7 +34,6 @@ public class acFoodItem extends AppCompatActivity {
         conCals = Math.round(calories);
 
         // Initialize TextViews
-        // Toast.makeText(this, manufacturer, Toast.LENGTH_SHORT).show();
         TextView showQty = findViewById(R.id.showQty);
         TextView displayFood = findViewById(R.id.displayFood);
         TextView displayCalories = findViewById(R.id.displayCalories);
@@ -59,57 +58,26 @@ public class acFoodItem extends AppCompatActivity {
 
     }
 
-    /** Called when user taps the red minus button
-     *
-     * @param view
-     */
     public void btnCalorieDown(View view) {
         if (qty > 0) { qty -= 0.5; }
         updateDisplay();
     }
 
-
-    /** Called when user taps the green plus button
-     *
-     * @param view
-     */
     public void btnCalorieUp(View view) {
         qty += 0.5;
         updateDisplay();
     }
 
-
-    /** Updates Food Item consumption fields
-     */
     private void updateDisplay() {
         TextView showQty = findViewById(R.id.showQty);
         String qtyConverted = Float.toString(qty);
         showQty.setText(qtyConverted);
 
-        // Update the views with new data
         TextView totalCalories2 = findViewById(R.id.displayTotalCalories);
         totalCalories = qty * calories;
         String totcalsConverted = Float.toString(totalCalories);
         totalCalories2.setText(totcalsConverted);
     }
-
-
-
-    /** Called when user taps the blue Done button, consumption data is pushed into database
-     *  and then drops back to the FoodList activity
-     */
-//    public void addFoodEnter(View view){
-//        FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
-//        //open database
-//        // add food to database and getID
-//        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-//        //
-//        // add the food to the list of foods
-//        db.AddFood(newFoodItem);
-//        // get foodid
-//        int foodId = db.getIdFromAPI(newFoodItem);
-//        Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
-//    }
 
     public void btnDone(View view) {
         FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
