@@ -122,16 +122,13 @@ public class ApiHandler implements Runnable {
                                 testList.add(line);
                                 newList.add(subList);
 
-
                             }
-// TODO: could the above iterator and below iterator be combined into one list or function?
 
                             Goals.setFoodSearchList(newList);
-    }
+                        }
                     });
                 }
             });
         }
     }
-
 }
