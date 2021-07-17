@@ -36,11 +36,11 @@ public class acAddCustomFood extends AppCompatActivity {
 
         //cast our items on our page
         //https://www.youtube.com/watch?v=T0ClYrJukPA&ab_channel=ProgrammingKnowledge
-        editName = (EditText) findViewById(R.id.editName);
-        editCalories = (EditText) findViewById(R.id.editCalories);
-        editManufacturer = (EditText) findViewById(R.id.editManufacturer);
-        btnAddData = (Button) findViewById(R.id.btnAddData);
-        addData();
+//        editName = (EditText) findViewById(R.id.editName);
+//        editCalories = (EditText) findViewById(R.id.editCalories);
+//        editManufacturer = (EditText) findViewById(R.id.editManufacturer);
+//        btnAddData = (Button) findViewById(R.id.btnAddData);
+//        addData();
     }
 
     public void addData() {
