@@ -46,7 +46,7 @@ public class CalendarHandler {
     // getSystemDate() returns current android system date value.
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public String getSystemDate() {
+    public static String getSystemDate() {
         Date date = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
         return df.format(date);
