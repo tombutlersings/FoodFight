@@ -1,14 +1,14 @@
 package com.example.foodfight;
 
-/* This activity is part of the stretch goal where calorie trends
- * are graphically displayed. As-yet-to-be-define buttons will select
- * different trend types.
- */
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/* This activity is part of the stretch goal where calorie trends
+ * are graphically displayed. As-yet-to-be-define buttons will select
+ * different trend types.
+ */
 public class acTrend extends AppCompatActivity {
 
     @Override

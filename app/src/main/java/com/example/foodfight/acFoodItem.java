@@ -73,11 +73,13 @@ public class acFoodItem extends AppCompatActivity {
         String qtyConverted = Float.toString(qty);
         showQty.setText(qtyConverted);
 
+        // Update the views with new data
         TextView totalCalories2 = findViewById(R.id.displayTotalCalories);
         totalCalories = qty * calories;
         String totcalsConverted = Float.toString(totalCalories);
         totalCalories2.setText(totcalsConverted);
     }
+
 
     public void btnDone(View view) {
         FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);

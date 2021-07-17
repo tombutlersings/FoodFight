@@ -23,9 +23,9 @@ import java.util.Calendar;
  */
 public class MainActivity extends AppCompatActivity {
     //DatabaseHandler dbNameHere;
-    SQLiteDatabase dbFood;
+    // SQLiteDatabase dbFood;
     DatabaseHandler db;
-    ApiHandler foodSearcher;
+    // ApiHandler foodSearcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         foodLib.libCreator(this);
         boolean test = doesDatabaseExist(this,"food.db");
         if (!test) {
-            Toast.makeText(MainActivity.this,"DB does not Exist", Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this,"DB does not Exist", Toast.LENGTH_LONG).show();
+            Log.i("FF_Main_DBLoad","DB does not exist!");
         } else {
-            Toast.makeText(MainActivity.this,"WAHOOO! DB Exists!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this,"WAHOOO! DB Exists!", Toast.LENGTH_LONG).show();
+            Log.i("FF_Main_DBLoad","WAHOO! DB Exists!");
         }
-
     }
-
 
     private static boolean doesDatabaseExist(Context context, String dbName) {
         File dbFile = context.getDatabasePath(dbName);
