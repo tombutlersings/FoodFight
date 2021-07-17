@@ -54,12 +54,12 @@ public class acMeals extends AppCompatActivity {
 
         //list of meal names
         ArrayList<String> mealNames = new ArrayList<>();
-        mealNames.add("Breakfast");
-        mealNames.add("Snack1");
-        mealNames.add("Lunch");
-        mealNames.add("Snack2");
-        mealNames.add("Dinner");
-        mealNames.add("Snack3");
+        mealNames.add(MealsEnum.Breakfast.toString());
+        mealNames.add(MealsEnum.Snack1.toString());
+        mealNames.add(MealsEnum.Lunch.toString());
+        mealNames.add(MealsEnum.Snack2.toString());
+        mealNames.add(MealsEnum.Dinner.toString());
+        mealNames.add(MealsEnum.Snack3.toString());
         //list for setting total calories
         ArrayList<TextView> textViews = new ArrayList<>();
         textViews.add(findViewById(R.id.tvBreakfast));
@@ -136,7 +136,7 @@ public class acMeals extends AppCompatActivity {
     public void btnBreakfast(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealName","Breakfast");
+        intent.putExtra("MealName",MealsEnum.Breakfast.toString());
         startActivity(intent);
     }
 
@@ -144,7 +144,7 @@ public class acMeals extends AppCompatActivity {
     public void btnSnack1(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealName","Snack1");
+        intent.putExtra("MealName",MealsEnum.Snack1.toString());
         startActivity(intent);
     }
 
@@ -152,7 +152,7 @@ public class acMeals extends AppCompatActivity {
     public void btnLunch(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealName","Lunch");
+        intent.putExtra("MealName",MealsEnum.Lunch.toString());
         startActivity(intent);
     }
 
@@ -160,7 +160,7 @@ public class acMeals extends AppCompatActivity {
     public void btnSnack2(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate", selectedDate);
-        intent.putExtra("MealName","Snack2");
+        intent.putExtra("MealName",MealsEnum.Snack2.toString());
         startActivity(intent);
     }
 
@@ -168,7 +168,7 @@ public class acMeals extends AppCompatActivity {
     public void btnDinner(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealName","Dinner");
+        intent.putExtra("MealName",MealsEnum.Dinner.toString());
         startActivity(intent);
     }
 
@@ -176,7 +176,7 @@ public class acMeals extends AppCompatActivity {
     public void btnSnack3(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealName","Snack3");
+        intent.putExtra("MealName",MealsEnum.Snack3.toString());
         startActivity(intent);
     }
 

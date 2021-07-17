@@ -4,16 +4,24 @@ package com.example.foodfight;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 /**
  * The main activity screen shows progress bars for daily and weekly calorie
  * counts against user goals.  Buttons at the bottom of the screen navigate to
@@ -63,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onResume() {
         super.onResume();
@@ -135,6 +144,34 @@ public class MainActivity extends AppCompatActivity {
 
         TextView messageView = findViewById(R.id.tvDailyWords);
         messageView.setText(message);
+
+        //weekly goal stuff
+//        final getWeekDates usWeek = new getWeekDates(Locale.getDefault());
+//        String convertedDate = String.valueOf(usWeek.getoneDay());
+//        String temp = convertedDate.substring(5) + "-" + convertedDate.substring(0, 4);
+
+        int weeklyCalories = weekCaloiries();
+        Log.d("weekly", "cals are: " + String.valueOf(weeklyCalories));
+
+// get start of this week in milliseconds
+//        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
+//        Date beginning = cal.getTime();
+//        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek() + 1);
+//        Date beginning1 = cal.getTime();
+//        Date date = Calendar.getInstance().getTime();
+//        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+//        //System.out.println("Start of this week:       " + cal.getTime());
+        //System.out.println("... in milliseconds:      " + cal.getTimeInMillis());
+
+        Calendar dayThing = Calendar.getInstance();
+        int dayNum = dayThing.get(Calendar.DAY_OF_WEEK);
+        Log.d("FF_Main:WeekThing", String.valueOf(dayNum));
+
+
+//        Log.d("String", "Start of this week:       " + df.format(date));
+//        Log.d("String", "Start of this week:       " + df.format(beginning));
+//        Log.d("String", "Start of this week:       " + df.format(beginning1));
+//        Log.d("String", "... in milliseconds:      " + cal.getTimeInMillis());
     }
 
     // Called when user taps the Meals button
@@ -159,5 +196,68 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public int weekCaloiries(){
+        int totalCals = 0;
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !
+        cal.clear(Calendar.MINUTE);
+        cal.clear(Calendar.SECOND);
+        cal.clear(Calendar.MILLISECOND);
+
+        for (int i = 0; i < 7; i++){
+            //get date object
+            cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek() + i);
+            Date date = cal.getTime();
+            SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+            //get total calories for the day
+            //add to week calories
+            totalCals += calsDay(df.format(date));
+
+
+        }
+
+        //list of meal names
+
+
+        return totalCals;
+    }
+    public int calsDay(String date){
+        ArrayList<String> mealNames = new ArrayList<>();
+        mealNames.add(MealsEnum.Breakfast.toString());
+        mealNames.add(MealsEnum.Snack1.toString());
+        mealNames.add(MealsEnum.Lunch.toString());
+        mealNames.add(MealsEnum.Snack2.toString());
+        mealNames.add(MealsEnum.Dinner.toString());
+        mealNames.add(MealsEnum.Snack3.toString());
+        //list for setting total calories
+
+        int dayCalories = 0;
+        //for list of meal names in current date get total calories and display in corresponding text view
+        for (int meal_name = 0; meal_name < mealNames.size(); meal_name++) {
+            String mealName = mealNames.get(meal_name);
+
+            DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+            db.CreateMeal(date, mealName, 0);
+
+            MealItem mealItem = db.GetMeal(date, mealName);
+
+            Log.i("FF_acMeals", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
+
+            ArrayList<List> ids = db.getFoodList(mealItem.ID);
+            int calories = 0;
+            for (int i = 0; i < ids.size(); i++) {
+                FoodItem testItem = db.getFoodItemById((int) ids.get(i).get(0));
+                Log.d("FF_acMeals:GetFoodItem", testItem.getName());
+
+                //update calories total
+                calories += testItem.getCalories() * ((int) ids.get(i).get(1));
+            }
+            //update calories for the day
+            dayCalories += calories;
+        }
+        return dayCalories;
+    }
 
 }
