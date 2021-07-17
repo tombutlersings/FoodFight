@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -45,11 +47,13 @@ public class acFoodItem extends AppCompatActivity {
         TextView displayServingSize = findViewById(R.id.displayServingSize);
         TextView displayServingUnit = findViewById(R.id.displayServingUnit);
         TextView displayManufacturer = findViewById(R.id.displayManufacturer);
+        TextView displayEaten = findViewById((R.id.headerQty));
 
         // Convert floats to strings for display in TextViews
         String caloriesConverted = Float.toString(conCals);
         String sizeConverted = Float.toString(servingSize);
         String qtyConverted = Float.toString(qty);
+        String unitEaten = servingUnit + " eaten";
 
         // Display initial data
         displayFood.setText(foodName);
@@ -58,7 +62,7 @@ public class acFoodItem extends AppCompatActivity {
         displayServingUnit.setText(servingUnit);
         displayServingSize.setText(sizeConverted);
         displayManufacturer.setText(manufacturer);
-
+        displayEaten.setText(unitEaten);
         updateDisplay();
 
     }
