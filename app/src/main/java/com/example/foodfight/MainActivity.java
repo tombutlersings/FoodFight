@@ -116,6 +116,21 @@ public class MainActivity extends AppCompatActivity {
         TextView weeklyCaption = findViewById(R.id.tvWeekly);
         String wCap = weeklyCurrent + " / " + WG;
         weeklyCaption.setText(wCap);
+
+        //if (dailygoal - 1000  >= current daily total) {tvDailyWords
+        //   then display "you're doing great today on your goal!}
+        // else if (dailygoal -250 >= current daily total ){ you're getting close} else { " you've exceeded your goal for the day}
+        String message = "";
+        Float currentStatus = Float.parseFloat(dailyCurrent) / Float.parseFloat(dailyGoal);
+        if (currentStatus >= 1.0){
+            message = "You Exceeded Your DGoal";
+        }else if(currentStatus >= 0.8){
+            message = "You Are Getting Close to Your Goal.";
+        }else {
+            message = "You Got This!";
+        }
+        TextView messageView = findViewById(R.id.tvDailyWords);
+        messageView.setText(message);
     }
 
     // Called when user taps the Meals button

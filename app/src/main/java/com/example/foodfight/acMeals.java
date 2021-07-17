@@ -109,9 +109,6 @@ public class acMeals extends AppCompatActivity {
             editor.commit();
             String dailyGoal = sp.getString("dailyGoal", "2222");
 
-            //if (dailygoal - 1000  >= current daily total) {
-            //   then display "you're doing great today on your goal!}
-            // else if (dailygoal -250 >= current daily total ){ you're getting close} else { " you've exceeded your goal for the day}
         }
 
         //display calories for the day
