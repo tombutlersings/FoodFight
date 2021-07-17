@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("dailyCurrent", (Integer.toString(dayCalories)));
         //commit changes
         editor.commit();
-        Log.d("weekly", "cals are: " + String.valueOf(weeklyCalories));
+        Log.d("weekly", "cals are: " + weeklyCalories);
 
 
         // Set the progress bars and captions
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         //if (dailygoal - 1000  >= current daily total) {tvDailyWords
         //   then display "you're doing great today on your goal!}
         // else if (dailygoal -250 >= current daily total ){ you're getting close} else { " you've exceeded your goal for the day}
-        String message = "";
+        String message;
         float currentStatus = Float.parseFloat(dailyCurrent) / Float.parseFloat(dailyGoal);
         if (currentStatus >= 1.0) {
             message = "You're gonna stop now, right?";
