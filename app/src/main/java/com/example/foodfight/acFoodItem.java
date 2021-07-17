@@ -98,18 +98,18 @@ public class acFoodItem extends AppCompatActivity {
     /** Called when user taps the blue Done button, consumption data is pushed into database
      *  and then drops back to the FoodList activity
      */
-    public void addFoodEnter(View view){
-        FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
-        //open database
-        // add food to database and getID
-        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-        //
-        // add the food to the list of foods
-        db.AddFood(newFoodItem);
-        // get foodid
-        int foodId = db.getIdFromAPI(newFoodItem);
-        Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
-    }
+//    public void addFoodEnter(View view){
+//        FoodItem newFoodItem = new FoodItem(0, foodName, conCals,manufacturer, Double.parseDouble(Float.toString( servingSize)), servingUnit);
+//        //open database
+//        // add food to database and getID
+//        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+//        //
+//        // add the food to the list of foods
+//        db.AddFood(newFoodItem);
+//        // get foodid
+//        int foodId = db.getIdFromAPI(newFoodItem);
+//        Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
+//    }
 
     public void btnDone(View view) {
         /* TODO: Code to calculate calories from the given servings (is this being kept in the
