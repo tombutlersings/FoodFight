@@ -80,19 +80,18 @@ public class acMeals extends AppCompatActivity {
 
             MealItem mealItem = db.GetMeal(selectedDate, mealName);
 
-            Log.i("FoodListMealItem", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
-            //
+            Log.i("FF_acMeals", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
+
             ArrayList<List> ids = db.getFoodList(mealItem.ID);
             int calories = 0;
             for (int i = 0; i < ids.size(); i++) {
                 FoodItem testItem = db.getFoodItemById((int) ids.get(i).get(0));
-                Log.d("string", testItem.getName());
+                Log.d("FF_acMeals:GetFoodItem", testItem.getName());
 
-
-                //update caloririe total
+                //update calories total
                 calories += testItem.getCalories() * ((int) ids.get(i).get(1));
             }
-            //updat calories for the day
+            //update calories for the day
             dayCalories += calories;
             //display calories to screen
             TextView mealCals = textViews.get(meal_name);
