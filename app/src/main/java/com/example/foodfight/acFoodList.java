@@ -59,7 +59,7 @@ public class acFoodList extends AppCompatActivity {
             FoodItem testItem = db.getFoodItemById((int) ids.get(i).get(0));
             Log.d("string", testItem.getName());
             String tempString = "";
-            tempString += testItem.getName() + "      " + String.valueOf(testItem.getCalories() * (int) ids.get(i).get(1));
+            tempString += testItem.getName() + "      " + testItem.getCalories() * (int) ids.get(i).get(1);
             outputString.add(tempString);
             //update caloririe total
             calories += testItem.getCalories() * ((int) ids.get(i).get(1));
@@ -77,7 +77,6 @@ public class acFoodList extends AppCompatActivity {
         tvCalories.setText(cals);
 
         Log.i("FoodListCalsTotal",cals);
-
 
         ListView foodListView = findViewById(R.id.foodListView);
         ArrayAdapter<MealItem> adapter = new ArrayAdapter(acFoodList.this, android.R.layout.simple_list_item_1, outputString);

@@ -20,7 +20,7 @@ public class acFoodItem extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ac_food_item);
+        setContentView(R.layout.activity_food_item);
 
         // Variables to get database information
         Intent intent = getIntent();
@@ -44,7 +44,7 @@ public class acFoodItem extends AppCompatActivity {
         TextView displayManufacturer = findViewById(R.id.displayManufacturer);
 
         // Convert floats to strings for display in TextViews
-        String caloriesConverted = Float.toString(calories);
+        String caloriesConverted = Float.toString(conCals);
         String sizeConverted = Float.toString(servingSize);
         String qtyConverted = Float.toString(qty);
 
@@ -56,6 +56,7 @@ public class acFoodItem extends AppCompatActivity {
         displayServingSize.setText(sizeConverted);
         displayManufacturer.setText(manufacturer);
 
+        updateDisplay();
 
     }
 
@@ -79,7 +80,7 @@ public class acFoodItem extends AppCompatActivity {
     }
 
 
-    /** Updates consumption fields after being modified
+    /** Updates Food Item consumption fields
      */
     private void updateDisplay() {
         TextView showQty = findViewById(R.id.showQty);

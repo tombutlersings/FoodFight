@@ -10,9 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * This Activity displays the meals that can be reviewed or edited by the user.
@@ -20,7 +17,6 @@ import java.util.Locale;
  * The select another day button takes opens acCalendar for the user to select a date
  * and will pass it back th new date on returning to this screen.
  */
-
 public class acMeals extends AppCompatActivity {
     CalendarHandler calendarHandler = new CalendarHandler();
     private TextView dateView;
@@ -34,20 +30,20 @@ public class acMeals extends AppCompatActivity {
         // Set dateView to the system date if the user has not selected a date on the calendar.
         Log.i("FF_Meals","Get Date");
         selectedDate = calendarHandler.getSystemDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy", Locale.getDefault());
-        Calendar rightNow = Calendar.getInstance();
+//        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy", Locale.getDefault());
+//        Calendar rightNow = Calendar.getInstance();
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
         dateView = findViewById(R.id.tvDate);
         String msg = "Calories for " + selectedDate;
         dateView.setText(msg);
         Log.i("FF_Meals","Set date on screen");
-        // TODO: There needs to be a feedback on a selected date from
+
+        //TODO: get calories per mealType for display and calc total calories for day
     }
 
     // Called when user taps Select Another Day
@@ -61,10 +57,8 @@ public class acMeals extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
                 selectedDate = data.getStringExtra("result");
-            }
         }
     }
 

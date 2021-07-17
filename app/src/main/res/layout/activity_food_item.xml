@@ -31,12 +31,13 @@
         android:id="@+id/tvCalorieServing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/food_item_label02"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/headerManufacturer"
-        tools:layout_editor_absoluteX="41dp" />
+        app:layout_constraintStart_toEndOf="@+id/displayCalories"
+        app:layout_constraintTop_toBottomOf="@+id/headerManufacturer" />
 
     <TextView
         android:id="@+id/displayServingUnit"
@@ -61,11 +62,11 @@
         android:id="@+id/displayCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
         android:hint="00"
         android:textAlignment="textEnd"
         app:layout_constraintBottom_toBottomOf="@+id/tvCalorieServing"
-        app:layout_constraintEnd_toStartOf="@+id/tvCalorieServing" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/btnAdd"
