@@ -15,8 +15,8 @@ public class Date {
     private static final MealsEnum Breakfast = MealsEnum.Breakfast;
     private static final MealsEnum Lunch = MealsEnum.Lunch;
     private static final MealsEnum Dinner = MealsEnum.Dinner;
-    private static final MealsEnum AfternoonSnack = MealsEnum.Afternoon_Snack;
-    private static final MealsEnum EveningSnack = MealsEnum.Evening_Snack;
+    private static final MealsEnum AfternoonSnack = MealsEnum.Snack2;
+    private static final MealsEnum EveningSnack = MealsEnum.Snack3;
 
     public Date(String date){
         this.date = date;
