@@ -5,6 +5,10 @@
     <string name="main_label02">Weekly Goal</string>
 
 
+    <string name="add_custom_food_header">Calorie Trends</string>
+    <string name="add_custom_food_placeholder">Someday there will be a all kinds of toys here.</string>
+
+
     <string name="add_food_header">Add Food</string>
     <string name="add_food_btn01">Add Custom Food</string>
     <string name="add_food_btn02">Search</string>

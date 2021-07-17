@@ -76,6 +76,7 @@ public class acAddFood extends AppCompatActivity {
                 }
         );
     }
+
     public void itemClick(){
         //ListView listView = findViewById(R.id.searchResults);
         searchResults.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -95,5 +96,16 @@ public class acAddFood extends AppCompatActivity {
             }
         });
     }
+
+    // Called when user taps the Add Custom Food button
+    // This is a stretch part.
+    public void btnAddCustomFood(View view) {
+        Intent intent = new Intent(this, acAddCustomFood.class);
+        startActivity(intent);
+
+    }
+
+
+
 
 }

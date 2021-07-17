@@ -16,12 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodFight">
         <activity
+            android:name=".acAddCustomFood"
+            android:label="@string/add_custom_food_header"
+            android:parentActivityName=".acAddFood"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".acAddFood"
             android:label="@string/add_food_header"
-            android:parentActivityName=".acFoodList"
             android:noHistory="true"
+            android:parentActivityName=".acFoodList"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".acAppAbout"
             android:label="@string/app_about_header"
@@ -39,13 +45,13 @@
             android:label="@string/food_item_header"
             android:parentActivityName=".acFoodList"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".acFoodList"
             android:label="@string/food_list_header"
             android:parentActivityName=".acMeals"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".acMeals"
             android:label="@string/meals_header"
@@ -63,15 +69,14 @@
             android:label="@string/profile_header"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-        >
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
