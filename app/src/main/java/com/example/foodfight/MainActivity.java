@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         Date date = dayThing.getTime();
         SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
         int dayCalories = calsDay(df.format(date));
-        int weeklyCalories = weekCaloiries();
+        int weeklyCalories = weekCalories();
         //put data form the user into the shared preferences
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("weeklyCurrent", (Integer.toString(weeklyCalories)));
@@ -157,7 +157,21 @@ public class MainActivity extends AppCompatActivity {
 
         TextView messageView = findViewById(R.id.tvDailyWords);
         messageView.setText(message);
+        String message2 = "";
+        float currentStatus2 = Float.parseFloat(dailyCurrent) / Float.parseFloat(dailyGoal);
+        if (currentStatus >= 1.0) {
+            message = "Seriously, please find a diet book. PLEAAASE!";
+        } else if (currentStatus >= 0.9) {
+            message = "I'm guessing the belt is feeling tight this week?";
+        } else if (currentStatus >= 0.8) {
+            message = "If you stop eating now, you might lose weight.";
+        } else if (currentStatus >= 0.25 && currentStatus < 0.8) {
+            message = "You are definitely not starving ;) ";
+        } else
+            message = "Omitting some food entries, are we?";
 
+        TextView messageView2 = findViewById(R.id.tvWeeklyWords);
+        messageView2.setText(message2);
 
     }
 
@@ -184,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public int weekCaloiries(){
+    public int weekCalories(){
         int totalCals = 0;
 
         Calendar cal = Calendar.getInstance();
