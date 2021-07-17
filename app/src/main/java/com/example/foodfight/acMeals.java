@@ -99,7 +99,8 @@ public class acMeals extends AppCompatActivity {
             mealCals.setText(Integer.toString(calories));
         }
 
-        if (selectedDate == calendarHandler.getSystemDate()) {
+        String CurrentDay = calendarHandler.getSystemDate();
+        if (selectedDate.equals(CurrentDay)) {
             //put data form the user into the shared preferences
             SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
