@@ -345,7 +345,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String sql = "SELECT " + MEAL_ID +
+        String sql = "SELECT " + "*" +
                 " FROM " + LINKING_TABLE +
                 " WHERE " + MEAL_ID + " = '" + mealID + "'";
 // SELECT * from "meal_food" where mealID = 58
@@ -358,8 +358,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 if (cursor.moveToFirst()) {
                     do {
                         ArrayList<Integer> list = new ArrayList<>();
-                        list.add(cursor.getInt(cursor.getColumnIndex(MEAL_FOOD_ID)));
-                        list.add(cursor.getInt(cursor.getColumnIndex(SERVINGS_NAME)));
+                        String id = (cursor.getString(cursor.getColumnIndex(MEAL_FOOD_ID)));
+                        String servings = (cursor.getString(cursor.getColumnIndex(SERVINGS_NAME)));
+                        list.add(Integer.parseInt(id));
+                        list.add(Integer.parseInt(servings));
                         IDQTY.add(list);
                     } while (cursor.moveToNext());
                 }
@@ -400,6 +402,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return food;
     };
+
+
 
 
 
