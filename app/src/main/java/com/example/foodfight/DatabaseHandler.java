@@ -133,15 +133,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 FoodItem food = new FoodItem(1,null,150);
-                food.setId(Integer.parseInt(cursor.getString(0)));
-                food.setName(cursor.getString(1));
-                food.setCalories(Integer.parseInt(cursor.getString(2)));
-                food.setFoodHouseholdServing(Integer.parseInt(cursor.getString(3)));
-                food.setFoodHouseholdUnit(cursor.getString(4));
-                food.setServingSize(Integer.parseInt(cursor.getString(5)));
-                food.setFoodMetricServingUnit(cursor.getString(6));
-                food.setFoodManufacturer(cursor.getString(7));
-                food.setSourceDB(cursor.getString(8));
+                food.setId(cursor.getInt(cursor.getColumnIndex(FOOD_ID)));
+//                String name = cursor.getInt(cursor.getColumnIndex("table_column_name"));
+                food.setName(cursor.getString(cursor.getColumnIndex(FOOD_NAME)));
+                food.setCalories(cursor.getInt(cursor.getColumnIndex(FOOD_CALORIES)));
+                food.setFoodHouseholdServing(cursor.getInt(cursor.getColumnIndex(FOOD_HOUSEHOLD_SERVING)));
+                food.setFoodHouseholdUnit(cursor.getString(cursor.getColumnIndex(FOOD_HOUSEHOLD_UNIT)));
+                food.setServingSize(cursor.getInt(cursor.getColumnIndex(FOOD_METRIC_SERVING)));
+                food.setFoodMetricServingUnit(cursor.getString(cursor.getColumnIndex(FOOD_METRIC_SERVING_UNIT)));
+                food.setFoodManufacturer(cursor.getString(cursor.getColumnIndex(FOOD_MANUFACTURER)));
+                food.setSourceDB(cursor.getString(cursor.getColumnIndex("SourceDB")));
 
                 // Adding contact to list
                 foodList.add(food);
@@ -160,7 +161,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Integer id = null;
 
         if (cursor.moveToFirst()) {
-            id = Integer.parseInt(cursor.getString(0));
+            id = cursor.getInt(cursor.getColumnIndex(MEAL_ID));
         }
 
 

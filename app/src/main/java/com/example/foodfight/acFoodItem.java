@@ -131,11 +131,11 @@ public class acFoodItem extends AppCompatActivity {
         int foodId = db.getIdFromAPI(newFoodItem);
         Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
         // get the meal
-        int mealid = db.getMealID(selectedDate, mealType);
+        int mealIdInt = db.getMealID(selectedDate, mealType);
         // add the food using foodid to the meal
-        db.AddToMeal(mealid, foodId, Math.round(qty));
+        db.AddToMeal(mealIdInt, foodId, Math.round(qty));
 
-        //intent to send foodid number, the mealid
+        //intent to send foodid number, the mealIdInt
         Intent intent = new Intent(this, acAddFood.class);
         //pass information for data base access
         //todo: create a meal item
@@ -145,8 +145,8 @@ public class acFoodItem extends AppCompatActivity {
         intent.putExtra("foodId",foodId);
         intent.putExtra("selectedDate", selectedDate);
         intent.putExtra("mealType", mealType);
-//        intent.putExtra("mealid", mealid);
-        String mealId = String.valueOf(mealid);//Now it will return "10"
+//        intent.putExtra("mealIdInt", mealIdInt);
+        String mealId = String.valueOf(mealIdInt);//Now it will return "10"
         intent.putExtra("mealId", mealId);
         // TODO: open database handler and edit the mealId (or create it if it doesn't exist)
 

@@ -24,6 +24,8 @@ public class acFoodList extends AppCompatActivity {
     String selectedDate;
     String mealType;
     String totalCalories;
+    String mealId;
+
 
 
     @Override
@@ -42,7 +44,10 @@ public class acFoodList extends AppCompatActivity {
         Intent intent = getIntent();
         selectedDate = intent.getStringExtra("MealDate");
         mealType = intent.getStringExtra("MealType");
+        mealId = intent.getStringExtra("mealId");
+        Integer mealIdIntConverted = Integer.valueOf(mealId);
         Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
+        Log.i("FF_FoodList","mealId = " + mealIdIntConverted);
 
 
         TextView textView = findViewById(R.id.labelSelectedMeal);

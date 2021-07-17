@@ -97,7 +97,7 @@ public class acAddFood extends AppCompatActivity {
                             FoodSearchThreadCreator onViewCreatedOne = new FoodSearchThreadCreator(acAddFood.this, foodSearch);
 
 //                            new Thread(new ApiHandler(acAddFood.this, foodSearch)).start();
-                            Toast.makeText(acAddFood.this,"Search Button Clicked", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(acAddFood.this,"Search Button Clicked", Toast.LENGTH_LONG).show();
 
                         } catch (IOException e) {
                             e.printStackTrace();
