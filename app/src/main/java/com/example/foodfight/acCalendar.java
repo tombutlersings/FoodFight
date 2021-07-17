@@ -63,13 +63,14 @@ public class acCalendar extends AppCompatActivity {
                     // Add 1 in month because month index is start with 0
                     // less than 10 day
                     if (dayOfMonth<10){
-                    if(calendarMonth>9){
-                        calendarDate = (month + 1) + "-"
-                                + "0" + dayOfMonth + "-" + year;
+                        if(calendarMonth>9){
+                            calendarDate = (month + 1) + "-"
+                                    + "0" + dayOfMonth + "-" + year;
+                        } else {
+                            calendarDate = "0" + (month + 1) + "-"
+                                    + "0" + dayOfMonth + "-" + year;
+                        }
                     } else {
-                        calendarDate = "0" + (month + 1) + "-"
-                                + "0" + dayOfMonth + "-" + year;
-                    }} else {
                         if (calendarMonth > 9) {
                             calendarDate = (month + 1) + "-"
                                     + dayOfMonth + "-" + year;

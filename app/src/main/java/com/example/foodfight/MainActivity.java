@@ -97,7 +97,15 @@ public class MainActivity extends AppCompatActivity {
         TextView greeting = findViewById(R.id.textGreeting);
         greeting.setText(msg);
 
-        //TODO: Poll database for current week calorie totals
+        //weekly goal stuff
+
+        int weeklyCalories = weekCaloiries();
+        //put data form the user into the shared preferences
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("weeklyCurrent", (Integer.toString(weeklyCalories)));
+        //commit changes
+        editor.commit();
+        Log.d("weekly", "cals are: " + String.valueOf(weeklyCalories));
 
 
         // Set the progress bars and captions
@@ -145,15 +153,7 @@ public class MainActivity extends AppCompatActivity {
         TextView messageView = findViewById(R.id.tvDailyWords);
         messageView.setText(message);
 
-        //weekly goal stuff
 
-        int weeklyCalories = weekCaloiries();
-        //put data form the user into the shared preferences
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("weeklyCurrent", (Integer.toString(weeklyCalories)));
-        //commit changes
-        editor.commit();
-        Log.d("weekly", "cals are: " + String.valueOf(weeklyCalories));
 
 
 
