@@ -10,13 +10,13 @@
         android:id="@+id/tvBreakfast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="140dp"
         android:text="@string/meals_label03"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textIsSelectable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnBreakfast"
-        app:layout_constraintStart_toEndOf="@+id/btnBreakfast" />
+        app:layout_constraintStart_toStartOf="@+id/tvDate" />
 
     <TextView
         android:id="@+id/tvTotal"
@@ -189,14 +189,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/todayStatus"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelTotal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
