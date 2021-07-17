@@ -40,6 +40,7 @@ public class acMeals extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onResume() {
         super.onResume();
@@ -98,12 +99,14 @@ public class acMeals extends AppCompatActivity {
             mealCals.setText(Integer.toString(calories));
         }
 
-        //put data form the user into the shared preferences
-        SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("dailyCurrent", (Integer.toString(dayCalories)));
-        //commit changes
-        editor.commit();
+        if (selectedDate == calendarHandler.getSystemDate()) {
+            //put data form the user into the shared preferences
+            SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("dailyCurrent", (Integer.toString(dayCalories)));
+            //commit changes
+            editor.commit();
+        }
 
         //display calories for the day
         TextView dailyCals = findViewById(R.id.tvTotal);
