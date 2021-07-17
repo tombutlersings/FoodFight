@@ -54,7 +54,7 @@ public class acFoodList extends AppCompatActivity {
         //
         ArrayList<List> ids = db.getFoodList(mealItem.ID);
         FoodItem testItem = db.getFoodItemById((int) ids.get(0).get(0));
-        //Log.d("string", testItem.getClass())
+        Log.d("string", testItem.getName());
 
 
 
