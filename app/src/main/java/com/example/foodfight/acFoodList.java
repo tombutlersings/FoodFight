@@ -15,9 +15,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class acFoodList extends AppCompatActivity {
     String selectedDate;
     String mealName;

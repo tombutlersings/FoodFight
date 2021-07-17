@@ -265,7 +265,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(MEAL_ID, mealID);
         values.put(FOOD_ID, foodID);
-        values.put(SERVINGS_NAME, servings);
+        values.put(SERVINGS_NAME, servings); // Needs to become QUANTITY from the FoodItem Page
         db.insert(LINKING_TABLE, null, values);
 
         //2nd argument is String containing nullColumnHack
@@ -325,6 +325,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 " FROM " + MEAL_TABLE_NAME +
                 " WHERE " + MEAL_DATE + " = '" + date + "' AND " + MEAL_NAME + " = '" + name + "'";
 
+
+
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor !=null)
+            cursor.moveToFirst();
+        Integer id = Integer.parseInt(cursor.getString(0));
+
+
+        db.close();
+        return id;
+    };
+
+    public ArrayList<List> getFoodList(String mealId){
+        //
+        MEAL_ID = mealId;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = "SELECT " + MEAL_ID +
+                " FROM " + LINKING_TABLE +
+                " WHERE mealId "  + " = '" + MEAL_ID + "' AND " + MEAL_NAME + " = '" + name + "'";
+// SELECT * from "meal_food" where mealID = 58
 
 
         Cursor cursor = db.rawQuery(sql, null);
