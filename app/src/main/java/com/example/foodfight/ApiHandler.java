@@ -15,14 +15,7 @@ import java.util.Map;
 public class ApiHandler implements Runnable {
     Activity activityName;
     String foodSearch;
-//    Activity activity;
     ArrayList<List> foodSearchResults;
-
-//    public static Map<String, Object> jsonToMap(String str) {
-//        Map<String, Object> map = (Map) (new Gson()).fromJson(str, (new TypeToken<HashMap<String, Object>>() {
-//        }).getType());
-//        return map;
-//    }
 
     public ApiHandler(acAddFood activityName, String foodSearch) throws IOException {
 
@@ -101,7 +94,7 @@ public class ApiHandler implements Runnable {
                                 String foodServingSize = ((Double) foodResultOne.get(4)).toString(); // serving size
                                 String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  "
                                         + foodCalories + "  Brand: " + foodManufacturer
-                                        + "  Serving Unit: " + foodServingUnit + "  Serving size: " + foodServingSize);
+                                        + "  Serving size: " + foodServingSize + "  Serving Unit: " + foodServingUnit);
                                 testList.add(line);
                             }
 // TODO: could the above iterator and below iterator be combined into one list or function?

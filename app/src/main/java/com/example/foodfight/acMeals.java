@@ -26,6 +26,7 @@ public class acMeals extends AppCompatActivity {
     CalendarHandler calendarHandler = new CalendarHandler();
     private TextView dateView;
     private String selectedDate;
+    public TextView todayStatus;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -89,7 +90,7 @@ public class acMeals extends AppCompatActivity {
                 Log.d("string", testItem.getName());
 
 
-                //update caloririe total
+                //update calories total
                 calories += testItem.getCalories() * ((int) ids.get(i).get(1));
             }
             //updat calories for the day
@@ -107,12 +108,16 @@ public class acMeals extends AppCompatActivity {
             editor.putString("dailyCurrent", (Integer.toString(dayCalories)));
             //commit changes
             editor.commit();
+            String dailyGoal = sp.getString("dailyGoal", "2222");
+
+            //if (dailygoal - 1000  >= current daily total) {
+            //   then display "you're doing great today on your goal!}
+            // else if (dailygoal -250 >= current daily total ){ you're getting close} else { " you've exceeded your goal for the day}
         }
 
         //display calories for the day
         TextView dailyCals = findViewById(R.id.tvTotal);
         dailyCals.setText(Integer.toString(dayCalories));
-
     }
 
     // Called when user taps Select Another Day
