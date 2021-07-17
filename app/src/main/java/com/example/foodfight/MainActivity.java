@@ -146,32 +146,21 @@ public class MainActivity extends AppCompatActivity {
         messageView.setText(message);
 
         //weekly goal stuff
-//        final getWeekDates usWeek = new getWeekDates(Locale.getDefault());
-//        String convertedDate = String.valueOf(usWeek.getoneDay());
-//        String temp = convertedDate.substring(5) + "-" + convertedDate.substring(0, 4);
 
         int weeklyCalories = weekCaloiries();
+        //put data form the user into the shared preferences
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("weeklyCurrent", (Integer.toString(weeklyCalories)));
+        //commit changes
+        editor.commit();
         Log.d("weekly", "cals are: " + String.valueOf(weeklyCalories));
 
-// get start of this week in milliseconds
-//        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
-//        Date beginning = cal.getTime();
-//        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek() + 1);
-//        Date beginning1 = cal.getTime();
-//        Date date = Calendar.getInstance().getTime();
-//        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-//        //System.out.println("Start of this week:       " + cal.getTime());
-        //System.out.println("... in milliseconds:      " + cal.getTimeInMillis());
+
 
         Calendar dayThing = Calendar.getInstance();
         int dayNum = dayThing.get(Calendar.DAY_OF_WEEK);
         Log.d("FF_Main:WeekThing", String.valueOf(dayNum));
 
-
-//        Log.d("String", "Start of this week:       " + df.format(date));
-//        Log.d("String", "Start of this week:       " + df.format(beginning));
-//        Log.d("String", "Start of this week:       " + df.format(beginning1));
-//        Log.d("String", "... in milliseconds:      " + cal.getTimeInMillis());
     }
 
     // Called when user taps the Meals button
@@ -213,7 +202,15 @@ public class MainActivity extends AppCompatActivity {
             SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
             //get total calories for the day
             //add to week calories
+            int today = calsDay("07-17-2021");
+            int yesterday = calsDay("07-16-2021");
+            int yesterday1 = calsDay("07-15-2021");
+            int yesterday2 = calsDay("07-14-2021");
+            int yesterday3 = calsDay("07-13-2021");
+            int yesterday4 = calsDay("07-12-2021");
+            int yesterday5 = calsDay("07-11-2021");
             totalCals += calsDay(df.format(date));
+            Log.i("date_acMeals", "");
 
 
         }
