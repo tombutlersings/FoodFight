@@ -3,7 +3,6 @@ package com.example.foodfight;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.internal.LinkedTreeMap;
 
@@ -37,7 +36,7 @@ public class ApiHandler implements Runnable {
         ArrayList<List> foodSearchResultsInternal = NutriSearch(foodSearch);
         if (!(foodSearchResultsInternal.size() >= 0)) {
         } else {
-            Toast.makeText(this.activityName,"Step 2 Reached!", Toast.LENGTH_LONG).show();
+//            Toast.makeText(this.activityName,"Step 2 Reached!", Toast.LENGTH_LONG).show();
         }
         foodSearchResults = foodSearchResultsInternal;
     }

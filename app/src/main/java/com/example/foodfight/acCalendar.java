@@ -64,19 +64,15 @@ public class acCalendar extends AppCompatActivity {
                     // less than 10 day
                     if (dayOfMonth<10){
                         if(calendarMonth>9){
-                            calendarDate = (month + 1) + "-"
-                                    + "0" + dayOfMonth + "-" + year;
+                            calendarDate = (month + 1) + "-" + "0" + dayOfMonth + "-" + year;
                         } else {
-                            calendarDate = "0" + (month + 1) + "-"
-                                    + "0" + dayOfMonth + "-" + year;
+                            calendarDate = "0" + (month + 1) + "-" + "0" + dayOfMonth + "-" + year;
                         }
                     } else {
                         if (calendarMonth > 9) {
-                            calendarDate = (month + 1) + "-"
-                                    + dayOfMonth + "-" + year;
+                            calendarDate = (month + 1) + "-"  + dayOfMonth + "-" + year;
                         } else {
-                            calendarDate = "0" + (month + 1) + "-"
-                                    + dayOfMonth + "-" + year;
+                            calendarDate = "0" + (month + 1) + "-"  + dayOfMonth + "-" + year;
                         }
                     }
                     // set this date in TextView for Display

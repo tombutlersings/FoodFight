@@ -54,9 +54,7 @@ public class acAddCustomFood extends AppCompatActivity {
                                 calConv,
                                 editManufacturer.getText().toString());
                         Toast.makeText(acAddCustomFood.this,"Data Inserted", Toast.LENGTH_LONG).show();
-
                     }
-
                 }
 
         );
