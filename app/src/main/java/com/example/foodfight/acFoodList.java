@@ -15,6 +15,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class acFoodList extends AppCompatActivity {
     String selectedDate;
     String mealName;
@@ -48,8 +51,14 @@ public class acFoodList extends AppCompatActivity {
         MealItem mealItem = db.GetMeal(selectedDate, mealName);
 
         Log.i("FoodListMealItem", mealItem.ID + "|" + mealItem.date + "|" + mealItem.getMealName());
+        //
+        ArrayList<List> ids = db.getFoodList(mealItem.ID);
+        FoodItem testItem = db.getFoodItemById((int) ids.get(0).get(0));
+        //Log.d("string", testItem.getClass())
 
 
+
+        //
         TextView tvCalories = findViewById(R.id.tvCalories);
         String cals = String.valueOf(mealItem.getTotalCalories());
         tvCalories.setText(cals);

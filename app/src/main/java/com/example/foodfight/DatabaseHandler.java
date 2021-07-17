@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -313,6 +314,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Integer id = cursor.getInt(cursor.getColumnIndex(FOOD_ID));
 
 
+        Log.d("String", "food id is: " + id.toString());
         db.close();
 
         return id;
@@ -334,32 +336,70 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Integer id = Integer.parseInt(cursor.getString(0));
 
 
+        Log.d("String", "meal id is: " + id.toString());
         db.close();
         return id;
     };
 
-    public ArrayList<List> getFoodList(String mealId){
+    public ArrayList<List> getFoodList(int mealID){
         //
-        MEAL_ID = mealId;
         SQLiteDatabase db = this.getWritableDatabase();
 
         String sql = "SELECT " + MEAL_ID +
                 " FROM " + LINKING_TABLE +
-                " WHERE mealId "  + " = '" + MEAL_ID + "'";
+                " WHERE " + MEAL_ID + " = '" + mealID + "'";
 // SELECT * from "meal_food" where mealID = 58
 
 
         Cursor cursor = db.rawQuery(sql, null);
 
-        if (cursor !=null)
-            cursor.moveToFirst();
-        Integer id = Integer.parseInt(cursor.getString(0));
 
+        ArrayList<List> IDQTY = new ArrayList<>();
+                if (cursor.moveToFirst()) {
+                    do {
+                        ArrayList<Integer> list = new ArrayList<>();
+                        list.add(cursor.getInt(cursor.getColumnIndex(MEAL_FOOD_ID)));
+                        list.add(cursor.getInt(cursor.getColumnIndex(SERVINGS_NAME)));
+                        IDQTY.add(list);
+                    } while (cursor.moveToNext());
+                }
 
         db.close();
-        return id;
+        return IDQTY;
     };
 
+
+    public FoodItem getFoodItemById(int foodid){
+        //
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String selectQuery = "SELECT * FROM " + FOOD_TABLE_NAME + " WHERE " + FOOD_ID + " = " + foodid ;
+// SELECT * from "meal_food" where mealID = 58
+
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        FoodItem food = new FoodItem(1,null,150);
+        if (cursor.moveToFirst()) {
+            do {
+
+                food.setId(cursor.getInt(cursor.getColumnIndex(FOOD_ID)));
+//                String name = cursor.getInt(cursor.getColumnIndex("table_column_name"));
+                food.setName(cursor.getString(cursor.getColumnIndex(FOOD_NAME)));
+                food.setCalories(cursor.getInt(cursor.getColumnIndex(FOOD_CALORIES)));
+                food.setFoodHouseholdServing(cursor.getInt(cursor.getColumnIndex(FOOD_HOUSEHOLD_SERVING)));
+                food.setFoodHouseholdUnit(cursor.getString(cursor.getColumnIndex(FOOD_HOUSEHOLD_UNIT)));
+                food.setServingSize(cursor.getInt(cursor.getColumnIndex(FOOD_METRIC_SERVING)));
+                food.setFoodMetricServingUnit(cursor.getString(cursor.getColumnIndex(FOOD_METRIC_SERVING_UNIT)));
+                food.setFoodManufacturer(cursor.getString(cursor.getColumnIndex(FOOD_MANUFACTURER)));
+                food.setSourceDB(cursor.getString(cursor.getColumnIndex("SourceDB")));
+
+            } while (cursor.moveToNext());
+        }
+
+        db.close();
+        return food;
+    };
 
 
 
