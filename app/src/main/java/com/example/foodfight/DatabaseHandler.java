@@ -3,6 +3,7 @@ package com.example.foodfight;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -62,7 +63,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + " (" + MEAL_DATE +" TEXT, "
                 + MEAL_NAME +" TEXT, "
                 + PROFILE_NAME + " INTEGER,"
-                + MEAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+                + MEAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                "UNIQUE( " + MEAL_DATE + " , " + MEAL_NAME + "))");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + FOOD_TABLE_NAME + " (" + FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + FOOD_NAME + " TEXT,"
@@ -259,11 +261,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void CreateMeal(String date, String mealName, Integer profile){
         SQLiteDatabase db = this.getReadableDatabase();
 
+
+
         ContentValues values = new ContentValues();
         values.put(MEAL_DATE, date);
         values.put(MEAL_NAME, mealName);
         values.put(PROFILE_NAME, profile);
-        db.insert(MEAL_TABLE_NAME, null, values);
+
+        try {
+            db.insert(MEAL_TABLE_NAME, null, values);
+        }catch (SQLException se){
+            //pass
+        }
 
         //2nd argument is String containing nullColumnHack
         db.close(); // Closing database connection
