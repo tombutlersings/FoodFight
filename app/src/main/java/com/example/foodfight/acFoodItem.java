@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class acFoodItem extends AppCompatActivity {
 
-    String foodName, manufacturer, selectedDate, mealType, servingUnit;
+    String foodName, manufacturer, selectedDate, mealName, servingUnit;
     float calories, servingSize, totalCalories;
     float qty = 1;
     int conCals;
@@ -25,7 +25,7 @@ public class acFoodItem extends AppCompatActivity {
         // Variables to get database information
         Intent intent = getIntent();
         selectedDate = intent.getStringExtra("MealDate");
-        mealType = intent.getStringExtra("MealType");
+        mealName = intent.getStringExtra("MealName");
         ArrayList<String> foodType = intent.getStringArrayListExtra("FoodType");
         foodName = foodType.get(0);
         manufacturer = foodType.get(1);
@@ -131,7 +131,7 @@ public class acFoodItem extends AppCompatActivity {
         int foodId = db.getIdFromAPI(newFoodItem);
         Toast.makeText(acFoodItem.this,"Food Id:" + foodId, Toast.LENGTH_LONG).show();
         // get the meal
-        int mealIdInt = db.getMealID(selectedDate, mealType);
+        int mealIdInt = db.getMealID(selectedDate, mealName);
         // add the food using foodid to the meal
         db.AddToMeal(mealIdInt, foodId, Math.round(qty));
 
@@ -140,11 +140,11 @@ public class acFoodItem extends AppCompatActivity {
         //pass information for data base access
         //todo: create a meal item
         selectedDate = intent.getStringExtra("MealDate");
-        mealType = intent.getStringExtra("MealType");
+        mealName = intent.getStringExtra("MealName");
         intent.putExtra("previousActivity","acFoodItem");
         intent.putExtra("foodId",foodId);
         intent.putExtra("selectedDate", selectedDate);
-        intent.putExtra("mealType", mealType);
+        intent.putExtra("MealName", mealName);
 //        intent.putExtra("mealIdInt", mealIdInt);
         String mealId = String.valueOf(mealIdInt);//Now it will return "10"
         intent.putExtra("mealId", mealId);

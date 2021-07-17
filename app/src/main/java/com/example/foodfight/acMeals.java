@@ -72,7 +72,7 @@ public class acMeals extends AppCompatActivity {
     public void btnBreakfast(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealType","Breakfast");
+        intent.putExtra("MealName","Breakfast");
         startActivity(intent);
     }
 
@@ -80,7 +80,7 @@ public class acMeals extends AppCompatActivity {
     public void btnSnack1(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealType","Snack1");
+        intent.putExtra("MealName","Snack1");
         startActivity(intent);
     }
 
@@ -88,7 +88,7 @@ public class acMeals extends AppCompatActivity {
     public void btnLunch(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealType","Lunch");
+        intent.putExtra("MealName","Lunch");
         startActivity(intent);
     }
 
@@ -96,7 +96,7 @@ public class acMeals extends AppCompatActivity {
     public void btnSnack2(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate", selectedDate);
-        intent.putExtra("MealType","Snack2");
+        intent.putExtra("MealName","Snack2");
         startActivity(intent);
     }
 
@@ -104,7 +104,7 @@ public class acMeals extends AppCompatActivity {
     public void btnDinner(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealType","Dinner");
+        intent.putExtra("MealName","Dinner");
         startActivity(intent);
     }
 
@@ -112,7 +112,7 @@ public class acMeals extends AppCompatActivity {
     public void btnSnack3(View view) {
         Intent intent = new Intent(this, acFoodList.class);
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealType","Snack3");
+        intent.putExtra("MealName","Snack3");
         startActivity(intent);
     }
 

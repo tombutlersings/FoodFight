@@ -22,9 +22,10 @@ import java.util.List;
 
 public class acFoodList extends AppCompatActivity {
     String selectedDate;
-    String mealType;
+    String mealName;
     String totalCalories;
     String mealId;
+
 
 
 
@@ -34,8 +35,7 @@ public class acFoodList extends AppCompatActivity {
         setContentView(R.layout.activity_food_list);
         Intent intent = getIntent();
         selectedDate = intent.getStringExtra("MealDate");
-        mealType = intent.getStringExtra("MealType");
-
+        mealName = intent.getStringExtra("MealName");
     }
 
     @Override
@@ -43,20 +43,20 @@ public class acFoodList extends AppCompatActivity {
         super.onResume();
         Intent intent = getIntent();
         selectedDate = intent.getStringExtra("MealDate");
-        mealType = intent.getStringExtra("MealType");
+        mealName = intent.getStringExtra("MealName");
         mealId = intent.getStringExtra("mealId");
-        Integer mealIdIntConverted = Integer.valueOf(mealId);
-        Log.i("FF_FoodList","data starts with " + mealType + " for " + selectedDate);
-        Log.i("FF_FoodList","mealId = " + mealIdIntConverted);
+//        Integer mealIdIntConverted = Integer.valueOf(mealId);
+        Log.i("FF_FoodList","data starts with " + mealName + " for " + selectedDate);
+//        Log.i("FF_FoodList","mealId = " + mealIdIntConverted);
 
 
         TextView textView = findViewById(R.id.labelSelectedMeal);
-        textView.setText(mealType);
+        textView.setText(mealName);
 
 
         //get information from the database
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-//        MealItem meal = new MealItem(0,selectedDate,mealType
+//        MealItem meal = new MealItem(0,selectedDate,mealName
 //                ,new ArrayList<FoodItem>(),new ArrayList<Float>());
 
         //create meal item only i there is not already one
@@ -64,17 +64,17 @@ public class acFoodList extends AppCompatActivity {
 
 //        //my idea here is that if the meal id is not found it will return null but dbhandler is not set up to do that.
         //the next line is for testing to see what it did when a meal was present.
-db.CreateMeal(selectedDate, mealType, 0);
+db.CreateMeal(selectedDate, mealName, 0);
 
-//        if (db.getMealID(selectedDate, mealType) == null){
-//            db.CreateMeal(selectedDate, mealType, 0);
+//        if (db.getMealID(selectedDate, mealName) == null){
+//            db.CreateMeal(selectedDate, mealName, 0);
 //        }
-//        MealItem displayMeal = db.GetMeal(selectedDate, mealType);
+//        MealItem displayMeal = db.GetMeal(selectedDate, mealName);
 //        //display foods if there are any
 //        if (displayMeal.foodItems.size() > 0 ){
 //            displayMealItems(displayMeal);}
 
-        /* TODO: The list of foods for the given 'selectedDate' and 'mealType' need to be
+        /* TODO: The list of foods for the given 'selectedDate' and 'mealName' need to be
                  pushed into the ListView foodListView
          */
 
@@ -93,7 +93,7 @@ db.CreateMeal(selectedDate, mealType, 0);
 
         acAddFood.putExtra("previousActivity","acFoodList");
         acAddFood.putExtra("MealDate",selectedDate);
-        acAddFood.putExtra("MealType",mealType);
+        acAddFood.putExtra("MealName", mealName);
         startActivity(acAddFood);
     }
 

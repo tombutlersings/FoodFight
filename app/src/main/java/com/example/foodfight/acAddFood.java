@@ -27,20 +27,20 @@ public class acAddFood extends AppCompatActivity {
     String previousActivity;
     ListView searchResults;
     String selectedDate;
-    String mealType;
+    String mealName;
     public ArrayList<List> foodSearchList;
 
     //variables for database access
     //Intent intent = getIntent();
     //String selectedDate = intent.getStringExtra("MealDate");
-    //String mealType = intent.getStringExtra("MealType");
+    //String mealName = intent.getStringExtra("MealName");
 
     /*
     put the next lines where we create the food item activity
      Intent intent = new Intent(this, acFoodItem.class);
         //pass information for data base access
         intent.putExtra("MealDate",selectedDate);
-        intent.putExtra("MealType",mealType);
+        intent.putExtra("MealName",mealName);
         startActivity(intent);
      */
 
@@ -65,7 +65,7 @@ public class acAddFood extends AppCompatActivity {
         // source from an intent
         previousActivity = intent.getStringExtra("previousActivity");
         selectedDate = intent.getStringExtra("MealDate");
-        mealType = intent.getStringExtra("MealType");
+        mealName = intent.getStringExtra("MealName");
         Toast.makeText(acAddFood.this,"Prev Activity: " + previousActivity, Toast.LENGTH_LONG).show();
         if(previousActivity=="acFoodItem"){
             this.finish();
@@ -136,7 +136,7 @@ public class acAddFood extends AppCompatActivity {
                 List foodData = foodSearchList.get(i);
                 Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
                 foodItem.putExtra("MealDate",selectedDate);
-                foodItem.putExtra("MealType",mealType);
+                foodItem.putExtra("MealName", mealName);
                 foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
                 FoodItem newFoodItem = new FoodItem(0, foodData.get(0).toString(), Math.round(Float.parseFloat(foodData.get(2).toString())));
                 //place data base item creation here
@@ -158,7 +158,7 @@ public class acAddFood extends AppCompatActivity {
 //                    case 3:
 //                        Intent foodItem = new Intent(acAddFood.this, acFoodItem.class);
 //                        foodItem.putExtra("MealDate",selectedDate);
-//                        foodItem.putExtra("MealType",mealType);
+//                        foodItem.putExtra("MealName",mealName);
 //                        foodItem.putStringArrayListExtra("FoodType", (ArrayList<String>) foodData);
 //                        startActivity(foodItem);
 //                        break;
