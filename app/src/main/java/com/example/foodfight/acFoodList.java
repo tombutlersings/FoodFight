@@ -86,7 +86,7 @@ db.CreateMeal(selectedDate, mealType, 0);
         //pass information for data base access
         //todo: create a meal item
 
-
+        acAddFood.putExtra("previousActivity","acFoodList");
         acAddFood.putExtra("MealDate",selectedDate);
         acAddFood.putExtra("MealType",mealType);
         startActivity(acAddFood);

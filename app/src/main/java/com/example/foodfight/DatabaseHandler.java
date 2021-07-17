@@ -307,7 +307,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if (cursor !=null)
             cursor.moveToFirst();
-            Integer id = Integer.parseInt(cursor.getString(0));
+//            Integer id = Integer.parseInt(cursor.getString(0));
+//        Integer id = Integer.parseInt(String.valueOf(cursor));
+        Integer id = cursor.getInt(cursor.getColumnIndex(FOOD_ID));
 
 
         db.close();

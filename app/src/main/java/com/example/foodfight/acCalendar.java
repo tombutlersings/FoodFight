@@ -1,17 +1,13 @@
 package com.example.foodfight;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
-import androidx.core.view.GestureDetectorCompat;
-
 import android.content.Intent;
 import android.icu.util.Calendar;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
-import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class acCalendar extends AppCompatActivity {
 
@@ -73,6 +69,10 @@ public class acCalendar extends AppCompatActivity {
     }
 
     public void btnDone(View view) {
+        /**
+         * When pressing done, the intent information within resultIntent is then sent to
+         * acMeals and received by acMeals' onActivityResult
+         */
         Intent resultIntent = new Intent(this, acMeals.class);
         resultIntent.putExtra("result", calendarDate);
         setResult(RESULT_OK, resultIntent);

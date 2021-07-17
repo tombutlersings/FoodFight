@@ -135,10 +135,23 @@ public class acFoodItem extends AppCompatActivity {
         // add the food using foodid to the meal
         db.AddToMeal(mealid, foodId, Math.round(qty));
 
-
+        //intent to send foodid number, the mealid
+        Intent intent = new Intent(this, acAddFood.class);
+        //pass information for data base access
+        //todo: create a meal item
+        selectedDate = intent.getStringExtra("MealDate");
+        mealType = intent.getStringExtra("MealType");
+        intent.putExtra("previousActivity","acFoodItem");
+        intent.putExtra("foodId",foodId);
+        intent.putExtra("selectedDate", selectedDate);
+        intent.putExtra("mealType", mealType);
+//        intent.putExtra("mealid", mealid);
+        String mealId = String.valueOf(mealid);//Now it will return "10"
+        intent.putExtra("mealId", mealId);
         // TODO: open database handler and edit the mealId (or create it if it doesn't exist)
 
-        //this.finish();
+
+        this.finish();
     }
 
     //getIdFromAPI

@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +24,7 @@ public class acAddFood extends AppCompatActivity {
     EditText searchFood;
     // TextView searchStatus;
     Button searchButton;
+    String previousActivity;
     ListView searchResults;
     String selectedDate;
     String mealType;
@@ -61,8 +61,15 @@ public class acAddFood extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
+        // if previous screen == "acFoodItem", then this.finish
+        // source from an intent
+        previousActivity = intent.getStringExtra("previousActivity");
         selectedDate = intent.getStringExtra("MealDate");
         mealType = intent.getStringExtra("MealType");
+        Toast.makeText(acAddFood.this,"Prev Activity: " + previousActivity, Toast.LENGTH_LONG).show();
+        if(previousActivity=="acFoodItem"){
+            this.finish();
+        }
     }
 
     private Activity currentActivity = null;

@@ -19,6 +19,7 @@
             android:name=".acAddFood"
             android:label="@string/add_food_header"
             android:parentActivityName=".acFoodList"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
