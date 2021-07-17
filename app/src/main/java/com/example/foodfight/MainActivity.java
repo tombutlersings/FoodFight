@@ -4,13 +4,11 @@ package com.example.foodfight;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,10 +20,7 @@ import java.util.Calendar;
  * the Meals, Trend and UserProfile activities
  */
 public class MainActivity extends AppCompatActivity {
-    //DatabaseHandler dbNameHere;
-    // SQLiteDatabase dbFood;
     DatabaseHandler db;
-    // ApiHandler foodSearcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,27 +45,22 @@ public class MainActivity extends AppCompatActivity {
         //VERIFY IF THE DATABASE FILE EXISTS AND IF FOOD TABLE IS POPULATED
         // TODO: IF FOOD TABLE IS NOT POPULATED, LOAD FOOD LIBRARY
         // TODO: REMOVE THIS FOR FINAL CODE
+
         FoodItem apple = new FoodItem(1,"apple",150);
         FoodItem apple2 = new FoodItem(569,"1% LOWFAT MILK",88,240,"ml",1,"cup","Target Stores");
         db.AddFood(apple);
         db.AddFood(apple2);
+
         FoodLibraryCreator foodLib = new FoodLibraryCreator();
         foodLib.libCreator(this);
-        boolean test = doesDatabaseExist(this,"food.db");
-        if (!test) {
-            //Toast.makeText(MainActivity.this,"DB does not Exist", Toast.LENGTH_LONG).show();
-            Log.i("FF_Main_DBLoad","DB does not exist!");
-        } else {
-            //Toast.makeText(MainActivity.this,"WAHOOO! DB Exists!", Toast.LENGTH_LONG).show();
+
+        File dbFile = this.getDatabasePath("food.db");
+        if (dbFile.exists()) {
             Log.i("FF_Main_DBLoad","WAHOO! DB Exists!");
+        } else {
+            Log.i("FF_Main_DBLoad","NOT GOOD: DB does not exist!");
         }
     }
-
-    private static boolean doesDatabaseExist(Context context, String dbName) {
-        File dbFile = context.getDatabasePath(dbName);
-        return dbFile.exists();
-    }
-
 
 
     @Override
@@ -98,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         TextView greeting = findViewById(R.id.textGreeting);
         greeting.setText(msg);
 
-        //update goals currants
+        //TODO: Poll database for current week calorie totals
 
 
         // Set the progress bars and captions
@@ -139,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
     // This is a stretch part.
     public void btnTrend(View view) {
         Intent intent = new Intent(this, acTrend.class);
+        // TODO: Pass current date for default trend
         startActivity(intent);
 
-        // TODO: Pass current date for default trend
     }
 
     // Called when user taps the User Profile button
@@ -149,15 +139,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, acUserProfile.class);
         startActivity(intent);
     }
-
-    //function to handle getting current caloiries for week
-    public int caloriesForWeek(){
-        //get dates for the week
-
-        return 0;
-    }
-
-
 
 
 }

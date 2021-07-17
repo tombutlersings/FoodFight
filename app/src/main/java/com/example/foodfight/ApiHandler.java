@@ -15,7 +15,14 @@ import java.util.Map;
 public class ApiHandler implements Runnable {
     Activity activityName;
     String foodSearch;
+//    Activity activity;
     ArrayList<List> foodSearchResults;
+
+//    public static Map<String, Object> jsonToMap(String str) {
+//        Map<String, Object> map = (Map) (new Gson()).fromJson(str, (new TypeToken<HashMap<String, Object>>() {
+//        }).getType());
+//        return map;
+//    }
 
     public ApiHandler(acAddFood activityName, String foodSearch) throws IOException {
 
@@ -83,36 +90,42 @@ public class ApiHandler implements Runnable {
                         public void run() {
                             // sends everything back to user interface
                             ArrayList<String> testList = new ArrayList<>();
+                            ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, testList);
+                            ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
+                            listView.setAdapter(itemsAdapter);
+                            ArrayList<List> newList = new ArrayList<List>();
+                            ArrayList subList = new ArrayList();
+
                             for (int i = 0; i < foodSearchResults.size(); i++) {
 
                                 //Parses out food info from list of lists
                                 List foodResultOne = foodSearchResults.get(i);
                                 String foodNameOne = (String) foodResultOne.get(0); // food name
+                                subList.add(foodNameOne);
+
                                 String foodManufacturer = (String) foodResultOne.get(1); // manufacturer
+                                subList.add(foodManufacturer);
+
                                 String foodCalories = ((Double) foodResultOne.get(2)).toString(); // calories
+                                subList.add(foodCalories);
+
                                 String foodServingUnit = (String) foodResultOne.get(3); // serving unit
+                                subList.add(foodServingUnit);
+
                                 String foodServingSize = ((Double) foodResultOne.get(4)).toString(); // serving size
-                                String line = ("Name: " + foodNameOne + "  by: " + foodManufacturer + "   Calories:  "
-                                        + foodCalories + "  Brand: " + foodManufacturer
-                                        + "  Serving size: " + foodServingSize + "  Serving Unit: " + foodServingUnit);
+                                subList.add(foodServingSize);
+
+                                String line = (
+                                        "Name: " + foodNameOne + "\nBrand: " + foodManufacturer +
+                                        "\n" + foodCalories + " calories per " + foodServingSize + "  " + foodServingUnit);
+
                                 testList.add(line);
+                                newList.add(subList);
+
+
                             }
 // TODO: could the above iterator and below iterator be combined into one list or function?
-                            ArrayAdapter<String> itemsAdapter = new ArrayAdapter(refActivity, android.R.layout.simple_list_item_1, testList);
-                            ListView listView = (ListView) refActivity.findViewById(R.id.searchResults);
-                            listView.setAdapter(itemsAdapter);
 
-                            ArrayList<List> newList = new ArrayList<List>();
-                            for (int i = 0; i < foodSearchResults.size(); i++) {
-                                ArrayList subList = new ArrayList();
-                                List foodResultOne = foodSearchResults.get(i);
-                                subList.add((String) foodResultOne.get(0));
-                                subList.add((String) foodResultOne.get(1));
-                                subList.add(((Double) foodResultOne.get(2)).toString());
-                                subList.add((String) foodResultOne.get(3));
-                                subList.add(((Double) foodResultOne.get(4)).toString());
-                                newList.add(subList);
-                            }
                             Goals.setFoodSearchList(newList);
     }
                     });
@@ -122,32 +135,3 @@ public class ApiHandler implements Runnable {
     }
 
 }
-
-
-
-
-//    public void apiThreadCreator(){
-//        //
-//        // manage the creation of threads and calls at the same time
-//        // possible extension of runnable
-//
-//
-//        /**
-//        This code should work to get the activity that you are calling this from to pass into the ApiHandler.
-//
-//        private Activity currentActivity = null;
-//         public Activity getCurrentActivity(){
-//         return currentActivity;
-//         }
-//         public void setCurrentActivity(Activity currentActivity){
-//         this.currentActivity = currentActivity;
-//         }
-//         */
-//        ApiThread newThread = new ApiThread(activityName);
-//        new Thread(newThread).start();
-//
-//
-//
-//
-//    }
-
