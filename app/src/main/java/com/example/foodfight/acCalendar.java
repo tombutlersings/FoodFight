@@ -61,7 +61,7 @@ public class acCalendar extends AppCompatActivity {
 
                     // Store the value of date with format in String type Variable
                     // Add 1 in month because month index is start with 0
-                    calendarDate = (month + 1) + "-"
+                    calendarDate = "0" + (month + 1) + "-"
                             + dayOfMonth + "-" + year;
 
                     // set this date in TextView for Display
